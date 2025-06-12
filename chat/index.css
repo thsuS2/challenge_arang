@@ -1,0 +1,41 @@
+/* 공통 스타일 */
+.hide {display : none !important}
+body{height: 100vh; overflow: hidden;}
+body, .wrap{background-color: #fafafa; padding: 0; margin: 0; }
+.wrap{width: 100%; background-color: #fafafa; position: relative; font-family: "Pretendard Variable", Pretendard; overflow-y: scroll; height:100vh ;}
+@media (min-width: 768px) {
+    .wrap{width: 768px; margin: 0 auto;}
+}
+/* 헤더 */
+.content-header{ position: fixed; top: 0; background-color: #fff; display: grid; align-items: center; justify-content: center; height: 50px; width:100%; font-weight: 500; border-bottom: 1px solid #ebebeb;}
+
+.content-body{margin: 75px 20px 20px;}
+/* 콘텐츠 상단 - 사용자정보 + 배너 */
+.content-body .body-user-area{padding: 20px 20px 5px; background-color: #fff; border-radius: 15px;}
+/* 맨 위 카드 */
+.body-user-area .userinfo{width: 95%;height: 70px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; margin: 0 auto;}
+
+.user-data{grid-column: 1/3; border-bottom: 1px solid #ebebeb; display: grid; grid-template-columns: 1fr 3.5fr 1fr; justify-items: center; align-items: center; padding: 0 0px 20px;}
+.user-data .user-name-section{font-size: 16px; font-weight: 400; justify-self: start; padding-left: 10px;}
+.user-data .user-edit-btn{padding: 5px 10px; font-size: 12px; font-weight: 600;  background-color: #EFEFEF; border-radius: 15px; cursor: pointer;}
+.user-data .user-edit-btn a{text-decoration: none; color: #8B8B8B;}
+
+.userinfo .user-info-section {display: grid; grid-template-rows: 1fr 1.5fr; grid-template-columns: 1fr 1.5fr; font-weight: 700; font-size: 19px; align-items: center; justify-items: start; cursor: pointer;}
+.userinfo .user-info-section .sub-title{font-size: 12px; color: #B0B5BD; font-weight: 600;}
+
+.user-point{border-right: 1px solid #ebebeb;}
+
+/* 공통 동그라미 */
+.userinfo .user-info-section > span:nth-child(1){grid-row: 1/3;  font-size: 18px; color: #fff; border-radius: 100%; width: 25px; height: 25px; display: flex; justify-content: center; justify-self: center; align-items: center; font-weight: 500}
+.user-point > span:nth-child(1){background-color: #ED8F34; }
+.user-mission > span:nth-child(1){background-color: #E98E8B; }
+/* 둘 / 셋 공통 카드 */
+.user-info-menus , 
+.user-info-etc{margin-top: 20px; font-size: 18px; font-weight: 600; }
+.user-info-menus >div, 
+.user-info-etc >div{margin-top: 10px; border-radius: 15px;background-color: #fff; padding: 5px 20px; font-size: 15px;}
+
+.info-cards{display: grid; grid-template-columns: 1fr 10fr 1fr; align-items: center; border-bottom: 1px solid #ebebeb; padding :  15px 0; cursor: pointer;}
+.info-cards:last-child{border-bottom: none;}
+/* footer */
+.content-footer{color: #BEBEBE; font-size: 14px; font-weight: 500; margin-top: 30px; text-decoration: underline; cursor: pointer; display: flex; justify-content: center;}

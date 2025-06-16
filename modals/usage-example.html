@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달 사용 예시</title>
+    <style>
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 300px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-record {
+            background-color: #32a59c;
+            color: white;
+        }
+        
+        .btn-record:hover {
+            background-color: #2a8d85;
+        }
+        
+        .btn-point {
+            background-color: #ffa500;
+            color: white;
+        }
+        
+        .btn-point:hover {
+            background-color: #ff8c00;
+        }
+        
+        .code-example {
+            margin-top: 40px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            padding: 16px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>모달 팝업 사용 예시</h1>
+    
+    <div class="button-group">
+        <button class="btn-record" onclick="showRecordCompleteModal()">기록 완료 모달 표시</button>
+        <button class="btn-point" onclick="showPointRewardModal()">포인트 지급 모달 표시</button>
+    </div>
+    
+    <div class="code-example">
+        <h2>사용 방법</h2>
+        <pre><code>// 1. HTML에 모달 파일 include
+&lt;!-- 기록 완료 모달 --&gt;
+&lt;div id="recordCompleteModalContainer"&gt;&lt;/div&gt;
+
+&lt;!-- 포인트 지급 모달 --&gt;
+&lt;div id="pointRewardModalContainer"&gt;&lt;/div&gt;
+
+// 2. JavaScript에서 모달 표시
+// 기록 완료 모달
+showRecordCompleteModal();
+
+// 포인트 지급 모달 (포인트 지정 가능)
+showPointRewardModal(100, 1250); // 획득 포인트, 총 포인트</code></pre>
+    </div>
+
+    <!-- 모달 컨테이너 -->
+    <div id="recordCompleteModalContainer"></div>
+    <div id="pointRewardModalContainer"></div>
+
+    <script>
+        // 기록 완료 모달 표시
+        function showRecordCompleteModal() {
+            loadModal('record-complete.html', 'recordCompleteModalContainer', () => {
+                window.modalFunctions.showRecordComplete();
+            });
+        }
+        
+        // 포인트 지급 모달 표시
+        function showPointRewardModal() {
+            loadModal('point-reward.html', 'pointRewardModalContainer', () => {
+                window.modalFunctions.showPointReward(100, 1250);
+            });
+        }
+        
+        // 모달 HTML 동적 로드
+        function loadModal(modalFile, containerId, callback) {
+            const container = document.getElementById(containerId);
+            
+            // 이미 로드된 경우 바로 콜백 실행
+            if (container.children.length > 0) {
+                callback();
+                return;
+            }
+            
+            fetch(modalFile)
+                .then(response => response.text())
+                .then(html => {
+                    // HTML 파싱
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // CSS 링크 추가
+                    const cssLink = doc.querySelector('link[rel="stylesheet"]');
+                    if (cssLink && !document.querySelector(`link[href="${cssLink.href}"]`)) {
+                        const newLink = document.createElement('link');
+                        newLink.rel = 'stylesheet';
+                        newLink.href = cssLink.href;
+                        document.head.appendChild(newLink);
+                    }
+                    
+                    // 모달 HTML 추가
+                    const modalContent = doc.querySelector('.modal-overlay');
+                    if (modalContent) {
+                        container.innerHTML = modalContent.outerHTML;
+                    }
+                    
+                    // JavaScript 로드
+                    const script = doc.querySelector('script');
+                    if (script && !document.querySelector(`script[src="${script.src}"]`)) {
+                        const newScript = document.createElement('script');
+                        newScript.src = script.src;
+                        newScript.onload = callback;
+                        document.body.appendChild(newScript);
+                    } else {
+                        callback();
+                    }
+                })
+                .catch(error => {
+                    console.error('모달 로드 실패:', error);
+                });
+        }
+    </script>
+</body>
+</html>

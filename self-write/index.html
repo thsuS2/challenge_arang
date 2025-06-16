@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기 선언문</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <button class="back-btn" onclick="window.history.back()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <h1 class="header-title">자기 선언문</h1>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 44px;"></div>
+                </div>
+                <span class="progress-text">1 / 6</span>
+            </div>
+        </div>
+
+        <!-- 컨텐츠 -->
+        <div class="content">
+            <!-- 텍스트 입력 영역 -->
+            <div class="textarea-wrapper">
+                <textarea 
+                    id="declaration" 
+                    placeholder="나의 각오를 작성해주세요"
+                    maxlength="100"
+                ></textarea>
+                <span class="char-counter">0/100</span>
+            </div>
+
+            <!-- 팁 텍스트 -->
+            <div class="tip-section">
+                <p class="tip-text">
+                    <span class="tip-label">Tip</span> 길게 쓸 필요 없어요. 간단하게 나의 각오를 알려주세요!
+                </p>
+                <p class="example-text">
+                    Ex : 작성 예시<br>
+                    가나다라 마바사아 자차카타파하
+                </p>
+            </div>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <button class="submit-btn">확인</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

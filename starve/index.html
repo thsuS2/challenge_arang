@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공복 시간 기록하기</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <button class="back-btn" onclick="window.history.back()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <h1 class="header-title">공복 시간 기록하기</h1>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 44px;"></div>
+                </div>
+                <span class="progress-text">1 / 6</span>
+            </div>
+        </div>
+
+        <!-- 컨텐츠 -->
+        <div class="content">
+            <div class="tip-text">
+                <span class="tip-label">Tip</span>
+                <span> 조건부 넣어주세요</span>
+            </div>
+
+            <!-- 공복 시작 시간 -->
+            <div class="form-section">
+                <h2 class="section-title">공복 시작 시간</h2>
+                <div class="textfield">
+                    <input type="text" placeholder="전날 마지막 식사가 끝난 시간을 입력해주세요" readonly>
+                    <svg class="dropdown-icon" width="13" height="12" viewBox="0 0 13 12" fill="none">
+                        <path d="M6.32125 1.935L5.3625 1.05L0 6L5.3625 10.95L6.32125 10.065L1.9175 6L6.32125 1.935Z" fill="#AAAAAA"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 공복 종료 시간 -->
+            <div class="form-section">
+                <h2 class="section-title">공복 종료 시간</h2>
+                <div class="textfield">
+                    <input type="text" placeholder="금일 첫 식사를 시작한 시간을 입력해주세요" readonly>
+                    <svg class="dropdown-icon" width="13" height="12" viewBox="0 0 13 12" fill="none">
+                        <path d="M6.32125 1.935L5.3625 1.05L0 6L5.3625 10.95L6.32125 10.065L1.9175 6L6.32125 1.935Z" fill="#AAAAAA"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하단 버튼 -->
+        <button class="submit-btn">확인</button>
+    </div>
+
+    <!-- 시간 선택 모달 -->
+    <div class="time-picker-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close">취소</button>
+                <h3 class="modal-title">시간 선택</h3>
+                <button class="modal-confirm">확인</button>
+            </div>
+            <div class="time-picker-container">
+                <div class="picker-column hour-picker">
+                    <!-- 시간 옵션들이 JS로 동적 생성됨 -->
+                </div>
+                <div class="picker-divider">:</div>
+                <div class="picker-column minute-picker">
+                    <!-- 분 옵션들이 JS로 동적 생성됨 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

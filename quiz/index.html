@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 퀴즈</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <button class="back-btn" onclick="window.history.back()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <h1 class="header-title">오늘의 퀴즈</h1>
+        </div>
+
+        <!-- 컨텐츠 -->
+        <div class="content">
+            <!-- 포인트 표시 -->
+            <div class="point-indicator">
+                <span class="point-text">+ 30원</span>
+                <div class="coin-icon"></div>
+            </div>
+
+            <!-- 퀴즈 질문 -->
+            <div class="quiz-question">
+                <h2>다음 중 김성섬 호르몬 활성화에<br>도움이 되지 않는 식품은?</h2>
+            </div>
+
+            <!-- 답변 옵션들 -->
+            <div class="answer-options">
+                <button class="answer-option" data-answer="1">
+                    <span>미역</span>
+                    <div class="option-icon"></div>
+                </button>
+                
+                <button class="answer-option" data-answer="2">
+                    <span>아연</span>
+                    <div class="option-icon"></div>
+                </button>
+                
+                <button class="answer-option selected correct" data-answer="3">
+                    <span>쌀 양배추</span>
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M16.6667 5L7.5 14.1667L3.33333 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <button class="answer-option" data-answer="4">
+                    <span>마그네슘</span>
+                    <div class="option-icon"></div>
+                </button>
+                
+                <button class="answer-option" data-answer="5">
+                    <span>비타민 D</span>
+                    <div class="option-icon"></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- 하단 버튼 영역 -->
+        <div class="bottom-buttons">
+            <button class="skip-btn">해설 보기</button>
+            <button class="next-btn">다음으로</button>
+        </div>
+    </div>
+
+    <!-- 해설 모달 -->
+    <div class="explanation-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>해설</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p>쌀 양배추는 김성섬 호르몬 활성화에 도움이 되지 않는 식품입니다.</p>
+                <p>미역, 아연, 마그네슘, 비타민 D는 모두 김성섬 호르몬 활성화에 도움이 되는 영양소입니다.</p>
+            </div>
+            <button class="modal-confirm">확인</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,139 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AI 챗봇</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="./index.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="wrap">
         <!-- 헤더 -->
-        <div class="content-header">
-            <!--space between-->
-            <div>채팅팅</div>
+        <div class="header">
+            <button class="back-btn" onclick="goBack()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <h1>AI 건강 챗봇</h1>
+            <div class="home-btn" onclick="goHome()">
+                <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5996 17.4004V7.52832L8.09961 0.806641L0.599609 7.5293V17.4004H15.5996Z" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="6.44956" y="12.5997" width="3.3" height="4.8" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
         </div>
-        <!-- 콘텐츠 바디 -->
-        <div class="content-body">
-            <div class="body-user-area">
-                <div class="user-data">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="35" height="35" viewBox="0 0 256 256" xml:space="preserve">
-                    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
-                        <path d="M 45 0 C 20.147 0 0 20.147 0 45 c 0 24.853 20.147 45 45 45 s 45 -20.147 45 -45 C 90 20.147 69.853 0 45 0 z M 45 22.007 c 8.899 0 16.14 7.241 16.14 16.14 c 0 8.9 -7.241 16.14 -16.14 16.14 c -8.9 0 -16.14 -7.24 -16.14 -16.14 C 28.86 29.248 36.1 22.007 45 22.007 z M 45 83.843 c -11.135 0 -21.123 -4.885 -27.957 -12.623 c 3.177 -5.75 8.144 -10.476 14.05 -13.341 c 2.009 -0.974 4.354 -0.958 6.435 0.041 c 2.343 1.126 4.857 1.696 7.473 1.696 c 2.615 0 5.13 -0.571 7.473 -1.696 c 2.083 -1 4.428 -1.015 6.435 -0.041 c 5.906 2.864 10.872 7.591 14.049 13.341 C 66.123 78.957 56.135 83.843 45 83.843 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #dbdbdb; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
-                    </g>
+
+        <!-- 채팅 영역 -->
+        <div class="chat-content">
+            <div class="chat-messages" id="chatMessages">
+                <!-- 웰컴 메시지 -->
+                <div class="welcome-message">
+                    <div class="ai-avatar">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="15" cy="15" r="15" fill="#4A90E2"/>
+                            <path d="M15 8C16.1046 8 17 8.89543 17 10C17 11.1046 16.1046 12 15 12C13.8954 12 13 11.1046 13 10C13 8.89543 13.8954 8 15 8Z" fill="white"/>
+                            <path d="M15 14C18.3137 14 21 16.6863 21 20V22H9V20C9 16.6863 11.6863 14 15 14Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="welcome-text">
+                        <p class="welcome-title">안녕하세요! AI 건강 챗봇입니다.</p>
+                        <p class="welcome-subtitle">건강과 관련된 궁금한 점을 편하게 물어보세요.</p>
+                    </div>
+                </div>
+
+                <!-- 예시 메시지들 -->
+                <div class="message user-message">
+                    <div class="message-bubble">
+                        <p>최근에 피로감이 심한데 어떤 음식을 먹으면 좋을까요?</p>
+                    </div>
+                    <span class="message-time">오후 2:30</span>
+                </div>
+
+                <div class="message ai-message">
+                    <div class="ai-avatar-small">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="12" fill="#4A90E2"/>
+                            <path d="M12 6C12.8284 6 13.5 6.67157 13.5 7.5C13.5 8.32843 12.8284 9 12 9C11.1716 9 10.5 8.32843 10.5 7.5C10.5 6.67157 11.1716 6 12 6Z" fill="white"/>
+                            <path d="M12 10.5C14.4853 10.5 16.5 12.5147 16.5 15V16.5H7.5V15C7.5 12.5147 9.51472 10.5 12 10.5Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="message-bubble">
+                        <p>피로감 개선에 도움이 되는 음식들을 추천해드릴게요!</p>
+                        <div class="recommendation-list">
+                            <div class="recommendation-item">
+                                <span class="emoji">🥜</span>
+                                <div>
+                                    <strong>견과류</strong>
+                                    <p>아몬드, 호두 등은 비타민 E와 마그네슘이 풍부해요</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-item">
+                                <span class="emoji">🥬</span>
+                                <div>
+                                    <strong>녹색 채소</strong>
+                                    <p>시금치, 브로콜리는 철분과 엽산이 많아 피로 회복에 좋아요</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-item">
+                                <span class="emoji">🍌</span>
+                                <div>
+                                    <strong>바나나</strong>
+                                    <p>칼륨과 비타민 B6가 풍부해 에너지 보충에 도움을 줘요</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="additional-tip">충분한 수분 섭취와 규칙적인 수면도 중요해요!</p>
+                    </div>
+                    <span class="message-time">오후 2:31</span>
+                </div>
+            </div>
+
+            <!-- 추천 질문 -->
+            <div class="suggested-questions">
+                <p class="suggested-title">이런 것도 물어보세요</p>
+                <div class="question-chips">
+                    <button class="question-chip" onclick="askQuestion('스트레스 관리 방법')">
+                        스트레스 관리 방법
+                    </button>
+                    <button class="question-chip" onclick="askQuestion('건강한 수면 습관')">
+                        건강한 수면 습관
+                    </button>
+                    <button class="question-chip" onclick="askQuestion('면역력 높이는 방법')">
+                        면역력 높이는 방법
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 입력 영역 -->
+        <div class="input-section">
+            <div class="input-container">
+                <input type="text" id="messageInput" placeholder="메시지를 입력하세요..." />
+                <button class="send-btn" onclick="sendMessage()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.4 17.4L18.85 9.92L1.4 2.44V8.37L13.13 9.92L1.4 11.47V17.4Z" fill="white"/>
                     </svg>
-                    </div>
-                    <div class="user-name-section">
-                        <div class="userType">userName</div>
-                        <div class="userName"><span></span> 님 안녕하세요.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="user-info-menus">
-                내 정보
-                <div>
-                    <div class="info-cards user-report">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">음식물과민증 결과지</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-meal-all">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">나의 식사 일지</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-mission-all">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">미션 내역</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-bfaf">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">Before/After 보고서</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="user-info-etc">
-                기타
-                <div>
-                    <div class="info-cards user-faq">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">FAQ</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-cunsult">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">고객센터</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
+                </button>
             </div>
         </div>
-        <!-- 콘텐츠 footer -->
-        <div class="content-footer">
-            로그아웃 하기
+
+        <!-- 하단 네비게이션 -->
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="goToHome()">
+                <div class="nav-icon">🏠</div>
+                <span>홈</span>
+            </div>
+            <div class="nav-item" onclick="goToJournal()">
+                <div class="nav-icon">📖</div>
+                <span>일기</span>
+            </div>
+            <div class="nav-item active">
+                <div class="nav-icon">💬</div>
+                <span>AI챗봇</span>
+            </div>
+            <div class="nav-item" onclick="goToMyPage()">
+                <div class="nav-icon">👤</div>
+                <span>마이</span>
+            </div>
         </div>
     </div>
-    <script src="./index.js"></script>
+    
+    <script src="index.js"></script>
 </body>
 </html>

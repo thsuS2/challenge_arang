@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>식단 기록</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <button class="home-btn" onclick="goHome()">
+                <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5996 17.4004V7.52832L8.09961 0.806641L0.599609 7.5293V17.4004H15.5996Z" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="6.44956" y="12.5997" width="3.3" height="4.8" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="progress-info">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">0 / 4</span>
+            </div>
+        </div>
+
+        <!-- 기록할 끼니 선택 -->
+        <div class="meal-type-section">
+            <h2>기록할 끼니 선택 <span class="required">* 필수 입력 값입니다</span></h2>
+            <div class="meal-grid">
+                <div class="meal-option selected" data-meal="breakfast">
+                    <div class="meal-emoji">🌞</div>
+                    <span>아침</span>
+                </div>
+                <div class="meal-option" data-meal="lunch">
+                    <div class="meal-emoji">🌤️</div>
+                    <span>점심</span>
+                </div>
+                <div class="meal-option" data-meal="dinner">
+                    <div class="meal-emoji">🌙</div>
+                    <span>저녁</span>
+                </div>
+                <div class="meal-option" data-meal="snack">
+                    <div class="meal-emoji">🍎</div>
+                    <span>간식</span>
+                </div>
+                <div class="meal-option" data-meal="late-night">
+                    <div class="meal-emoji">🍗</div>
+                    <span>야식</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 식사 정보 -->
+        <div class="meal-info-section">
+            <div class="section-header">
+                <h2>식사 정보</h2>
+                <div class="fasting-toggle">
+                    <span>공복입니다</span>
+                    <div class="toggle-switch">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="meal-input">
+                <input type="text" placeholder="필수 입력 값입니다" class="error">
+                <div class="photo-upload">
+                    <div class="upload-area">
+                        <div class="upload-icon">✕</div>
+                    </div>
+                </div>
+            </div>
+            <div class="error-message">
+                <span class="error-icon">⚠</span>
+                음식을 선택해주세요
+            </div>
+        </div>
+
+        <!-- 과민 음식 섭취 여부 -->
+        <div class="sensitive-food-section">
+            <h2>과민 음식 섭취 여부</h2>
+            <div class="sensitive-input">
+                <input type="text" placeholder="섭취한 과민 음식을 모두 선택해 주세요" class="error">
+                <div class="dropdown-arrow"></div>
+            </div>
+            <div class="error-message">
+                <span class="error-icon">⚠</span>
+                음식을 선택해주세요
+            </div>
+        </div>
+
+        <!-- 식후 컨디션 메모 -->
+        <div class="condition-section">
+            <h2>식후 컨디션 메모</h2>
+            <div class="condition-input">
+                <input type="text" placeholder="컨디션을 기록해주세요.">
+                <div class="dropdown-arrow"></div>
+            </div>
+        </div>
+
+        <!-- 기록하기 버튼 -->
+        <div class="submit-section">
+            <button class="submit-btn disabled" onclick="submitMeal()">기록하기</button>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>

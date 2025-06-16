@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #f5f5f5;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    width: 390px;
+    height: 100vh;
+    margin: 0 auto;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    flex-shrink: 0;
+    height: 146px;
+    background: #ffffff;
+    border-bottom: 1px solid #e9eaec;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 66px;
+    left: 31px;
+    width: 23px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.page-title {
+    position: absolute;
+    top: 63px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    text-align: center;
+}
+
+.progress-info {
+    position: absolute;
+    top: 116px;
+    right: 26px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-text {
+    font-weight: 500;
+    font-size: 11px;
+    color: #b4b4b4;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 120px;
+    left: 31px;
+    right: 56px;
+    height: 9px;
+    background: #f7f8f9;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #32a59c;
+    border-radius: 30px;
+    transition: width 0.3s ease;
+}
+
+/* Questions Container */
+.questions-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 0;
+    background-color: #ffffff;
+    margin-bottom: 80px;
+}
+
+/* Question Item */
+.question-item {
+    padding: 18px 29px 25px;
+}
+
+.question-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+/* Rating Scale */
+.rating-scale {
+    width: 100%;
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+.scale-label {
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: -0.01em;
+}
+
+.scale-label.negative {
+    color: #ed6060;
+}
+
+.scale-label.positive {
+    color: #4a90e2;
+}
+
+/* Radio Group */
+.radio-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 267px;
+    margin: 0 auto;
+}
+
+.radio-wrapper {
+    position: relative;
+}
+
+.radio-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-label {
+    display: block;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    border: 1.5px solid #353535;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Different sizes for radio buttons */
+.radio-wrapper:nth-child(1) .radio-label,
+.radio-wrapper:nth-child(5) .radio-label {
+    width: 33px;
+    height: 33px;
+}
+
+.radio-wrapper:nth-child(2) .radio-label,
+.radio-wrapper:nth-child(4) .radio-label {
+    width: 23px;
+    height: 23px;
+}
+
+.radio-wrapper:nth-child(3) .radio-label {
+    width: 13px;
+    height: 13px;
+}
+
+/* Colors for radio buttons */
+.radio-wrapper:nth-child(1) .radio-label,
+.radio-wrapper:nth-child(2) .radio-label {
+    border-color: #ed6060;
+}
+
+.radio-wrapper:nth-child(3) .radio-label {
+    border-color: #b4b4b4;
+}
+
+.radio-wrapper:nth-child(4) .radio-label,
+.radio-wrapper:nth-child(5) .radio-label {
+    border-color: #4a90e2;
+}
+
+/* Checked state */
+.radio-input:checked + .radio-label {
+    background-color: #32a59c;
+    border-color: #32a59c;
+}
+
+/* Hover state */
+.radio-label:hover {
+    transform: scale(1.1);
+}
+
+/* Align radio buttons vertically */
+.radio-wrapper:nth-child(1),
+.radio-wrapper:nth-child(5) {
+    display: flex;
+    align-items: center;
+    height: 33px;
+}
+
+.radio-wrapper:nth-child(2),
+.radio-wrapper:nth-child(4) {
+    display: flex;
+    align-items: center;
+    height: 33px;
+}
+
+.radio-wrapper:nth-child(3) {
+    display: flex;
+    align-items: center;
+    height: 33px;
+}
+
+/* Next Button */
+.next-button {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    height: 80px;
+    background: #32a59c;
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.next-button:hover:not(:disabled) {
+    background: #2a8d85;
+}
+
+.next-button:disabled {
+    background: #e0e0e0;
+    color: #999999;
+    cursor: not-allowed;
+}
+
+/* Scrollbar styling */
+.questions-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.questions-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.questions-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
+
+.questions-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

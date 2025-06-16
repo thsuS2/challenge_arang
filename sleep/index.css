@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 헤더 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #ffffff;
+    border-bottom: 1px solid #e9eaec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.back-btn {
+    position: absolute;
+    left: 31px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 23px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header h1 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    line-height: 1.4;
+}
+
+.home-btn {
+    position: absolute;
+    left: 31px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-info {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 250px;
+    height: 16px;
+    background: #f7f8f9;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 16.67%; /* 1/6 */
+    height: 100%;
+    background: #32a59c;
+    border-radius: 30px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #b4b4b4;
+    min-width: 30px;
+}
+
+/* 메인 콘텐츠 */
+.content {
+    margin-top: 80px;
+    padding: 0 31px;
+}
+
+.sleep-section {
+    margin-bottom: 40px;
+}
+
+.sleep-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.time-input {
+    position: relative;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.time-input input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ececec;
+    border-radius: 8px;
+    padding: 0 40px 0 13px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    color: #212121;
+    cursor: pointer;
+}
+
+.time-input input::placeholder {
+    color: #a5a5a5;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg);
+    width: 13px;
+    height: 12px;
+    background: #aaaaaa;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.tip {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #a5a5a5;
+    letter-spacing: -0.28px;
+}
+
+.tip-label {
+    font-weight: 600;
+    color: #32a59c;
+}
+
+/* 확인 버튼 */
+.submit-section {
+    padding: 50px 45px;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 45px;
+    background: #32a59c;
+    border: none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background: #2a8b82;
+}
+
+.submit-btn.disabled {
+    background: #e9e9e9;
+    color: #989898;
+}
+
+/* 시간 선택 모달 */
+.time-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #212121;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.time-picker {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.time-column {
+    flex: 1;
+    text-align: center;
+}
+
+.time-column label {
+    display: block;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.time-column select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0 10px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.modal-confirm-btn {
+    width: 100%;
+    height: 40px;
+    background: #32a59c;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-confirm-btn:hover {
+    background: #2a8b82;
+}

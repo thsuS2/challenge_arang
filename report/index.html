@@ -1,135 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>음식물과민증 검사 결과</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="./index.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="wrap">
         <!-- 헤더 -->
-        <div class="content-header">
-            <!--space between-->
-            <div>결과지</div>
+        <div class="header">
+            <button class="back-btn" onclick="goBack()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <h1>검사 결과</h1>
+            <div class="share-btn" onclick="shareResult()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 13.5C14.2 13.5 13.5 13.8 13 14.3L7.9 11.3C8 11 8 10.7 8 10.5C8 10.3 8 10 7.9 9.7L13 6.7C13.5 7.2 14.2 7.5 15 7.5C16.7 7.5 18 6.2 18 4.5C18 2.8 16.7 1.5 15 1.5C13.3 1.5 12 2.8 12 4.5C12 4.7 12 5 12.1 5.3L7 8.3C6.5 7.8 5.8 7.5 5 7.5C3.3 7.5 2 8.8 2 10.5C2 12.2 3.3 13.5 5 13.5C5.8 13.5 6.5 13.2 7 12.7L12.1 15.7C12 16 12 16.3 12 16.5C12 18.2 13.3 19.5 15 19.5C16.7 19.5 18 18.2 18 16.5C18 14.8 16.7 13.5 15 13.5Z" fill="#666666"/>
+                </svg>
+            </div>
         </div>
-        <!-- 콘텐츠 바디 -->
-        <div class="content-body">
-            <div class="body-user-area">
-                <div class="user-data">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="35" height="35" viewBox="0 0 256 256" xml:space="preserve">
-                    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
-                        <path d="M 45 0 C 20.147 0 0 20.147 0 45 c 0 24.853 20.147 45 45 45 s 45 -20.147 45 -45 C 90 20.147 69.853 0 45 0 z M 45 22.007 c 8.899 0 16.14 7.241 16.14 16.14 c 0 8.9 -7.241 16.14 -16.14 16.14 c -8.9 0 -16.14 -7.24 -16.14 -16.14 C 28.86 29.248 36.1 22.007 45 22.007 z M 45 83.843 c -11.135 0 -21.123 -4.885 -27.957 -12.623 c 3.177 -5.75 8.144 -10.476 14.05 -13.341 c 2.009 -0.974 4.354 -0.958 6.435 0.041 c 2.343 1.126 4.857 1.696 7.473 1.696 c 2.615 0 5.13 -0.571 7.473 -1.696 c 2.083 -1 4.428 -1.015 6.435 -0.041 c 5.906 2.864 10.872 7.591 14.049 13.341 C 66.123 78.957 56.135 83.843 45 83.843 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #dbdbdb; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
-                    </g>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="content">
+            <!-- 검사 정보 -->
+            <div class="test-info">
+                <div class="test-date">
+                    <span class="label">검사일</span>
+                    <span class="value">2024년 6월 13일</span>
+                </div>
+                <div class="test-name">
+                    <span class="label">검사자</span>
+                    <span class="value">홍길동 님</span>
+                </div>
+            </div>
+
+            <!-- 검사 결과 요약 -->
+            <div class="result-summary">
+                <h2>검사 결과 요약</h2>
+                <div class="result-card">
+                    <div class="result-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="30" fill="#FFE8E8"/>
+                            <path d="M30 15V35M30 40V45" stroke="#FF4444" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="result-text">
+                        <h3>주의가 필요한 상태입니다</h3>
+                        <p>총 <span class="highlight">12개</span>의 음식물에서 과민반응이 발견되었습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 과민반응 등급별 분류 -->
+            <div class="sensitivity-levels">
+                <h2>과민반응 등급별 분류</h2>
+                
+                <div class="level-section severe">
+                    <div class="level-header">
+                        <div class="level-badge severe">심각</div>
+                        <span class="level-count">3개 항목</span>
+                    </div>
+                    <div class="food-items">
+                        <div class="food-item">
+                            <span class="food-emoji">🥜</span>
+                            <span class="food-name">땅콩</span>
+                            <span class="food-level">LV.6</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🦐</span>
+                            <span class="food-name">새우</span>
+                            <span class="food-level">LV.5</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🥛</span>
+                            <span class="food-name">우유</span>
+                            <span class="food-level">LV.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level-section moderate">
+                    <div class="level-header">
+                        <div class="level-badge moderate">보통</div>
+                        <span class="level-count">5개 항목</span>
+                    </div>
+                    <div class="food-items">
+                        <div class="food-item">
+                            <span class="food-emoji">🥚</span>
+                            <span class="food-name">달걀</span>
+                            <span class="food-level">LV.4</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🌾</span>
+                            <span class="food-name">밀</span>
+                            <span class="food-level">LV.3</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🦀</span>
+                            <span class="food-name">게</span>
+                            <span class="food-level">LV.3</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🍅</span>
+                            <span class="food-name">토마토</span>
+                            <span class="food-level">LV.3</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🍊</span>
+                            <span class="food-name">오렌지</span>
+                            <span class="food-level">LV.3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="level-section mild">
+                    <div class="level-header">
+                        <div class="level-badge mild">경미</div>
+                        <span class="level-count">4개 항목</span>
+                    </div>
+                    <div class="food-items">
+                        <div class="food-item">
+                            <span class="food-emoji">🍓</span>
+                            <span class="food-name">딸기</span>
+                            <span class="food-level">LV.2</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🥒</span>
+                            <span class="food-name">오이</span>
+                            <span class="food-level">LV.2</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🧅</span>
+                            <span class="food-name">양파</span>
+                            <span class="food-level">LV.1</span>
+                        </div>
+                        <div class="food-item">
+                            <span class="food-emoji">🧄</span>
+                            <span class="food-name">마늘</span>
+                            <span class="food-level">LV.1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 관리 방법 -->
+            <div class="management-guide">
+                <h2>관리 방법</h2>
+                <div class="guide-content">
+                    <div class="guide-item">
+                        <div class="guide-icon">🚫</div>
+                        <div class="guide-text">
+                            <h4>심각 등급 음식은 완전히 제한</h4>
+                            <p>땅콩, 새우, 우유는 섭취를 완전히 중단하세요.</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">⚠️</div>
+                        <div class="guide-text">
+                            <h4>보통 등급 음식은 주의하여 섭취</h4>
+                            <p>달걀, 밀 등은 주 1-2회 이하로 제한하세요.</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">📝</div>
+                        <div class="guide-text">
+                            <h4>식사 일지 작성</h4>
+                            <p>매일 식사 내용과 증상을 기록하세요.</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-icon">🔄</div>
+                        <div class="guide-text">
+                            <h4>3개월 후 재검사</h4>
+                            <p>식이조절 후 개선 상태를 확인하세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 다운로드 버튼 -->
+            <div class="download-section">
+                <button class="download-btn" onclick="downloadPDF()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 13L5 8L6.4 6.6L9 9.2V1H11V9.2L13.6 6.6L15 8L10 13Z" fill="white"/>
+                        <path d="M19 13V17C19 17.5 18.8 18 18.3 18.3C18 18.8 17.5 19 17 19H3C2.5 19 2 18.8 1.7 18.3C1.2 18 1 17.5 1 17V13H3V17H17V13H19Z" fill="white"/>
                     </svg>
-                    </div>
-                    <div class="user-name-section">
-                        <div class="userType">userName</div>
-                        <div class="userName"><span></span> 님 안녕하세요.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="user-info-menus">
-                내 정보
-                <div>
-                    <div class="info-cards user-report">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">음식물과민증 결과지</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-meal-all">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">나의 식사 일지</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-mission-all">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">미션 내역</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-bfaf">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">Before/After 보고서</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="user-info-etc">
-                기타
-                <div>
-                    <div class="info-cards user-faq">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">FAQ</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="info-cards user-cunsult">
-                        <div class="info-cards-ico">✅</div>
-                        <div class="info-cards-text">고객센터</div>
-                        <svg width="15" height="15" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1899_3127)">
-                            <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1899_3127">
-                            <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
+                    상세 결과지 다운로드 (PDF)
+                </button>
             </div>
         </div>
     </div>
-    <script src="./index.js"></script>
+    
+    <script src="index.js"></script>
 </body>
 </html>

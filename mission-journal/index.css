@@ -1,0 +1,492 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    position: relative;
+    width: 390px;
+    height: 100vh;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow-y: auto;
+}
+
+/* 상단 상태바 */
+.status-bar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.time {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #212121;
+    letter-spacing: -0.408px;
+}
+
+.signal-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mobile-signal, .wifi {
+    width: 18px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.battery {
+    position: relative;
+    width: 25px;
+    height: 13px;
+}
+
+.battery-outline {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(33, 33, 33, 0.35);
+    border-radius: 3px;
+    background: transparent;
+}
+
+.battery-fill {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 19px;
+    height: 9px;
+    background: #212121;
+    border-radius: 2px;
+}
+
+.battery-end {
+    position: absolute;
+    right: -1.4px;
+    top: 4.22px;
+    width: 1.4px;
+    height: 4.22px;
+    background: rgba(33, 33, 33, 0.4);
+    border-radius: 0 1px 1px 0;
+}
+
+/* 헤더 */
+.header {
+    position: fixed;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    height: 109px;
+    background: #ffffff;
+    border-bottom: 1px solid #e9eaec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 28px 20px;
+    z-index: 9;
+}
+
+.back-btn {
+    position: absolute;
+    left: 31px;
+    top: 66px;
+    width: 23px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header h1 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    line-height: 1.4;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 62px;
+}
+
+.filter-btn {
+    position: absolute;
+    right: 28px;
+    top: 62px;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 메인 컨텐츠 */
+.content {
+    margin-top: 130px;
+    padding: 0 20px;
+    padding-bottom: 120px;
+}
+
+/* 통계 섹션 */
+.stats-section {
+    background: linear-gradient(135deg, #32a59c, #2bd4bf);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.stats-header h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.period {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* 일기 목록 */
+.journal-list {
+    margin-bottom: 30px;
+}
+
+.journal-item {
+    display: flex;
+    background: #ffffff;
+    border: 1px solid #e9eaec;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.2s;
+}
+
+.journal-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.journal-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    min-width: 60px;
+}
+
+.date-number {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #32a59c;
+    line-height: 1;
+}
+
+.date-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.month {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #666;
+}
+
+.day {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #999;
+}
+
+.journal-content {
+    flex: 1;
+    position: relative;
+}
+
+.completion-rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rate-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #212121;
+}
+
+.rate-number {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #32a59c;
+}
+
+.completed-missions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.mission-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.mission-tag.completed {
+    background: #e6f7f4;
+    color: #32a59c;
+}
+
+.mission-tag.partial {
+    background: #fff3e6;
+    color: #ff8c42;
+}
+
+.mission-tag.pending {
+    background: #f5f5f5;
+    color: #999;
+}
+
+.journal-memo {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.points-earned {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #32a59c;
+    background: #e6f7f4;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+/* 하단 네비게이션 */
+.bottom-nav {
+    position: fixed;
+    bottom: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    height: 83px;
+    background: #ffffff;
+    border-top: 1px solid #e9eaec;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 0 0 40px 40px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-item.active {
+    color: #32a59c;
+}
+
+.nav-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.nav-item span {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: inherit;
+}
+
+.nav-item:not(.active) span {
+    color: #999;
+}
+
+/* 필터 모달 */
+.filter-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-header h3 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #212121;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+
+.filter-options {
+    margin-bottom: 25px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h4 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #212121;
+    margin-bottom: 12px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: #f7f8f9;
+    border: 1px solid #e9eaec;
+    border-radius: 20px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #32a59c;
+    color: #ffffff;
+    border-color: #32a59c;
+}
+
+.apply-filter-btn {
+    width: 100%;
+    height: 45px;
+    background: #32a59c;
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.apply-filter-btn:hover {
+    background: #2a8b82;
+}

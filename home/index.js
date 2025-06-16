@@ -23,7 +23,7 @@ const observer = new MutationObserver((mutations) => {
 
     // 시작일로부터 몇 일째인지 계산 (시작일 포함하면 +1)
     function getDayCountFromStart(startDateStr, targetDate) {
-      const startDate = new Date(startDateStr);
+      const startDate = new Date(startDateStr.replace(/-/g, '/'));
       // 시간차 계산 (밀리초)
       const diffInMs = targetDate - startDate;
       const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));

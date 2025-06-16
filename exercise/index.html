@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운동 기록하기</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <button class="back-btn" onclick="goBack()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <h1>운동 기록하기</h1>
+            <div class="home-btn" onclick="goHome()">
+                <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5996 17.4004V7.52832L8.09961 0.806641L0.599609 7.5293V17.4004H15.5996Z" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="6.44956" y="12.5997" width="3.3" height="4.8" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="progress-info">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">1 / 6</span>
+            </div>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="content">
+            <!-- 운동 종류 선택 -->
+            <div class="exercise-type-section">
+                <h2>운동 종류 <span class="required">*필수 입력 값</span></h2>
+                <div class="exercise-grid">
+                    <div class="exercise-option" data-exercise="cardio">
+                        <div class="exercise-emoji">🏃‍♂️</div>
+                        <span>유산소</span>
+                    </div>
+                    <div class="exercise-option" data-exercise="weight">
+                        <div class="exercise-emoji">🏋️‍♂️</div>
+                        <span>근력</span>
+                    </div>
+                    <div class="exercise-option" data-exercise="yoga">
+                        <div class="exercise-emoji">🧘‍♀️</div>
+                        <span>요가</span>
+                    </div>
+                    <div class="exercise-option" data-exercise="pilates">
+                        <div class="exercise-emoji">🤸‍♀️</div>
+                        <span>필라테스</span>
+                    </div>
+                    <div class="exercise-option" data-exercise="stretch">
+                        <div class="exercise-emoji">🤲</div>
+                        <span>스트레칭</span>
+                    </div>
+                    <div class="exercise-option" data-exercise="other">
+                        <div class="exercise-emoji">⚽</div>
+                        <span>기타</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 운동 시간 -->
+            <div class="duration-section">
+                <h2>운동 시간</h2>
+                <div class="duration-input">
+                    <input type="number" placeholder="운동 시간을 입력하세요" min="1" max="300">
+                    <span class="unit">분</span>
+                </div>
+                <div class="tip">
+                    <span class="tip-label">Tip</span> 일반적으로 20-60분 운동이 효과적입니다.
+                </div>
+            </div>
+
+            <!-- 운동 강도 -->
+            <div class="intensity-section">
+                <h2>운동 강도</h2>
+                <div class="intensity-buttons">
+                    <button class="intensity-btn" data-intensity="low">낮음</button>
+                    <button class="intensity-btn" data-intensity="medium">보통</button>
+                    <button class="intensity-btn" data-intensity="high">높음</button>
+                </div>
+                <div class="tip">
+                    <span class="tip-label">Tip</span> 대화가 가능한 정도면 보통, 숨이 찬 정도면 높음입니다.
+                </div>
+            </div>
+
+            <!-- 운동 메모 -->
+            <div class="memo-section">
+                <h2>운동 메모</h2>
+                <textarea placeholder="운동에 대한 메모를 적어주세요 (선택사항)"></textarea>
+            </div>
+        </div>
+
+        <!-- 확인 버튼 -->
+        <div class="submit-section">
+            <button class="submit-btn disabled" onclick="submitExercise()">기록하기</button>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>

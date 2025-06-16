@@ -1,0 +1,52 @@
+{
+  "survey": {
+    "title": "면역/알러지 반응",
+    "totalQuestions": 4,
+    "questions": [
+      {
+        "id": "immune_q1",
+        "text": "가벼운 긁힌 자국도 쉽게 진물이 나고 치유가 더디다.",
+        "category": "immune_allergy",
+        "order": 1
+      },
+      {
+        "id": "immune_q2",
+        "text": "감기 이후에도 기침·콧물 같은 증상이 2주 이상 이어진다.",
+        "category": "immune_allergy",
+        "order": 2
+      },
+      {
+        "id": "immune_q3",
+        "text": "하루 중 이유 없이 미열(37 ℃ 내외)이<br>오르내리는 날이 많다.",
+        "category": "immune_allergy",
+        "order": 3
+      },
+      {
+        "id": "immune_q4",
+        "text": "특정 음식을 먹고 가려움·두드러기가 있었다",
+        "category": "immune_allergy",
+        "order": 4
+      },
+      {
+        "id": "immune_q5",
+        "text": "가벼운 운동 후 피부에 두드러기가 발생한다.",
+        "category": "immune_allergy",
+        "order": 5
+      }
+    ],
+    "options": {
+      "scale": 5,
+      "labels": {
+        "negative": "그렇지 않다",
+        "positive": "그렇다"
+      },
+      "values": [
+        {"value": 1, "size": "large", "type": "negative"},
+        {"value": 2, "size": "medium", "type": "negative"},
+        {"value": 3, "size": "small", "type": "neutral"},
+        {"value": 4, "size": "medium", "type": "positive"},
+        {"value": 5, "size": "large", "type": "positive"}
+      ]
+    }
+  }
+}

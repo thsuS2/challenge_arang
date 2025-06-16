@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: 100vh;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+
+/* 메인 콘텐츠 컨테이너 */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 메인 타이틀 */
+.main-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.main-title h1 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    line-height: 1.4;
+    letter-spacing: -1px;
+}
+
+/* 이미지 영역 */
+.image-section {
+    width: 286px;
+    height: 198px;
+    margin-bottom: 80px;
+}
+
+.before-after-image {
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+}
+
+.before-after-image::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 142px;
+    height: 100%;
+    background: #eee;
+    border-radius: 15px 0 0 15px;
+}
+
+.before-after-image::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 142px;
+    height: 100%;
+    background: #eee;
+    border-radius: 0 15px 15px 0;
+}
+
+/* 페이지 인디케이터 */
+.page-indicator {
+    display: flex;
+    gap: 6px;
+    margin-bottom: auto;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d9d9d9;
+}
+
+.indicator.active {
+    width: 30px;
+    height: 8px;
+    background: #32a59c;
+    border-radius: 100px;
+}
+
+/* 다음 버튼 */
+.next-button {
+    width: 300px;
+    margin: 0 auto 36px;
+    flex-shrink: 0;
+}
+
+.next-button button {
+    width: 100%;
+    height: 45px;
+    background: #32a59c;
+    border: none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.next-button button:hover {
+    background: #2a8b82;
+}

@@ -1,0 +1,415 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    position: relative;
+    width: 390px;
+    height: 100vh;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow-y: auto;
+}
+
+/* 상단 상태바 */
+.status-bar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.time {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #212121;
+    letter-spacing: -0.408px;
+}
+
+.signal-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mobile-signal, .wifi {
+    width: 18px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.battery {
+    position: relative;
+    width: 25px;
+    height: 13px;
+}
+
+.battery-outline {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(33, 33, 33, 0.35);
+    border-radius: 3px;
+    background: transparent;
+}
+
+.battery-fill {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 19px;
+    height: 9px;
+    background: #212121;
+    border-radius: 2px;
+}
+
+.battery-end {
+    position: absolute;
+    right: -1.4px;
+    top: 4.22px;
+    width: 1.4px;
+    height: 4.22px;
+    background: rgba(33, 33, 33, 0.4);
+    border-radius: 0 1px 1px 0;
+}
+
+/* 헤더 */
+.header {
+    position: fixed;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    height: 109px;
+    background: #ffffff;
+    border-bottom: 1px solid #e9eaec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 28px 20px;
+    z-index: 9;
+}
+
+.back-btn {
+    position: absolute;
+    left: 31px;
+    top: 66px;
+    width: 23px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header h1 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    line-height: 1.4;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 62px;
+}
+
+.home-btn {
+    position: absolute;
+    left: 31px;
+    top: 52px;
+    width: 38px;
+    height: 38px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-info {
+    position: absolute;
+    right: 20px;
+    top: 63px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 250px;
+    height: 16px;
+    background: #f7f8f9;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 16.67%; /* 1/6 */
+    height: 100%;
+    background: #32a59c;
+    border-radius: 30px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #b4b4b4;
+    min-width: 30px;
+}
+
+/* 메인 컨텐츠 */
+.content {
+    margin-top: 140px;
+    padding: 0 30px;
+    padding-bottom: 120px;
+}
+
+/* 운동 종류 섹션 */
+.exercise-type-section {
+    margin-bottom: 40px;
+}
+
+.exercise-type-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.required {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ed6060;
+    letter-spacing: -0.28px;
+}
+
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    height: 200px;
+}
+
+.exercise-option {
+    background: #e1e7e5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.exercise-option.selected {
+    background: #32a59c;
+}
+
+.exercise-option .exercise-emoji {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.exercise-option span {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #8b8b8b;
+    letter-spacing: 0.5px;
+}
+
+.exercise-option.selected span {
+    color: #ffffff;
+}
+
+/* 운동 시간 섹션 */
+.duration-section {
+    margin-bottom: 40px;
+}
+
+.duration-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.duration-input {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.duration-input input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ececec;
+    border-radius: 8px;
+    padding: 0 50px 0 13px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    color: #212121;
+}
+
+.duration-input input::placeholder {
+    color: #a5a5a5;
+}
+
+.duration-input .unit {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 운동 강도 섹션 */
+.intensity-section {
+    margin-bottom: 40px;
+}
+
+.intensity-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.intensity-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.intensity-btn {
+    flex: 1;
+    height: 45px;
+    background: #f7f8f9;
+    border: 1px solid #ececec;
+    border-radius: 8px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.intensity-btn.selected {
+    background: #32a59c;
+    color: #ffffff;
+    border-color: #32a59c;
+}
+
+/* 운동 메모 섹션 */
+.memo-section {
+    margin-bottom: 40px;
+}
+
+.memo-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.memo-section textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ececec;
+    border-radius: 8px;
+    padding: 13px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    color: #212121;
+    resize: none;
+}
+
+.memo-section textarea::placeholder {
+    color: #a5a5a5;
+}
+
+.tip {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #a5a5a5;
+    letter-spacing: -0.28px;
+}
+
+.tip-label {
+    font-weight: 600;
+    color: #32a59c;
+}
+
+/* 확인 버튼 */
+.submit-section {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 45px;
+    background: #32a59c;
+    border: none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background: #2a8b82;
+}
+
+.submit-btn.disabled {
+    background: #e9e9e9;
+    color: #989898;
+    cursor: not-allowed;
+}

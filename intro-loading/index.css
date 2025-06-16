@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    position: relative;
+    width: 390px;
+    height: 100vh;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* 메인 타이틀 */
+.main-title {
+    position: absolute;
+    top: 106px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+
+.main-title p {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    line-height: 1.4;
+    letter-spacing: -1px;
+}
+
+/* 이미지 영역 */
+.image-section {
+    position: absolute;
+    top: 245px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 336px;
+    height: 342px;
+}
+
+.circle-background {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 271px;
+    height: 272px;
+    background: #eee;
+    border-radius: 50%;
+}
+
+.model-image {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 251px;
+    height: 253px;
+    background: #eee;
+    border-radius: 125.5px;
+}
+
+/* 로딩 컨테이너 */
+.loading-container {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    text-align: center;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.loading-fill {
+    height: 100%;
+    background: #32a59c;
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.loading-text {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* 로딩 애니메이션 */
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.circle-background {
+    animation: pulse 2s ease-in-out infinite;
+}

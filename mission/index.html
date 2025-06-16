@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 미션</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <button class="back-btn" onclick="goBack()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <h1>오늘의 미션</h1>
+            <div class="home-btn" onclick="goHome()">
+                <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5996 17.4004V7.52832L8.09961 0.806641L0.599609 7.5293V17.4004H15.5996Z" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="6.44956" y="12.5997" width="3.3" height="4.8" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="content">
+            <!-- 날짜 헤더 -->
+            <div class="date-header">
+                <h2>2024년 6월 13일</h2>
+                <p>목요일</p>
+            </div>
+
+            <!-- 진행률 섹션 -->
+            <div class="progress-section">
+                <div class="progress-info">
+                    <span class="progress-label">오늘의 미션 진행률</span>
+                    <span class="progress-count">2 / 5</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- 미션 목록 -->
+            <div class="mission-list">
+                <div class="mission-item completed" data-mission="water">
+                    <div class="mission-icon">💧</div>
+                    <div class="mission-content">
+                        <h3>물 8잔 마시기</h3>
+                        <p>하루 권장 수분 섭취량을 채워보세요</p>
+                        <div class="mission-progress">
+                            <span>8 / 8잔</span>
+                        </div>
+                    </div>
+                    <div class="mission-status">
+                        <div class="check-icon">✓</div>
+                    </div>
+                </div>
+
+                <div class="mission-item completed" data-mission="exercise">
+                    <div class="mission-icon">🏃‍♂️</div>
+                    <div class="mission-content">
+                        <h3>30분 운동하기</h3>
+                        <p>유산소 또는 근력 운동을 해보세요</p>
+                        <div class="mission-progress">
+                            <span>35분 완료</span>
+                        </div>
+                    </div>
+                    <div class="mission-status">
+                        <div class="check-icon">✓</div>
+                    </div>
+                </div>
+
+                <div class="mission-item in-progress" data-mission="meal">
+                    <div class="mission-icon">🍽️</div>
+                    <div class="mission-content">
+                        <h3>3끼 식사 기록하기</h3>
+                        <p>건강한 식습관을 위해 식사를 기록해보세요</p>
+                        <div class="mission-progress">
+                            <span>2 / 3끼</span>
+                        </div>
+                    </div>
+                    <div class="mission-status">
+                        <button class="record-btn" onclick="goToMealRecord()">기록하기</button>
+                    </div>
+                </div>
+
+                <div class="mission-item pending" data-mission="sleep">
+                    <div class="mission-icon">😴</div>
+                    <div class="mission-content">
+                        <h3>수면 패턴 기록하기</h3>
+                        <p>취침 시간과 기상 시간을 기록해보세요</p>
+                        <div class="mission-progress">
+                            <span>미완료</span>
+                        </div>
+                    </div>
+                    <div class="mission-status">
+                        <button class="record-btn" onclick="goToSleepRecord()">기록하기</button>
+                    </div>
+                </div>
+
+                <div class="mission-item pending" data-mission="meditation">
+                    <div class="mission-icon">🧘‍♀️</div>
+                    <div class="mission-content">
+                        <h3>10분 명상하기</h3>
+                        <p>마음의 평온을 위한 시간을 가져보세요</p>
+                        <div class="mission-progress">
+                            <span>미완료</span>
+                        </div>
+                    </div>
+                    <div class="mission-status">
+                        <button class="record-btn" onclick="startMeditation()">시작하기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 보상 섹션 -->
+            <div class="reward-section">
+                <div class="reward-info">
+                    <div class="reward-icon">🎁</div>
+                    <div class="reward-content">
+                        <h3>미션 완료 보상</h3>
+                        <p>모든 미션을 완료하면 50포인트를 받을 수 있어요!</p>
+                    </div>
+                </div>
+                <div class="points-earned">
+                    <span>획득한 포인트: 20P</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하단 네비게이션 -->
+        <div class="bottom-nav">
+            <div class="nav-item" onclick="goToHome()">
+                <div class="nav-icon">🏠</div>
+                <span>홈</span>
+            </div>
+            <div class="nav-item" onclick="goToJournal()">
+                <div class="nav-icon">📖</div>
+                <span>일기</span>
+            </div>
+            <div class="nav-item active">
+                <div class="nav-icon">🎯</div>
+                <span>미션</span>
+            </div>
+            <div class="nav-item" onclick="goToMyPage()">
+                <div class="nav-icon">👤</div>
+                <span>마이</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>

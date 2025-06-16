@@ -98,23 +98,7 @@ function confirmTime() {
     }
     
     closeModal();
-    updateProgress();
     validateForm();
-}
-
-// 진행률 업데이트
-function updateProgress() {
-    const progressFill = document.querySelector('.progress-fill');
-    const progressText = document.querySelector('.progress-text');
-    
-    let completedSteps = 1; // 기본 1
-    
-    if (sleepData.bedtime) completedSteps++;
-    if (sleepData.wakeTime) completedSteps++;
-    
-    const percentage = (completedSteps / 6) * 100;
-    progressFill.style.width = `${percentage}%`;
-    progressText.textContent = `${completedSteps} / 6`;
 }
 
 // 폼 검증
@@ -140,10 +124,17 @@ function submitSleep() {
     // 수면 시간 계산
     const sleepDuration = calculateSleepDuration(sleepData.bedtime, sleepData.wakeTime);
     
+    // 콘솔에 데이터 출력
+    console.log('=== 수면 기록 데이터 ===');
+    console.log('취침 시간:', sleepData.bedtime);
+    console.log('기상 시간:', sleepData.wakeTime);
+    console.log('총 수면 시간:', sleepDuration);
+    console.log('=====================');
+    
     alert(`수면이 기록되었습니다!\n취침: ${sleepData.bedtime}\n기상: ${sleepData.wakeTime}\n수면시간: ${sleepDuration}`);
     
     // 기록 완료 화면으로 이동
-    window.location.href = '../write-complete/index.html';
+    // window.location.href = '../write-complete/index.html';
 }
 
 // 수면 시간 계산
@@ -185,4 +176,3 @@ document.getElementById('timeModal').addEventListener('click', function(e) {
 
 // 초기 상태 설정
 validateForm();
-updateProgress();

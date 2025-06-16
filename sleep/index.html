@@ -17,31 +17,19 @@
                 </svg>
             </button>
             <h1>수면 기록하기</h1>
-            <div class="home-btn" onclick="goHome()">
-                <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.5996 17.4004V7.52832L8.09961 0.806641L0.599609 7.5293V17.4004H15.5996Z" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <rect x="6.44956" y="12.5997" width="3.3" height="4.8" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div class="progress-info">
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <span class="progress-text">1 / 6</span>
-            </div>
         </div>
 
         <!-- 메인 컨텐츠 -->
         <div class="content">
             <!-- 취침 시간 -->
             <div class="sleep-section">
+                <div class="tip">
+                    <span class="tip-label">Tip</span> 식사에는 칼로리가 포함된 모든 음식, 음료를 포함합니다.
+                </div>
                 <h2>취침 시간</h2>
                 <div class="time-input" onclick="selectBedtime()">
                     <input type="text" placeholder="취침 시간을 기록해주세요" readonly>
                     <div class="dropdown-arrow"></div>
-                </div>
-                <div class="tip">
-                    <span class="tip-label">Tip</span> 숙면에는 멜라토닌과 포터블을 추천합니다.
                 </div>
             </div>
 
@@ -53,7 +41,7 @@
                     <div class="dropdown-arrow"></div>
                 </div>
                 <div class="tip">
-                    <span class="tip-label">Tip</span> 꾸준한 복어주세요
+                    <span class="tip-label">Tip</span> ????????????
                 </div>
             </div>
         </div>
@@ -72,9 +60,9 @@
                 </div>
                 <div class="time-picker">
                     <div class="time-column">
-                        <label>시간</label>
+                        <label>시</label>
                         <select id="hourSelect">
-                            <option value="">시간</option>
+                            <option value="">시</option>
                         </select>
                     </div>
                     <div class="time-column">

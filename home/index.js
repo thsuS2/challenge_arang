@@ -65,6 +65,28 @@ const observer = new MutationObserver((mutations) => {
             darae.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% ${(act.implement / 2) * 100}%,  #d3d3d3 0%)`);
             darae.querySelector('.donut span').textContent = act.implement + '/2'
         }
+
+        quiz.addEventListener('click', ()=>{
+            // window.location.href = '../quiz/index.html';
+        })
+        routin.addEventListener('click', ()=>{
+            // window.location.href = '../routin/index.html';
+        })
+        starve.addEventListener('click', ()=>{
+            // window.location.href = '../starve/index.html';
+        })
+        sleep.addEventListener('click', ()=>{
+            window.location.href = '../sleep/index.html';
+        })
+        dayily.addEventListener('click', ()=>{
+            window.location.href = '../mission/index.html';
+        })
+        meal.addEventListener('click', ()=>{
+            window.location.href = '../meal/index.html';
+        })
+        darae.addEventListener('click', ()=>{
+            // window.location.href = '../darae/index.html';
+        })
     }
 
   	const load = async () =>{
@@ -96,6 +118,7 @@ const observer = new MutationObserver((mutations) => {
                 implement : 1,
                 sleep : null,
                 starve : null,
+                dayily : false,
             }
         };
         const responseData = mokdata;

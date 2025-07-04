@@ -10,8 +10,10 @@ function updateSilderContent() {
     const content = silderContent[currentIndex];
     // 메인 타이틀 텍스트 변경
     const mainTitle = document.querySelector('.main-title h1');
+    const mainContent = document.querySelector('.main-content');
     if (mainTitle) {
         mainTitle.innerHTML = content.text;
+        mainContent.classList.add(content.class);
     }
     // 인디케이터 업데이트
     const indicators = document.querySelectorAll('.indicator');
@@ -34,7 +36,25 @@ function nextPage() {
     }
 }
 
-// 페이지 로드 시 첫 슬라이드 내용 표시
-window.onload = function() {
+
+const observer = new MutationObserver((mutations) => {
+    const target = document.getElementById('ch-plugin-entry');
+    if (target) {
+        target.classList.add('hide');
+        console.log('숨김 처리 완료');
+        observer.disconnect(); // 한 번만 실행되면 감시 중단
+    }
+});
+
+
+const load = async ()=>{
+    document.querySelector('div#s202501175ad3b318a8aab')?.classList.add('hide');
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
     updateSilderContent();
-};
+
+}
+window.addEventListener('load', load);

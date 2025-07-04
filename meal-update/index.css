@@ -1,0 +1,609 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none !important;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.toggle-switch.active{background: #32A59C;}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* 헤더 */
+.header {
+    flex-shrink: 0;
+    height: 60px;
+    background: #ffffff;
+    border-bottom: 1px solid #e9eaec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+}
+
+.home-btn {
+    width: 38px;
+    height: 38px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 250px;
+    height: 16px;
+    background: #f7f8f9;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #32a59c;
+    border-radius: 30px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #b4b4b4;
+    min-width: 30px;
+}
+
+/* 메인 콘텐츠 컨테이너 */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 30px;
+}
+
+/* 메인 콘텐츠 */
+.meal-type-section {
+    padding: 20px 30px 30px;
+}
+
+.meal-type-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.required {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ed6060;
+    letter-spacing: -0.28px;
+}
+
+.meal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    height: 200px;
+}
+
+.meal-option {
+    background: #e1e7e5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.meal-option.selected {
+    background: #32a59c;
+}
+
+.meal-option .meal-emoji {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.meal-option span {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #8b8b8b;
+    letter-spacing: 0.5px;
+}
+
+.meal-option.selected span {
+    color: #ffffff;
+}
+
+/* 식사 정보 섹션 */
+.meal-info-section {
+    padding: 0 30px 30px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.meal-info-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+}
+
+.fasting-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fasting-toggle span {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #999999;
+    letter-spacing: -0.38px;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 31px;
+    height: 18px;
+    background: #e1e7e5;
+    border-radius: 53px;
+    cursor: pointer;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.toggle-switch.active .toggle-slider {
+    transform: translateX(13px);
+}
+
+.meal-input {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.meal-input input {
+    flex: 1;
+    height: 45px;
+    width: 100%;
+    border: 1px solid #ed6060;
+    border-radius: 8px;
+    padding: 0 13px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+}
+
+.meal-input input.error {
+    color: #ed6060;
+}
+
+.meal-input input::placeholder {
+    color: #a5a5a5;
+}
+
+.photo-upload {
+    width: 69px;
+    height: 45px;
+}
+
+.upload-area {
+    width: 100%;
+    height: 55px;
+    background: #f7f8f9;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.upload-area:hover {
+    border-color: #32a59c;
+}
+
+.upload-icon {
+    font-size: 24px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+}
+
+.upload-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.uploaded-image {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.uploaded-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-image {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.remove-image:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.error-icon {
+    width: 22px;
+    height: 21px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #ed6060;
+}
+
+.error-message span:last-child {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ed6060;
+    letter-spacing: -0.28px;
+}
+
+/* 과민 음식 섭취 여부 */
+.sensitive-food-section {
+    padding: 0 30px 30px;
+}
+
+.sensitive-food-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.sensitive-input {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.sensitive-input input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ed6060;
+    border-radius: 8px;
+    padding: 0 40px 0 13px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    color: #a5a5a5;
+}
+
+.sensitive-food-list{
+    background-color: #21212182;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.sensitive-food-select-area{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 85vh;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+}
+
+.food-list-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding : 0 10px;
+    font-weight: 700;
+}
+
+.sensitive-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sensitive-toggle span {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #999999;
+    letter-spacing: -0.38px;
+}
+
+.sensitive-toggle .active {
+    background-color: #32A59C;
+}
+
+
+.food-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.food-level{
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    padding: 2px 8px;
+    background-color: #E6E5E6;
+    border-radius: 15px;
+    color: #999999;
+    letter-spacing: -0.38px;
+}
+.food-item-list{overflow: scroll;}
+.sensitive-food-list .food-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5px;
+    margin: 5px 10px;
+    border-bottom: 1px solid #e9eaec;
+}
+
+.close-btn{
+    font-family: 'Pretendard', sans-serif;
+    background-color: #E6E5E6;
+    width: 87px;
+    height: 15px;
+    border-radius: 5px;
+    margin: 5px 0 15px;
+    cursor: pointer;
+    align-self: center;
+}
+
+.sensitive-food-list-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+.add-food-btn{
+    background-color: #32A59C;
+    color: #ffffff;
+    font-weight: 500;
+    width: 300px;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.dropdown-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg);
+    width: 13px;
+    height: 12px;
+    background: #aaaaaa;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* 식후 컨디션 메모 */
+.condition-section {
+    padding: 0 30px 40px;
+}
+
+.condition-section h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.condition-input {
+    position: relative;
+}
+
+.condition-input input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #a8a8a8;
+    border-radius: 8px;
+    padding: 0 40px 0 13px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.28px;
+    color: #a5a5a5;
+}
+
+.condition-input .dropdown-arrow {
+    background: #ececec;
+}
+
+/* 기록하기 버튼 */
+.submit-section {
+    padding: 0 45px 30px;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn.disabled {
+    background: #e9e9e9;
+    color: #989898;
+}
+
+.submit-btn:not(.disabled) {
+    background: #32a59c;
+    color: #ffffff;
+}
+
+.submit-btn:not(.disabled):hover {
+    background: #2a8b82;
+}
+
+.food-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.food-item input[type="checkbox"]:checked {
+    background-color: #00948C;
+    border-color: #00948C;
+}
+
+.food-item input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 10px;
+    height: 10px;
+    color: white;
+    border-radius: 50%;
+}
+
+.food-item input[type="checkbox"]:hover {
+    border-color: #00948C;
+}
+
+.date-display-section {
+    margin: 80px 20px 10px 20px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px 30px;
+    text-align: center;
+}
+
+#date-display {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+}
+
+#meal-type-display {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #787a7c;
+    margin: 0;
+}

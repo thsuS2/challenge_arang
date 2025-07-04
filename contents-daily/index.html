@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콘텐츠 시청</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- 헤더 -->
+        <div class="header">
+            <button class="back-btn" onclick="window.history.back()">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none">
+                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                </svg>
+            </button>
+            <div class="header-title">콘텐츠</div>
+        </div>
+
+        <!-- 콘텐츠 컨텐츠 -->
+        <div class="mission-content" id="missionContent">
+            
+            <!-- 콘텐츠 제목 -->
+            <div class="mission-title" id="missionTitle">콘텐츠 제목</div>
+            <!-- 비디오 -->
+            <div class="mission-media" id="missionMedia">
+                <div class="media-placeholder">콘텐츠 필드 / 영상</div>
+            </div>
+
+            <div class="mission-text" id="missionText">
+                
+            </div>
+
+            <div class="recommend-wrap hide">
+                <div class="recommend-title">💊 바이오컴 추천 제품</div>
+                <div class="recommend-list">
+                    <div class="recommend-item hide">
+                        <div class="recommend-item-img"></div>
+                        <div class="recommend-item-detail">
+                            <div class="recommend-item-detail-title">제품명</div>
+                            <div class="recommend-item-detail-desc">제품 설명</div>
+                        </div>
+                        <div class="recommend-btn">더보기</div>
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

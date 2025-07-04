@@ -29,13 +29,60 @@ const observer = new MutationObserver((mutations) => {
       const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
       return diffInDays + 1; // 시작일 포함하려면 +1
     }
-    const typeMapping = {
-        '배 빵빵 펭귄' : {'id': 'peng', 'text' : '뱃속 기상캐스터<br>가스·소화 ‘폭풍주의보’ 발령 가능성!'},
-        '화끈한 불여우' : {'id': 'fox', 'text' : '몸속 불씨를 진정 모드로 <br>돌려야 해요.'},
-        '예민한 고슴도치' : {'id': 'hog', 'text' : '면역 방어막을 튼튼 모드로 <br>강화해야 해요.'},
-        '동면 중인 북극곰' : {'id': 'bear', 'text' : '동면 중인 <br>북극곰'}
+
+    // API 호출 함수들
+    async function fetchMissionData(email, date) {
+      try {
+        console.log('미션 데이터 조회 시작:', email, date);
+        const response = await fetch(`https://biocom.ai.kr/api/v1/mission/progress?email=${MEMBER_UID}&date=${date}`);
+        console.log('미션 API 응답 상태:', response.status);
+        const data = await response.json();
+        console.log('미션 API 응답 데이터:', data);
+        return data.success ? data.data : null;
+      } catch (error) {
+        console.error('미션 데이터 조회 실패:', error);
+        return null;
+      }
     }
-    const setUserAction = (act)=>{
+
+    async function fetchUserInfo(email) {
+      try {
+        console.log('사용자 정보 조회 시작:', email);
+        const response = await fetch(`https://biocom.ai.kr/api/v1/users/me?email=${MEMBER_UID}`);
+        console.log('사용자 정보 API 응답 상태:', response.status);
+        const data = await response.json();
+        console.log('사용자 정보 API 응답 데이터:', data);
+        return data;
+      } catch (error) {
+        console.error('사용자 정보 조회 실패:', error);
+        return null;
+      }
+    }
+
+    async function fetchSurveyResults(email) {
+      try {
+        console.log('설문 결과 조회 시작:', email);
+        const response = await fetch(`https://biocom.ai.kr/api/v1/survey/results/me?email=${MEMBER_UID}&type=before`);
+        console.log('설문 결과 API 응답 상태:', response.status);
+        const data = await response.json();
+        console.log('설문 결과 API 응답 데이터:', data);
+        return data.success ? data.data : null;
+      } catch (error) {
+        console.error('설문 결과 조회 실패:', error);
+        return null;
+      }
+    }
+
+    const typeMapping = {
+        '배 빵빵 펭귄' : {'id': 'peng', 'text' : '장속 가스 폭풍을<br>잔잔 모드로 돌려야 해요.'},
+        '화끈한 불여우' : {'id': 'fox', 'text' : '몸속 불씨를<br>진정 모드로 돌려야 해요.'},
+        '예민한 고슴도치' : {'id': 'hog', 'text' : '저전력 모드를<br>체계적으로 관리해야 해요.'},
+        '동면 중인 북금곰' : {'id': 'bear', 'text' : '면역 시스템의<br>밸런스를 찾아야해요.'}
+    }
+
+    const setUserAction = (missionData, challengeDay) => {
+        console.log('setUserAction 호출됨, missionData:', missionData, 'challengeDay:', challengeDay);
+        
         const quiz = document.querySelector('.quiz');
         const routin = document.querySelector('.routin');
         const starve = document.querySelector('.starve');
@@ -43,49 +90,127 @@ const observer = new MutationObserver((mutations) => {
         const dayily = document.querySelector('.dayily');
         const meal = document.querySelector('.meal');
         const darae = document.querySelector('.darae');
+        const selfText = document.querySelector('.self-text'); // DECLARATION
+        const selfPraise = document.querySelector('.self-praise'); // SELF_PRAISE
 
-        if(act.quiz) quiz.classList.add('hide')
-        if(act.routin) routin.classList.add('hide')
-        if(act.starve) starve.classList.add('hide')
-        if(act.sleep) sleep.classList.add('hide')
-        if(act.dayily) dayily.classList.add('hide')
+        // challengeDay 조건에 따른 요소 숨김 처리
+        if (challengeDay >= 7) {
+            selfText.classList.add('hide');
+        }
         
-        const mealCnt = ['breakfast','lunch','dinner','night','snack'].reduce((cnt, i)=>{
-            cnt += act[i]? 1:0;
-            return cnt;
-        }, 0)
-        if(mealCnt >=3){ meal.classList.add('hide')}
-        else {
-            meal.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% ${(mealCnt / 3) * 100}%,  #d3d3d3 0%)`);
-            meal.querySelector('.donut span').textContent = mealCnt + '/3'
+        if (challengeDay <= 10 || challengeDay >= 17) {
+            selfPraise.classList.add('hide');
         }
 
-        if(act.implement >=2){ meal.classList.add('hide')}
-        else {
-            darae.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% ${(act.implement / 2) * 100}%,  #d3d3d3 0%)`);
-            darae.querySelector('.donut span').textContent = act.implement + '/2'
+        // 미션 데이터를 기반으로 UI 업데이트
+        const missionMap = {};
+        
+        // missions 배열이 존재하는지 확인
+        if (missionData && missionData.missions && Array.isArray(missionData.missions)) {
+            missionData.missions.forEach(mission => {
+                missionMap[mission.mission.code] = mission;
+            });
+            console.log('missionMap 생성됨:', missionMap);
+        } else {
+            console.error('missions 배열이 없거나 올바르지 않음:', missionData);
+            return;
         }
 
-        quiz.addEventListener('click', ()=>{
-            // window.location.href = '../quiz/index.html';
+        // 각 미션별 완료 상태 확인
+        if (missionMap['QUIZ']?.completed && missionMap['DAILY_CONTENT']?.completed) {
+            quiz.classList.add('mission-done');
+            quiz.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap["ROUTINE_MORNING"]?.completed) {
+            routin.classList.add('mission-done');
+            routin.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['FASTING']?.completed) {
+            starve.classList.add('mission-done');
+            starve.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['SLEEP']?.completed) {
+            sleep.classList.add('mission-done');
+            sleep.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['DAILY_MISSION']?.completed) {
+            dayily.classList.add('mission-done');
+            dayily.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['DECLARATION']?.completed) {
+            selfText.classList.add('mission-done');
+            selfText.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['SELF_PRAISE']?.completed) {
+            selfPraise.classList.add('mission-done');
+            selfPraise.querySelector('.mission-btn').textContent = '완료';
+        }
+        
+        // 식단 기록 (DIET) - currentCount/maxCount 사용
+        const dietMission = missionMap['DIET'];
+        if (dietMission) {
+            const mealCnt = dietMission.currentCount || 0;
+            const maxCnt = 5; // 최대 5회까지 기록 가능
+            
+            if (mealCnt >= maxCnt) {
+                meal.classList.add('mission-done');
+            } else {
+                // 3회 이상이면 도넛 차트 100%, 3회 미만이면 실제 비율
+                const donutPercentage = mealCnt >= 3 ? 100 : (mealCnt / 3) * 100;
+                meal.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% ${donutPercentage}%,  #d3d3d3 0%)`);
+                meal.querySelector('.donut span').textContent = mealCnt + '/' + maxCnt;
+            }
+        }
+
+        // 영양제 기록 (SUPPLEMENT) - currentCount/maxCount 사용
+        const supplementMission = missionMap['SUPPLEMENT'];
+        if (supplementMission) {
+            const implementCnt = supplementMission.currentCount || 0;
+            const maxCnt = supplementMission.maxCount || 2;
+            
+            if (implementCnt >= maxCnt) {
+                darae.classList.add('mission-done');
+            } else {
+                darae.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% ${(implementCnt / maxCnt) * 100}%,  #d3d3d3 0%)`);
+                darae.querySelector('.donut span').textContent = implementCnt + '/' + maxCnt;
+            }
+        }
+
+        quiz.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-quiz';
         })
-        routin.addEventListener('click', ()=>{
-            // window.location.href = '../routin/index.html';
+        routin.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-routine';
         })
-        starve.addEventListener('click', ()=>{
-            // window.location.href = '../starve/index.html';
+        starve.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-starve';
         })
-        sleep.addEventListener('click', ()=>{
-            window.location.href = '../sleep/index.html';
+        sleep.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-sleep';
         })
-        dayily.addEventListener('click', ()=>{
-            window.location.href = '../mission/index.html';
+        dayily.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-mission';
         })
-        meal.addEventListener('click', ()=>{
-            window.location.href = '../meal/index.html';
+        meal.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-meal';
         })
-        darae.addEventListener('click', ()=>{
-            // window.location.href = '../darae/index.html';
+        darae.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-darae';
+        })
+        selfText.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-self-text';
+        })
+        selfPraise.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-self-prai';
         })
     }
 
@@ -95,48 +220,136 @@ const observer = new MutationObserver((mutations) => {
 		  childList: true,
 		  subtree: true
 		});
-        // 더미데이터
-        // const userid = MEMBER_UID || ''; //이거로 뭔가 하시오
-        // if(!userid) window.open('https://biocom.kr/', '_self');
-        // console.log(userid)
-        const mokdata = {
-            userName : 'test',
-            chartId : 'test1234',
-            startDt : '2025-6-9',
-            endDt : '2025-6-30',
-            userType : '배 빵빵 펭귄',
-            userPoint : 600,
-            userPercent : 90, /* (미션 입력개수 / 215) * 100 */
-            userAction : {
-                quiz : false,
-                routin : false,
-                breakfast : '샐러드',
-                lunch : '국밥',
-                dinner : null,
-                night : null,
-                snack : null,
-                implement : 1,
-                sleep : null,
-                starve : null,
-                dayily : false,
+
+        // 사용자 이메일 확인
+        const userid = MEMBER_UID || '';
+        if(!userid) {
+            window.open('https://biocom.kr/', '_self');
+            return;
+        }
+
+        try {
+            // 오늘 날짜 형식 (YYYY-MM-DD)
+            const today = new Date().toISOString().split('T')[0];
+            console.log('사용자 ID:', userid);
+            console.log('오늘 날짜:', today);
+            
+            // API 호출
+            const [missionData, userInfo, surveyResults] = await Promise.all([
+                fetchMissionData(userid, today),
+                fetchUserInfo(userid),
+                fetchSurveyResults(userid)
+            ]);
+
+            console.log('API 호출 결과:', {
+                missionData: !!missionData,
+                userInfo: !!userInfo,
+                surveyResults: !!surveyResults
+            });
+
+            // 실제 데이터 구조 확인
+            console.log('missionData 구조:', missionData);
+            console.log('userInfo 구조:', userInfo);
+            console.log('surveyResults 구조:', surveyResults);
+
+            // 각 API 응답 검증
+            if (!missionData) {
+                console.error('미션 데이터 조회 실패');
             }
-        };
-        const responseData = mokdata;
-        const {userType, userPoint, userPercent, startDt, endDt, userAction }= responseData;
+            if (!userInfo) {
+                console.error('사용자 정보 조회 실패');
+            }
+            // 설문 결과는 배열이거나 객체일 수 있으므로 더 유연하게 검증
+            if (!surveyResults) {
+                console.error('설문 결과 조회 실패 - 데이터 없음');
+            } else if (Array.isArray(surveyResults) && surveyResults.length === 0) {
+                console.error('설문 결과 조회 실패 - 빈 배열');
+            }
 
-        document.querySelector('.type-title span').textContent = userType;
-        document.querySelector('.type-detail').innerHTML = typeMapping[userType].text;
-        document.querySelector('.type-img').classList.add(typeMapping[userType].id);
-        document.querySelector('.arang-point').textContent = userPoint;
-        document.querySelector('.percent span').textContent = userPercent;
-        document.querySelector('.progress').setAttribute('style',`width: ${userPercent}%`)
-        const setPercentage = userPercent >=90 ? 'level-3' : userPercent >=60 ? 'level-2' : userPercent >=30 ? 'level-1' : ''
-        document.querySelector('.arang-progress-bar').classList.add(setPercentage);
-        setUserAction(userAction);
-        document.querySelector('.today').textContent = formatDateWithDay(new Date());
-        document.querySelector('.day span').textContent = getDayCountFromStart(startDt, new Date());
+            // 최소한의 데이터가 있는지 확인
+            if (!userInfo && !surveyResults) {
+                console.error('필수 데이터가 없어 화면을 업데이트할 수 없습니다.');
+                return;
+            }
 
+            // 데이터 처리 (null 체크 추가)
+            const userType = surveyResults?.animal || (surveyResults && surveyResults.length > 0 ? surveyResults[0].animal : '배 빵빵 펭귄'); // 기본값 설정
+            const userPoint =  userInfo?.data?.points || 0;
+            const userPercent = missionData?.summary?.overallCompletionRate || 0;
+            const challengeDay = userInfo?.data?.challengeDay || 1;
 
+            console.log('처리된 데이터:', {
+                userType,
+                userPoint,
+                userPercent,
+                challengeDay
+            });
+
+            // userType 디버깅
+            console.log('userType 값:', userType);
+            console.log('typeMapping에 존재하는지:', userType in typeMapping);
+            console.log('typeMapping 키들:', Object.keys(typeMapping));
+
+            // UI 업데이트
+            document.querySelector('.type-title span').textContent = userType;
+            document.querySelector('.type-detail').innerHTML = typeMapping[userType]?.text || '';
+            
+            // 클래스 추가 시 빈 문자열 방지
+            const typeClass = typeMapping[userType]?.id;
+            if (typeClass) {
+                document.querySelector('.type-img').classList.add(typeClass);
+            }
+            
+            document.querySelector('.arang-point').textContent = userPoint;
+            document.querySelector('.percent span').textContent = userPercent;
+            document.querySelector('.progress').setAttribute('style',`width: ${userPercent}%`);
+            
+            const setPercentage = userPercent >= 90 ? 'level-3' : userPercent >= 60 ? 'level-2' : userPercent >= 30 ? 'level-1' : '';
+            if (setPercentage) {
+                document.querySelector('.arang-progress-bar').classList.add(setPercentage);
+            }
+            
+            // 미션 데이터가 있는 경우에만 setUserAction 호출
+            if (missionData) {
+                setUserAction(missionData, challengeDay);
+            }
+            
+            document.querySelector('.today').textContent = formatDateWithDay(new Date());
+            document.querySelector('.day span').textContent = challengeDay;
+
+        } catch (error) {
+            console.error('데이터 로드 실패:', error);
+        }
+
+        document.querySelector('.user-point').addEventListener('click', ()=>{
+            window.location.href = 'https://biocom.kr/supplements';
+        })
+        document.querySelector('.banner').addEventListener('click', ()=>{
+            window.location.href = 'https://biocom.kr/arang-daily-content';
+        })
+        document.querySelector('.user-type').addEventListener('click', ()=>{
+            window.location.href = 'https://biocom.kr/arang-type-detail';
+        })
+        document.querySelector('.action-progress').addEventListener('click', ()=>{
+            window.location.href = 'https://biocom.kr/arang-all-missions';
+        })
+        
+        
+        // Footer 버튼 이벤트 리스너 추가
+        document.getElementById('btn-home')?.addEventListener('click', () => {
+        });
+        
+        document.getElementById('btn-content')?.addEventListener('click', () => {
+            window.location.href = 'https://biocom.kr/1151';
+        });
+        
+        document.getElementById('btn-chat')?.addEventListener('click', () => {
+            window.location.href = 'https://biocom.kr/arang-chat';
+        });
+
+        document.getElementById('btn-report')?.addEventListener('click', () => {
+            window.location.href = 'https://biocom.kr/arang-igg';
+        });
 	}
 
     

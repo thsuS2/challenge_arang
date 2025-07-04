@@ -1,27 +1,63 @@
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 300;
+    src: local('Pretendard Light');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 400;
+    src: local('Pretendard Regular');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    src: local('Pretendard Medium');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 600;
+    src: local('Pretendard SemiBold');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 700;
+    src: local('Pretendard Bold');
+}
+
 body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-    background-color: #fafafb;
-    overflow-x: hidden;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .wrap {
     width: 100%;
-    min-height: 100vh;
-    background-color: #fafafb;
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
+    background-color: #fafafa;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 40px;
 }
 
 /* 헤더 */
 .header {
     position: relative;
-    height: 109px;
+    height: 50px;
     background-color: #ffffff;
     border-bottom: 1px solid #e9eaec;
     display: flex;
@@ -51,85 +87,80 @@ body {
     line-height: 1.4;
 }
 
-/* 컨텐츠 */
-.content {
-    flex: 1;
-    padding: 0 0 100px;
-}
-
-/* 유형 헤더 */
-.type-header {
-    text-align: center;
-    padding: 20px 20px 40px;
-    background-color: #ffffff;
-}
-
-.type-badge {
-    display: inline-block;
-    background-color: #c2c2c2;
-    color: #000000;
-    font-size: 10px;
-    font-weight: 400;
-    padding: 6px 16px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+/* Result Banner */
+.result-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40px;
     position: relative;
 }
 
-.type-badge::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #c2c2c2;
+.result-banner-arrow {
+    width: 220px;
+    height: 25px;
+    transform: rotate(180deg) scaleY(-1);
 }
 
-.type-badge strong {
+.result-banner-text {
+    font-size: 10px;
+    color: #000000;
+    margin-top: -21px;
+    letter-spacing: -0.2px;
+    z-index: 10;
+}
+
+.result-banner-text strong {
     font-weight: 700;
 }
 
-.type-name {
+/* Character Section */
+.character-section {
+    text-align: center;
+    margin-top: 6px;
+    position: relative;
+}
+.character-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-title {
     font-size: 25px;
     font-weight: 700;
     color: #212121;
     letter-spacing: -1px;
     line-height: 1.4;
-    margin-bottom: 8px;
 }
 
-.type-icon {
-    display: inline-block;
+.character-badge {
     width: 17px;
     height: 17px;
-    background-color: #32a59c;
-    border-radius: 50%;
-    margin-bottom: 15px;
+    background-color: #eee;
+    border-radius: 100px;
+    margin-left: 7px;
 }
 
-.type-subtitle {
+.character-subtitle {
     font-size: 13px;
     font-weight: 500;
     color: rgba(33, 33, 33, 0.45);
     letter-spacing: -1px;
     line-height: 1.4;
+    max-width: 350px;
+    margin: 0 auto 26px;
 }
 
-/* 펭귄 컨테이너 */
-.penguin-container {
+.character-container {
     position: relative;
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    width: 228px;
+    height: 228px;
+    margin: 0 auto;
 }
 
-.penguin-circle {
+.character-background-circle {
     position: absolute;
     width: 228px;
     height: 228px;
@@ -137,77 +168,77 @@ body {
     border-radius: 50%;
 }
 
-.penguin-image {
-    position: relative;
+.character-image {
+    position: absolute;
     width: 226px;
     height: 226px;
-    background-color: #f5f5f5;
-    border-radius: 50%;
-    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
 }
 
-/* 특징 카드 */
-.feature-card {
+/* Health Status Card */
+.health-status-card {
     background-color: #e1f6f3;
     border-radius: 10px;
-    padding: 20px;
-    margin: 0 38px 20px;
+    padding: 18px 20px;
+    margin: 25px 35px 0;
 }
 
-.feature-emoji {
+.health-status-content p {
     font-size: 13px;
     font-weight: 500;
     color: #32a59c;
-    letter-spacing: -0.39px;
     line-height: 1.6;
+    letter-spacing: -0.39px;
     margin-bottom: 8px;
 }
 
-.feature-emoji:last-child {
+.health-status-content p:last-child {
     margin-bottom: 0;
 }
 
-/* 건강 지표 */
-.health-indicators {
-    padding: 0 42px;
-    margin-bottom: 40px;
+/* Score Section */
+.score-section {
+    margin: 20px 39px 0;
 }
 
-.indicator-item {
-    margin-bottom: 25px;
+.score-item {
+    position: relative;
+    margin-bottom: 18px;
 }
 
-.indicator-label {
-    display: block;
+.score-label {
     font-size: 13px;
     font-weight: 500;
     color: #b4b4b4;
-    letter-spacing: -0.26px;
-    line-height: 24px;
     text-align: center;
+    letter-spacing: -0.26px;
     margin-bottom: 4px;
 }
 
-.indicator-bar {
-    position: relative;
-    width: 100%;
+.score-bar {
+    width: 302px;
     height: 17px;
     background-color: #ecf1f2;
     border-radius: 100px;
+    position: relative;
+    overflow: hidden;
 }
 
-.indicator-fill {
-    position: relative;
+.score-fill {
     height: 100%;
     background-color: #32a59c;
     border-radius: 100px;
-    display: flex;
-    align-items: center;
+    position: relative;
 }
 
-.indicator-score {
+.score-value {
     position: absolute;
-    left: 12px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 13px;
     font-weight: 600;
     color: #ffffff;
@@ -217,89 +248,142 @@ body {
 .score-unit {
     font-size: 11px;
     font-weight: 300;
-    letter-spacing: -0.22px;
     margin-left: 2px;
+    letter-spacing: -0.22px;
 }
 
-.indicator-dot {
+.score-dot {
     position: absolute;
-    right: 4px;
     width: 4px;
     height: 4px;
-    background-color: #ffffff;
     border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* 특징 상세 */
-.detail-card {
+.score-dot.white {
+    background-color: white;
+}
+
+.score-dot.gray {
+    background-color: #a6a6a6;
+}
+
+/* Characteristics Card */
+.characteristics-card {
     background-color: #e1f6f3;
     border-radius: 10px;
-    padding: 20px;
-    margin: 0 40px;
+    padding: 21px 19px 24px;
+    margin: 0 37px;
 }
 
-.detail-card h3 {
+.characteristics-title {
     font-size: 18px;
     font-weight: 600;
     color: #32a59c;
     letter-spacing: -0.54px;
     line-height: 1.6;
-    margin-bottom: 16px;
+    margin-bottom: 13px;
 }
 
-.detail-card ul {
+.characteristics-list {
     list-style: disc;
-    padding-left: 20px;
+    padding-left: 19.5px;
 }
 
-.detail-card li {
+.characteristics-list li {
     font-size: 13px;
     font-weight: 500;
     color: #32a59c;
-    letter-spacing: -0.39px;
     line-height: 1.6;
-    margin-bottom: 6px;
+    letter-spacing: -0.39px;
+    margin-bottom: 4px;
 }
 
-.detail-card li:last-child {
+.characteristics-list li:last-child {
     margin-bottom: 0;
 }
 
-/* 하단 버튼 */
-.view-all-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
+/* Challenge Section */
+.challenge-section {
+    margin-top: 30px;
+    padding: 0 35px 40px;
+}
+
+.challenge-card {
+    background-color: #e1f6f3;
+    border-radius: 10px;
+    padding: 31px 15px 24px;
+    margin-bottom: 20px;
+}
+
+.challenge-description {
+    font-size: 15px;
+    font-weight: 400;
+    color: #32a59c;
+    line-height: 1.6;
+    letter-spacing: -0.6px;
+    margin-bottom: 12px;
+}
+
+.challenge-description:last-child {
+    margin-bottom: 0;
+}
+
+.challenge-description strong {
+    font-weight: 600;
+}
+
+.start-challenge-button {
+    width: calc(100% - 70px);
+    max-width: 300px;
     height: 45px;
     background-color: #32a59c;
+    color: #ffffff;
     border: none;
     border-radius: 100px;
     font-size: 14px;
     font-weight: 500;
-    color: #ffffff;
+    letter-spacing: -0.28px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
 }
 
-.view-all-btn:active {
-    transform: translateX(-50%) scale(0.98);
+.start-challenge-button:hover {
+    background-color: #2a8f87;
 }
 
-/* 반응형 */
-@media (max-width: 390px) {
-    .feature-card,
-    .detail-card {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    
-    .health-indicators {
-        padding: 0 20px;
-    }
-    
-    .view-all-btn {
-        width: calc(100% - 40px);
-    }
+.start-challenge-button:active {
+    background-color: #247a73;
+}
+
+/* 캐릭터 이미지 설정 */
+.character-image.peng {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/76ecf3d4e38ea.png);
+}
+
+.character-image.bear {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/1347aaf067831.png);
+}
+
+.character-image.fox {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/d73ddd9f79a38.png);
+}
+
+.character-image.hog {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/522d8dfce6330.png);
+}
+
+/* 캐릭터 이미지 공통 스타일 */
+.character-image {
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    display: block;
 }

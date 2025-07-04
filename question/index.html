@@ -11,18 +11,20 @@
     <div class="wrap">
         <!-- Header -->
         <header class="header">
-            <button class="back-button" onclick="goBack()">
-                <svg viewBox="0 0 23 22" fill="none">
-                    <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
-                </svg>
-            </button>
-            <h1 class="page-title" id="category-title">피부 건강</h1>
+            <div class="header-title">
+                <button class="back-button" onclick="goBack()">
+                    <svg viewBox="0 0 23 22" fill="none">
+                        <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
+                    </svg>
+                </button>
+                <div class="page-title" id="category-title"></div>
+            </div>
             
             <div class="progress-info">
-                <span class="progress-text"><span id="current-page">1</span> / 4</span>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
+                <span class="progress-text"><span id="current-page">1</span> / 4</span>
             </div>
         </header>
 
@@ -32,7 +34,7 @@
         </div>
 
         <!-- Next Button -->
-        <button class="next-button" onclick="nextStep()" id="next-button">다음으로</button>
+        <button class="next-button" onclick="nextStep()" id="next-button" disabled>다음으로</button>
     </div>
 
     <script src="script.js"></script>

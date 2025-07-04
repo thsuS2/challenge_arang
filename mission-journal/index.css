@@ -5,488 +5,537 @@
 }
 
 body {
-    font-family: 'Pretendard', sans-serif;
-    background: #ffffff;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    background-color: #f6f7fa;
+    color: #212121;
 }
 
 .wrap {
-    position: relative;
-    width: 390px;
-    height: 100vh;
-    margin: 0 auto;
-    background: #ffffff;
-    overflow-y: auto;
-}
-
-/* 상단 상태바 */
-.status-bar {
-    position: fixed;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 390px;
-    height: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    z-index: 10;
-}
-
-.time {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #212121;
-    letter-spacing: -0.408px;
-}
-
-.signal-icons {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.mobile-signal, .wifi {
-    width: 18px;
-    height: 12px;
-    background: #ccc;
-    border-radius: 2px;
-}
-
-.battery {
-    position: relative;
-    width: 25px;
-    height: 13px;
-}
-
-.battery-outline {
-    position: absolute;
     width: 100%;
-    height: 100%;
-    border: 1px solid rgba(33, 33, 33, 0.35);
-    border-radius: 3px;
-    background: transparent;
+    min-height: 100vh;
+    background-color: #fff;
+    position: relative;
 }
 
-.battery-fill {
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    width: 19px;
-    height: 9px;
-    background: #212121;
-    border-radius: 2px;
-}
-
-.battery-end {
-    position: absolute;
-    right: -1.4px;
-    top: 4.22px;
-    width: 1.4px;
-    height: 4.22px;
-    background: rgba(33, 33, 33, 0.4);
-    border-radius: 0 1px 1px 0;
-}
 
 /* 헤더 */
 .header {
-    position: fixed;
-    top: 13px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 390px;
-    height: 109px;
-    background: #ffffff;
-    border-bottom: 1px solid #e9eaec;
+    position: relative;
+    height: 56px;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 30px 28px 20px;
-    z-index: 9;
+    padding: 0 16px;
+    border-bottom: 1px solid #e9eaec;
 }
 
 .back-btn {
-    position: absolute;
-    left: 31px;
-    top: 66px;
-    width: 23px;
-    height: 22px;
     background: none;
     border: none;
     cursor: pointer;
-}
-
-.header h1 {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-size: 19px;
-    color: #212121;
-    line-height: 1.4;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 62px;
-}
-
-.filter-btn {
-    position: absolute;
-    right: 28px;
-    top: 62px;
-    width: 24px;
-    height: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
+    padding: 8px;
+    margin-left: -8px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* 메인 컨텐츠 */
-.content {
-    margin-top: 130px;
-    padding: 0 20px;
-    padding-bottom: 120px;
+.header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 21px;
+    font-weight: 700;
+    color: #212121;
 }
 
-/* 통계 섹션 */
-.stats-section {
-    background: linear-gradient(135deg, #32a59c, #2bd4bf);
+/* 미션 프로그레스 카드 */
+.mission-card {
+    background-color: rgba(205, 240, 235, 0.6);
+    margin: 20px 13px;
     border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 30px;
-    color: #ffffff;
-}
-
-.stats-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.stats-header h2 {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-}
-
-.period {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 700;
-    font-size: 28px;
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    opacity: 0.9;
-}
-
-/* 일기 목록 */
-.journal-list {
-    margin-bottom: 30px;
-}
-
-.journal-item {
-    display: flex;
-    background: #ffffff;
-    border: 1px solid #e9eaec;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 15px;
-    transition: all 0.2s;
-}
-
-.journal-item:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.journal-date {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 20px;
-    min-width: 60px;
-}
-
-.date-number {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    color: #32a59c;
-    line-height: 1;
-}
-
-.date-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.month {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    color: #666;
-}
-
-.day {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-size: 11px;
-    color: #999;
-}
-
-.journal-content {
-    flex: 1;
     position: relative;
 }
 
-.completion-rate {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.rate-text {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    color: #212121;
-}
-
-.rate-number {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: #32a59c;
-}
-
-.completed-missions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-.mission-tag {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-size: 11px;
-}
-
-.mission-tag.completed {
-    background: #e6f7f4;
-    color: #32a59c;
-}
-
-.mission-tag.partial {
-    background: #fff3e6;
-    color: #ff8c42;
-}
-
-.mission-tag.pending {
-    background: #f5f5f5;
-    color: #999;
-}
-
-.journal-memo {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-.points-earned {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: #32a59c;
-    background: #e6f7f4;
-    padding: 4px 10px;
-    border-radius: 12px;
-}
-
-/* 하단 네비게이션 */
-.bottom-nav {
-    position: fixed;
-    bottom: 13px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 390px;
-    height: 83px;
-    background: #ffffff;
-    border-top: 1px solid #e9eaec;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    border-radius: 0 0 40px 40px;
-}
-
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* 진행 프로그레스 */
+.mission-card .action-progress {
+    padding: 15px;
+    background-color: #CDF0EB99;
+    width: -webkit-fill-available;
+    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     cursor: pointer;
-    transition: all 0.2s;
+    overflow: hidden;
 }
 
-.nav-item.active {
+.mission-card .action-progress > div:nth-child(1) {
+    font-weight: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+/* 큰 퍼센트 표시 */
+.mission-card .action-progress .percent {
+    justify-self: end;
+    font-size: 25px;
+    color: #32A59C;
+    font-weight: 700;
+}
+
+/* 프로그래스바 영역 */
+.mission-card .action-progress .arang-progress-bar {
+    height: 80px;
+    grid-column: 1/3;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-1 .helper1 {
+    display: block !important;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-1 .gift1 {
+    background-color: #65DBCC;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-1 .gift1 span:nth-child(1) {
+    display: none;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-1 .gift1 span:nth-child(2) {
+    display: block;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-2 .helper2 {
+    display: block !important;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-2 .gift1 {
+    background-color: #65DBCC;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-2 .gift2 {
+    background-color: #65DBCC;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-2 .gift1 span:nth-child(1) {
+    display: none;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-2 .gift1 span:nth-child(2) {
+    display: block;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-2 .gift2 span:nth-child(1) {
+    display: none;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-2 .gift2 span:nth-child(2) {
+    display: block;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .helper3 {
+    display: block !important;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift1 {
+    background-color: #65DBCC;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift2 {
+    background-color: #65DBCC;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift3 {
+    background-color: #65DBCC;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift1 span:nth-child(1) {
+    display: none;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift1 span:nth-child(2) {
+    display: block;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift2 span:nth-child(1) {
+    display: none;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift2 span:nth-child(2) {
+    display: block;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift3 span:nth-child(1) {
+    display: none;
+}
+
+.mission-card .action-progress .arang-progress-bar.level-3 .gift3 span:nth-child(2) {
+    display: block;
+}
+
+/* 바- 설명(말풍선) */
+.mission-card .action-progress .arang-progress-bar .progress-helper {
+    height: 50px;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-helper .helper {
+    background-color: #2C2D2D;
+    border-radius: 8px;
+    padding: 7px 15px;
+    width: 180px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 10%;
+    display: none;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-helper .helper1::after,
+.mission-card .action-progress .arang-progress-bar .progress-helper .helper2::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: #2C2D2D;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-helper .helper3::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-left-color: #2C2D2D;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-helper .helper1 {
+    left: 18%;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-helper .helper2 {
+    right: 0%;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-helper .helper3 {
+    right: 1%;
+}
+
+/* 바- 꾸밈(선물상자) */
+.mission-card .action-progress .arang-progress-bar .progress-gift {
+    width: 119%;
+    position: absolute;
+    top: 45px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-gift div {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress-gift div span:nth-child(2) {
+    display: none;
+}
+
+/* 바- */
+.mission-card .action-progress .arang-progress-bar > div:nth-child(2) {
+    width: -webkit-fill-available;
+    overflow: hidden;
+    background-color: #fff;
+    height: 18px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.mission-card .action-progress .arang-progress-bar .progress {
+    background: linear-gradient(to right, #96EAD7, #3ACEC2);
+    width: 0%;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    transition: width 0.3s ease;
+}
+
+/* 바- 꾸밈(퍼센테지) */
+.mission-card .action-progress .arang-progress-bar .percent1 {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    font-size: 10px;
+    transform: translate(0, -50%);
+    font-weight: 500;
+    color: #334240a6;
+}
+
+.mission-card .action-progress .arang-progress-bar .percent2 {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    font-size: 10px;
+    transform: translate(-130%, -50%);
+    font-weight: 500;
+    color: #334240a6;
+}
+
+.mission-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #212121;
+    margin-bottom: 8px;
+}
+
+.mission-percent {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    font-weight: 700;
     color: #32a59c;
 }
 
-.nav-icon {
-    font-size: 20px;
-    margin-bottom: 5px;
+.progress-container {
+    margin-top: 30px;
+    position: relative;
 }
 
-.nav-item span {
-    font-family: 'Pretendard', sans-serif;
+.progress-tooltip {
+    background-color: #2c2d2d;
+    color: #ffffff;
+    font-size: 10px;
     font-weight: 500;
-    font-size: 12px;
-    color: inherit;
-}
-
-.nav-item:not(.active) span {
-    color: #999;
-}
-
-/* 필터 모달 */
-.filter-modal {
-    position: fixed;
-    top: 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    top: -35px;
+    white-space: nowrap;
 }
 
-.modal-content {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    width: 320px;
-    max-height: 80vh;
-    overflow-y: auto;
+.tooltip-arrow {
+    position: absolute;
+    bottom: -6px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #2c2d2d;
 }
 
-.modal-header {
+.progress-bar {
+    background-color: #ffffff;
+    height: 18px;
+    border-radius: 100px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    background-color: #32a59c;
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.3s ease;
+}
+
+.progress-icon {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.icon-1 {
+    left: 0;
+}
+
+.icon-2 {
+    left: 50%;
+}
+
+.icon-3 {
+    left: 100%;
+}
+
+.icon-image {
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+}
+
+.progress-labels {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #b3b3b3;
 }
 
-.modal-header h3 {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: #212121;
+/* 설명 텍스트 */
+.info-text {
+    display: flex;
+    gap: 8px;
+    padding: 0 26px;
+    margin: 20px 0;
+    align-items: flex-start;
 }
 
-.close-btn {
+.info-icon {
+    width: 13px;
+    height: 13px;
+    background-color: #32a59c;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.info-text p {
+    font-size: 12px;
+    font-weight: 500;
+    color: #b0b5bd;
+    line-height: 1.5;
+}
+
+/* 탭 메뉴 */
+.tab-menu {
+    display: flex;
+    padding: 0 40px;
+    margin-top: 40px;
+    gap: 50px;
+}
+
+.tab-item {
     background: none;
     border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #666;
-}
-
-.filter-options {
-    margin-bottom: 25px;
-}
-
-.filter-section {
-    margin-bottom: 20px;
-}
-
-.filter-section h4 {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 600;
     font-size: 16px;
+    font-weight: 600;
     color: #212121;
-    margin-bottom: 12px;
-}
-
-.filter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.filter-btn {
-    padding: 8px 16px;
-    background: #f7f8f9;
-    border: 1px solid #e9eaec;
-    border-radius: 20px;
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: #666;
     cursor: pointer;
-    transition: all 0.2s;
+    padding: 0 0 10px 0;
+    position: relative;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-    background: #32a59c;
-    color: #ffffff;
-    border-color: #32a59c;
+.tab-item.active {
+    opacity: 1;
+    color: #32a59c;
 }
 
-.apply-filter-btn {
-    width: 100%;
-    height: 45px;
-    background: #32a59c;
-    border: none;
-    border-radius: 12px;
-    color: #ffffff;
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 600;
+.tab-underline {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #212121;
+    display: none;
+}
+
+.tab-item.active .tab-underline {
+    display: block;
+}
+
+/* 날짜 선택 영역 */
+.date-wrap {
+    text-align: center;
+    margin: 20px 0;
     font-size: 16px;
+    font-weight: 600;
+    color: #212121;
     cursor: pointer;
-    transition: background 0.2s;
+    padding: 10px;
+    user-select: none;
+    transition: color 0.2s ease;
 }
 
-.apply-filter-btn:hover {
-    background: #2a8b82;
+.date-wrap:hover {
+    color: #32a59c;
+}
+
+/* 미션 리스트 */
+.mission-list {
+    padding: 20px 10px;
+    min-height: 300px;
+    background-color: #f6f7fa;
+}
+
+
+.mission-list .mission-area{display: grid; grid-template-columns: 1fr 4fr 1.5fr; align-items: center; height: 80px; width: 100%; background-color: #fff; border-radius: 10px; margin-bottom: 10px; padding: 0 10px;}
+.mission-list .mission-area .mission-ico{width: 40px; height: 40px; border-radius: 100%; display: flex; align-items: center; justify-content: space-evenly; font-size: 22px;}
+.quiz .mission-ico{background-color: #d6dff0;}
+.routin .mission-ico{background-color: #edd1d2;}
+.meal .mission-ico{background-color: #eee6cf;}
+.darae .mission-ico{background-color: #f4e8d0;}
+.starve .mission-ico{background-color: #f4e8d0;}
+.sleep .mission-ico{background-color: #f4e8d0;}
+.dayily .mission-ico{background-color: #f4e8d0;}
+.mission-list .mission-area .mission-sub{font-size: 15px; color: #212121; padding-bottom: 5px;}
+.mission-list .mission-area .mission-title{font-size: 14px; font-weight: 700;}
+.mission-list .mission-area .mission-title span{color: #ED8F34;}
+.mission-list .mission-area .mission-btn{justify-self: center; background-color: #E9E9E9; border-radius: 15px; width: 50px; color: #fff; font-size: 15px; font-weight: 500; text-align: center; padding: 5px;}
+.mission-list .mission-area .mission-progress {justify-self: center;}
+.mission-list .mission-area .mission-progress .donut { width: 50px; height: 50px; border-radius: 50%; position: relative;
+background: conic-gradient( #32A59C 0% 50%, /* 진행 상태 (75%) */ #d3d3d3 0% /* 나머지 회색 */ );}
+.mission-list .mission-area .mission-progress .donut::before { content: ""; position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; background: white; border-radius: 50%;}
+.mission-list .mission-area .mission-progress .donut span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: 500; font-size: 13px; color: #8B8B8B}
+.mission-list .mission-area.mission-done .mission-btn{background-color: #d3d3d3;}
+
+/* hide 클래스가 있어도 mission-area는 표시되도록 */
+.mission-list .mission-area {
+    display: grid !important;
+}
+
+.empty-message {
+    font-size: 17px;
+    font-weight: 500;
+    color: #989898;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 반응형 */
+@media (max-width: 390px) {
+    .mission-card {
+        margin: 16px 10px;
+    }
+    
+    .tab-menu {
+        padding: 0 30px;
+    }
+}
+.date-wrap span{
+    background-color: #dbdbdb;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    border-radius: 100%;
+    line-height: 18px;
+    margin: 0 10px;
 }

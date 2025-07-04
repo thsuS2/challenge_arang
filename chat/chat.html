@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .hide {display : none !important}
+          .pc_mode_btn_wrap{ display: none !important;}
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      
+        html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+        
+      body {
+          font-family: 'Pretendard', sans-serif;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100vh;
+          overflow: hidden;
+      }
+      
+      .wrap {
+          position: relative;
+          width: 100%;
+          height: 100vh;
+          background: linear-gradient(180deg, #e8f5f5 0%, #ffffff 100%);
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+      }
+      
+      /* 헤더 */
+      .header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 60px;
+          background: #ffffff;
+          border-bottom: 1px solid #e9eaec;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 100;
+      }
+      
+      .back-btn {
+          position: absolute;
+          left: 31px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 23px;
+          height: 22px;
+          background: none;
+          border: none;
+          cursor: pointer;
+      }
+      
+      .header h1 {
+          font-family: 'Pretendard', sans-serif;
+          font-weight: 500;
+          font-size: 19px;
+          color: #212121;
+          line-height: 1.4;
+      }
+      
+      .home-btn {
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 24px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+      }
+      
+      /* 채팅 컨텐츠 */
+      .chat-content {
+          flex: 1;
+          margin-top: 60px;
+          margin-bottom: 60px;
+          overflow-y: auto;
+          position: relative;
+          padding-bottom: 100px;
+      } 
+      
+      .chat-messages {
+          padding: 20px;
+          padding-bottom: 0px;
+      }
+      .ai-avatar {
+          margin: 0 auto 15px;
+          width: 60px;
+          height: 60px;
+          background: #ffffff;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      /* 메시지 */
+      .message {
+          margin-bottom: 25px;
+          display: flex;
+          flex-direction: column;
+      }
+      
+      .user-message {
+          align-items: flex-end;
+      }
+      
+      .ai-message {
+          align-items: flex-start;
+          flex-direction: row;
+      }
+      
+      .ai-avatar-small {
+          width: 32px;
+          height: 32px;
+          margin-bottom: 8px;
+      }
+        
+      .message-bubble p {
+          margin: 0;
+      }
+        
+      .message-bubble {
+          max-width: 80%;
+          padding: 12px 16px;
+          border-radius: 18px;
+          font-size: 14px;
+          line-height: 1.5;
+      }
+      
+      .user-message .message-bubble {
+          background: linear-gradient(180deg, #47D7D1 0%, #1CC6BE 100%);
+          color: white;
+          border-top-right-radius: 4px;
+          position: relative;
+      }
+      
+      .ai-message .message-bubble {
+          background: #ffffff;
+          color: #212121;
+          border-top-left-radius: 4px;
+          position: relative;
+      }
+      
+      .message-time {
+          font-size: 12px;
+          width: fit-content;
+          color: #999999;
+          margin-top: 4px;
+          position: absolute;
+          bottom: -20px;
+          right: 0;
+      }
+      
+      /* 추천 리스트 */
+      .recommendation-list {
+          margin: 15px 0;
+      }
+      
+      .recommendation-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 12px;
+          background: #f8f9fa;
+          border-radius: 12px;
+          margin-bottom: 8px;
+      }
+      
+      .recommendation-item .emoji {
+          font-size: 24px;
+      }
+      
+      .recommendation-item strong {
+          display: block;
+          font-size: 14px;
+          margin-bottom: 4px;
+      }
+      
+      .recommendation-item p {
+          font-size: 12px;
+          color: #666666;
+          margin: 0;
+      }
+      
+      .additional-tip {
+          margin-top: 10px;
+          padding: 10px;
+          background: #e8f5f5;
+          border-radius: 8px;
+          font-size: 12px;
+          color: #4A90E2;
+      }
+      
+      /* 추천 질문 */
+      .suggested-questions {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: white;
+          padding: 16px 20px;
+          border-top: 1px solid #f0f0f0;
+      }
+      
+      .suggested-title {
+          font-size: 13px;
+          color: #666666;
+          margin-bottom: 10px;
+      }
+      
+      .question-chips {
+          display: flex;
+          gap: 8px;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+      }
+      
+      .question-chip {
+          flex-shrink: 0;
+          padding: 8px 16px;
+          background: #f5f5f5;
+          border: 1px solid #e0e0e0;
+          border-radius: 20px;
+          font-size: 13px;
+          color: #212121;
+          cursor: pointer;
+          transition: all 0.2s;
+      }
+      
+      .question-chip:hover {
+          background: #4A90E2;
+          color: white;
+          border-color: #4A90E2;
+      }
+      
+      /* 입력 섹션 */
+      .input-section {
+          position: fixed;
+          bottom: 70px;
+          left: 0;
+          right: 0;
+          background: white;
+          padding: 12px 20px;
+          border-top: 1px solid #e9eaec;
+          box-shadow: 0px 2px 36.7px 0px rgba(0, 0, 0, 0.13);
+          z-index: 999;
+      }
+      
+      /* 모바일 키패드 대응을 위한 추가 스타일 */
+      @media screen and (max-height: 500px) {
+          .input-section {
+              bottom: 10px !important;
+          }
+          
+          .chat-content {
+              margin-bottom: 80px !important;
+          }
+      }
+      
+      /* iOS Safari 키패드 대응 */
+      @supports (-webkit-touch-callout: none) {
+          .input-section {
+              position: fixed !important;
+              bottom: 70px !important;
+          }
+      }
+      
+      .input-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+      
+      #messageInput {
+          flex: 1;
+          height: 40px;
+          padding: 0 16px;
+          border: 1px solid #e0e0e0;
+          border-radius: 20px;
+          font-size: 14px;
+          outline: none;
+      }
+      
+      #messageInput:focus {
+          border-color: #32A59C;
+      }
+      
+      .send-btn {
+          width: 40px;
+          height: 40px;
+          background: #32A59C;
+          border: none;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+      }
+      
+      .send-btn:hover {
+          background: #2a8b82;
+      }
+      
+      .send-btn:disabled {
+          background: #cccccc;
+          cursor: not-allowed;
+      }
+      
+      /* 하단 네비게이션 */
+      .bottom-nav {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 70px;
+          background: #ffffff;
+          border-top: 1px solid #e9eaec;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          z-index: 100;
+      }
+      
+      .nav-item {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s;
+      }
+      
+      .nav-icon {
+          font-size: 20px;
+          margin-bottom: 4px;
+      }
+      
+      .nav-item span {
+          font-size: 12px;
+          color: #999999;
+      }
+      
+      .nav-item.active span {
+          color: #4A90E2;
+          font-weight: 600;
+      }
+      
+      /* 스크롤바 스타일 */
+      .chat-content::-webkit-scrollbar {
+          width: 4px;
+      }
+      
+      .chat-content::-webkit-scrollbar-track {
+          background: transparent;
+      }
+      
+      .chat-content::-webkit-scrollbar-thumb {
+          background: #e0e0e0;
+          border-radius: 2px;
+      }
+      
+      .question-chips::-webkit-scrollbar {
+          height: 0;
+      }
+      
+      
+      /* 푸터 - 하단 공통 메뉴바 */
+      .doz_row,
+      .col-dz {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+        
+      .content-footer{
+        position: fixed; 
+        bottom: 0; 
+        left:0; 
+        right:0; 
+        overflow:hidden; 
+        background-color: #fff; 
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr); 
+        width:100%; 
+        align-items: center; 
+        justify-items: center; 
+        padding-right: 15px;
+        z-index: 1000;
+        /* 모바일 키패드 대응 */
+        position: fixed !important;
+        bottom: 0 !important;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+      }
+      
+      /* 모바일 키패드가 올라올 때 footer 숨김 처리 */
+      @media screen and (max-height: 500px) {
+        .content-footer {
+          display: none !important;
+        }
+      }
+      
+      /* iOS Safari 대응 */
+      @supports (-webkit-touch-callout: none) {
+        .content-footer {
+          position: fixed !important;
+          bottom: 0 !important;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
+        }
+      }
+      
+      .content-footer .footer-btn:nth-child(odd){padding-top: 10px;}
+      .footer-btn{padding: 8px; transform: scale(1.1); cursor: pointer;}
+      .footer-btn:hover{color: #9acac3;}
+      .footer-btn{color: #B5B5B5;}
+      .footer-btn.on{color: #32A59C;}
+      
+      </style>
+
+
+<div class="wrap">
+    <!-- 헤더 -->
+    <div class="header">
+        <h1>바이오컴 AI</h1>
+    </div>
+
+    <!-- 채팅 영역 -->
+    <div class="chat-content">
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai-message">
+                <div class="ai-avatar-small">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#AFDFD9"></circle>
+                    </svg>
+                </div>
+                <div class="message-bubble">
+                    안녕하세요, 바이오컴입니다.<br/>
+                    3주간 진행되는 이너뷰티 챌린지 기간 동안 궁금한 점이 있으시면 제게 문의해주세요.<br/>
+                    바이오데이터와 설문 결과를 바탕으로 맞춤형 답변을 드립니다 :)
+                    <span class="message-time fst-time">오후 2:31</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 입력 영역 -->
+    <div class="input-section">
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="메시지를 입력하세요..." />
+            <button class="send-btn" onclick="sendMessage()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.4 17.4L18.85 9.92L1.4 2.44V8.37L13.13 9.92L1.4 11.47V17.4Z" fill="white"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!--display fixed, 하단 고정 메뉴들...!-->
+    <div class="content-footer">
+        <div class="footer-btn" id="btn-home">
+            <span class="off">
+                <svg width="30" height="42" viewBox="0 0 30 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.5 15L15 0L29.444 14.9421L29.5 15" fill="currentColor"/>
+                    <path d="M5 11V26H25V11" fill="currentColor"/>
+                    <path d="M14.25 26V17C14.25 16.5858 14.5858 16.25 15 16.25C15.4142 16.25 15.75 16.5858 15.75 17V26C15.75 26.4142 15.4142 26.75 15 26.75C14.5858 26.75 14.25 26.4142 14.25 26Z" fill="white"/>
+                    <path d="M17.9416 39.6082V41.8762H12.5056V39.6082H17.9416ZM11.6416 39.0682V38.4022H14.8096V37.8712C13.4236 37.8082 12.6406 37.4392 12.6496 36.7642C12.6406 36.0262 13.5766 35.6482 15.2236 35.6482C16.8886 35.6482 17.8156 36.0262 17.8156 36.7642C17.8156 37.4392 17.0506 37.8082 15.6556 37.8712V38.4022H18.8236V39.0682H11.6416ZM12.0016 35.3602V34.7302H14.8096V33.9922H15.6556V34.7302H18.4276V35.3602H12.0016ZM13.3336 41.2462H17.1316V40.2382H13.3336V41.2462ZM13.5316 36.7642C13.5316 37.1152 14.1346 37.3042 15.2236 37.3042C16.3396 37.3042 16.9246 37.1152 16.9336 36.7642C16.9246 36.4042 16.3396 36.2242 15.2236 36.2242C14.1346 36.2242 13.5316 36.4042 13.5316 36.7642Z" fill="currentColor"/>
+                </svg>
+            </span>
+        </div>
+        <div class="footer-btn" id="btn-content">
+            <span class="off">
+                <svg width="33" height="48" viewBox="0 0 33 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M27.5198 45.8839V46.5679H20.3018V45.8839H27.5198ZM20.6798 43.9759C22.2728 43.7149 23.4338 42.7429 23.4698 41.5639H20.9498V40.8799H23.4878V39.8359H24.3158V40.8799H26.8358V41.5639H24.3158C24.3608 42.7429 25.5128 43.7149 27.1238 43.9759L26.7818 44.6599C25.4768 44.4169 24.4058 43.7509 23.8928 42.7879C23.3888 43.7509 22.3088 44.4169 21.0038 44.6599L20.6798 43.9759Z" fill="currentColor"/>
+                    <path d="M19.2378 39.6797V45.5837H18.4458V39.6797H19.2378ZM12.8838 44.3417V40.3097H15.8718V40.9937H13.6758V41.9837H15.5658V42.6317H13.6758V43.6577C14.7108 43.6487 15.3948 43.6127 16.2138 43.4597L16.2858 44.1257C15.3768 44.2967 14.6298 44.3327 13.3878 44.3417H12.8838ZM14.0538 47.3837V44.9357H14.8998V46.7177H19.4718V47.3837H14.0538ZM15.9258 42.5597V41.8937H16.8978V39.8417H17.6898V45.3857H16.8978V42.5597H15.9258Z" fill="currentColor"/>
+                    <path d="M8.86723 40.2917C8.85823 42.3887 7.84123 43.9097 5.26723 44.7557L4.92523 44.0897C6.21223 43.6757 7.02223 43.1177 7.49023 42.4247L5.03323 42.6317L4.90723 41.9477L7.79623 41.8307C7.89523 41.5607 7.95823 41.2727 7.98523 40.9757H5.30323V40.2917H8.86723ZM6.27523 47.3837V44.9357H7.10323V46.7177H11.5312V47.3837H6.27523ZM8.83123 42.8297V42.1457H10.4872V39.6797H11.3152V45.5117H10.4872V42.8297H8.83123Z" fill="currentColor"/>
+                    <path d="M1.99902 25.0234L16.1885 15.6492L30.378 25.0234L16.1885 34.7846L1.99902 25.0234Z" fill="currentColor"/>
+                    <path d="M1.99902 20.6094L16.1885 11.2351L30.378 20.6094L16.1885 30.3705L1.99902 20.6094Z" fill="currentColor"/>
+                    <path d="M16.1892 10.0376L32.1675 20.5938L16.1892 31.585L0.210938 20.5938L16.1892 10.0376ZM16.1885 30.3717L30.379 20.6103L16.1892 11.2363L1.99942 20.6103L16.1885 30.3717Z" fill="white"/>
+                    <path d="M1.99902 16.1875L16.1885 6.81325L30.378 16.1875L16.1885 25.9487L1.99902 16.1875Z" fill="currentColor"/>
+                    <path d="M16.1892 5.61568L32.1675 16.1719L16.1892 27.1631L0.210938 16.1719L16.1892 5.61568ZM16.1885 25.9498L30.379 16.1884L16.1892 6.81445L1.99942 16.1884L16.1885 25.9498Z" fill="white"/>
+                </svg>
+            </span>
+        </div>
+        <div class="footer-btn on" id="btn-chat">
+            <span class="off">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M31.7256 0.953513H9.72559C9.19515 0.953513 7.72565 0.953502 7.72565 0.953502C7.72565 0.953502 7.72559 2.42306 7.72559 2.95348V19.9532C7.72559 20.4837 7.72559 21.9532 7.72559 21.9532C7.72559 21.9532 9.19515 21.9532 9.72559 21.9532H13.7256V26.9531L19.9656 21.9532H31.7256C32.256 21.9532 33.7256 21.9532 33.7256 21.9532C33.7256 21.9532 33.7256 20.4837 33.7256 19.9532V2.95348C33.7256 2.42306 33.7256 0.953125 33.7256 0.953125C33.7256 0.953125 32.256 0.953513 31.7256 0.953513Z" fill="currentColor"/>
+                    <path d="M16.8076 8.67494C16.8077 7.90036 17.0375 7.14323 17.4678 6.49916C17.8982 5.85499 18.5098 5.35231 19.2256 5.0558C19.9414 4.75931 20.7294 4.68201 21.4893 4.83315C22.2492 4.9843 22.9473 5.35755 23.4951 5.90541C24.043 6.45327 24.4162 7.15139 24.5674 7.91127C24.7185 8.67113 24.6412 9.45918 24.3447 10.1749C24.0482 10.8907 23.5455 11.5023 22.9014 11.9328C22.4676 12.2226 21.9818 12.4178 21.4746 12.5167V12.8986C21.4746 13.3128 21.1388 13.6486 20.7246 13.6486C20.3106 13.6483 19.9746 13.3126 19.9746 12.8986V11.8429C19.9746 11.4288 20.3106 11.0931 20.7246 11.0929C21.2027 11.0929 21.6708 10.9513 22.0684 10.6857C22.4658 10.4201 22.775 10.0423 22.958 9.60073C23.1409 9.15912 23.1889 8.67305 23.0957 8.20424C23.0024 7.73533 22.7726 7.30404 22.4346 6.96596C22.0965 6.62788 21.6652 6.3981 21.1963 6.30483C20.7275 6.21163 20.2414 6.25863 19.7998 6.44155C19.3581 6.62451 18.9805 6.93464 18.7148 7.33217C18.4493 7.72959 18.3077 8.19698 18.3076 8.67494C18.3076 9.08916 17.9718 9.42494 17.5576 9.42494C17.1434 9.42494 16.8076 9.08916 16.8076 8.67494Z" fill="white"/>
+                    <path d="M41.1009 34.0938V40.4657H40.1289V34.0938H41.1009Z" fill="currentColor"/>
+                    <path d="M34.6393 40.4657H33.6133L35.8993 34.0938H37.0153L39.3193 40.4657H38.2753L37.6993 38.7917H35.2153L34.6393 40.4657ZM35.5033 37.9817H37.4203L36.4933 35.2637H36.4393L35.5033 37.9817Z" fill="currentColor"/>
+                    <path d="M27.8858 33.7758C27.8858 35.8278 26.7788 37.2767 24.2858 38.0417L23.9438 37.3577C25.1768 37.0067 25.9958 36.4848 26.4728 35.8368L24.0518 36.0078L23.9258 35.3417L26.8148 35.2248C26.9138 34.9818 26.9768 34.7298 27.0038 34.4598H24.3218V33.7758H27.8858ZM25.1858 41.1198V38.2758H30.3338V41.1198H25.1858ZM25.9958 40.4358H29.5058V38.9418H25.9958V40.4358ZM27.8678 36.0798V35.3958H29.5058V33.3438H30.3338V37.8618H29.5058V36.0798H27.8678Z" fill="currentColor"/>
+                    <path d="M19.5674 33.8125C21.2594 33.8215 22.4834 34.6585 22.4834 35.9185C22.4834 37.0885 21.4574 37.8715 19.9814 37.9885V39.5365H23.2034V40.2385H15.9854V39.5365H19.1534V37.9885C17.7044 37.8715 16.6694 37.0885 16.6694 35.9185C16.6694 34.6585 17.9024 33.8215 19.5674 33.8125ZM17.4794 35.9185C17.4794 36.7915 18.3614 37.3405 19.5674 37.3405C20.7914 37.3405 21.6734 36.7915 21.6734 35.9185C21.6734 35.0545 20.7914 34.4965 19.5674 34.4965C18.3614 34.4965 17.4794 35.0545 17.4794 35.9185Z" fill="currentColor"/>
+                    <path d="M14.7406 33.3438V41.2278H13.8946V33.3438H14.7406ZM8.47656 36.6918C8.47656 35.0087 9.33156 33.9378 10.5106 33.9378C11.6896 33.9378 12.5536 35.0087 12.5446 36.6918C12.5536 38.3928 11.6896 39.4638 10.5106 39.4638C9.33156 39.4638 8.47656 38.3928 8.47656 36.6918ZM9.28656 36.6918C9.28656 37.9428 9.79056 38.7168 10.5106 38.7078C11.2396 38.7168 11.7436 37.9428 11.7346 36.6918C11.7436 35.4588 11.2396 34.6848 10.5106 34.6758C9.79056 34.6848 9.28656 35.4588 9.28656 36.6918Z" fill="currentColor"/>
+                    <path d="M6.56638 33.3438V36.3858H7.82638V37.1058H6.56638V41.2098H5.73838V33.3438H6.56638ZM0.734375 39.3558V33.9918H1.56238V36.0258H3.63238V33.9918H4.46038V39.3558H0.734375ZM1.56238 38.6538H3.63238V36.6738H1.56238V38.6538Z" fill="currentColor"/>
+                    <path d="M21.9534 17.5036C21.9534 18.1571 21.4237 18.6868 20.7702 18.6868C20.1167 18.6868 19.5869 18.1571 19.5869 17.5036C19.5869 16.8501 20.1167 16.3203 20.7702 16.3203C21.4237 16.3203 21.9534 16.8501 21.9534 17.5036Z" fill="white"/>
+                </svg>
+            </span>
+        </div>
+        <div class="footer-btn" id="btn-report">
+            <span class="off">
+                <svg width="25" height="44" viewBox="0 0 25 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.0752 38.0095C19.0752 39.3235 19.9392 40.6825 21.1632 41.1955L20.6952 41.8615C19.7682 41.4475 19.0392 40.5835 18.6702 39.5395C18.3012 40.6555 17.5632 41.6185 16.6452 42.0595L16.1592 41.3935C17.3472 40.8445 18.2292 39.3595 18.2292 38.0095V37.1635H16.4292V36.4795H20.8752V37.1635H19.0752V38.0095ZM21.8652 43.5535V35.6875H22.7112V43.5535H21.8652Z" fill="currentColor"/>
+                    <path d="M12.7911 36.5335V37.0195C12.7821 37.6765 12.7821 38.6935 12.5571 40.0975L11.7291 40.0435C11.9361 38.7745 11.9541 37.8475 11.9631 37.1995H8.75915V36.5335H12.7911ZM8.32715 41.1775C8.81315 41.1775 9.36215 41.1775 9.92915 41.1595V38.7835H10.7571V41.1415C11.5941 41.1055 12.4491 41.0515 13.2411 40.9615L13.2951 41.5735C11.6481 41.8435 9.82115 41.8795 8.41715 41.8615L8.32715 41.1775ZM13.6911 43.5535V35.6875H14.5371V38.9455H15.7431V39.6475H14.5371V43.5535H13.6911Z" fill="currentColor"/>
+                    <path d="M7.19009 35.6875V39.7015H6.36209V38.9455H4.34609V38.2975H6.36209V37.4335H4.45409C3.96809 38.6575 2.78009 39.4675 1.03409 39.8635L0.746094 39.1795C2.62709 38.7655 3.65309 37.8925 3.78809 36.7315H1.16009V36.0475H4.70609C4.70609 36.3085 4.68809 36.5515 4.64309 36.7855H6.36209V35.6875H7.19009ZM2.04209 40.6915V40.0255H7.19009V42.0235H2.88809V42.8155H7.42409V43.4815H2.06009V41.3935H6.34409V40.6915H2.04209Z" fill="currentColor"/>
+                    <path d="M2 28.2266L2 3.22656L21 3.22656L21 28.2266L2 28.2266Z" fill="currentColor"/>
+                    <path d="M17 21.9766V23.4766H5.5V21.9766H17ZM17 17.4766V18.9766H5.5V17.4766H17ZM17 12.4766V13.9766H5.5V12.4766H17ZM16.75 2.22656V7.47656H22.5V8.97656H15.25V2.22656H16.75Z" fill="white"/>
+                    <path d="M18.8281 0.226562L24.485 5.88342L21.6566 8.71184L15.9997 3.05499L18.8281 0.226562Z" fill="white"/>
+                </svg>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        // 채널톡 아이콘
+        setTimeout(()=>{
+            document.getElementById('ch-plugin-entry')?.classList.add('hide')}, 2000)
+        
+        let chartId;
+        
+        // 스타일 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            .loading-dots {
+                display: inline-block;
+                animation: loadingDots 1.5s infinite;
+            }
+        
+            @keyframes loadingDots {
+                0% { content: '.'; }
+                33% { content: '..'; }
+                66% { content: '...'; }
+                100% { content: '.'; }
+            }
+        
+            .loading-message {
+                opacity: 0.7;
+            }
+        
+            .recommended-questions .message-bubble {
+                padding: 12px;
+            }
+        
+            .recommend-title {
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 8px;
+                color: #666;
+            }
+        
+            .recommendations {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+        
+            .recommendation-bubble {
+                background-color: #f5f5f5;
+                padding: 8px 12px;
+                border-radius: 12px;
+                font-size: 14px;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+        
+            .recommendation-bubble:hover {
+                background-color: #e5e5e5;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 페이지 로드 시 스크롤을 맨 아래로
+        window.onload = function() {
+            scrollToBottom();
+            
+            // 현재 시각을 .fst-time에 표시
+            const fstTime = document.querySelector('.fst-time');
+            if (fstTime) {
+                const now = new Date();
+                fstTime.textContent = formatTime(now);
+            }
+        };
+        
+        // Basic Authentication 정보
+        const username = 'bicosungwoo';
+        const password = '';
+        const credentials = btoa(`${username}:${password}`);
+        
+        // 메시지 전송
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                // 사용자 메시지 추가
+                addUserMessage(message);
+                
+                // 입력 필드 초기화
+                input.value = '';
+                
+                // 로딩 메시지 추가
+                const loadingMessageId = addLoadingMessage();
+                
+                try {
+                    const response = await fetch('https://agent.biocom.ai.kr/api/allergy-chat', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': `Basic ${credentials}`,
+                        },
+                        body: JSON.stringify({
+                            chart_id: chartId,
+                            user_message: message
+                        })
+                    });
+        
+                    // 로딩 메시지 제거
+                    removeLoadingMessage(loadingMessageId);
+        
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        console.error('Error response:', errorData);
+                        throw new Error(`API 응답 오류: ${JSON.stringify(errorData)}`);
+                    }
+        
+                    const data = await response.json();
+                    console.log('Success response:', data);
+                    await addAIMessage(data.ai_message || data.message || '죄송합니다. 응답을 받지 못했습니다.');
+                } catch (error) {
+                    // 에러 발생 시에도 로딩 메시지 제거
+                    removeLoadingMessage(loadingMessageId);
+                    console.error('Error:', error);
+                    await addAIMessage('죄송합니다. 일시적인 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+                }
+            }
+        }
+        
+        // 사용자 메시지 추가
+        function addUserMessage(text) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user-message';
+            
+            const now = new Date();
+            const timeString = formatTime(now);
+            
+            messageDiv.innerHTML = `
+                <div class="message-bubble">
+                    <p>${text}</p>
+                    <span class="message-time">${timeString}</span>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            scrollToBottom();
+        }
+        
+        // 로딩 메시지 추가
+        function addLoadingMessage() {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ai-message loading-message';
+            
+            messageDiv.innerHTML = `
+                <div class="ai-avatar-small">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#AFDFD9"/>
+                    </svg>
+                </div>
+                <div class="message-bubble">
+                    <p>챗봇이 생각하고 있어요<span class="loading-dots">...</span></p>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            scrollToBottom();
+            return messageDiv.id = 'loading-' + Date.now();
+        }
+        
+        // 로딩 메시지 제거
+        function removeLoadingMessage(loadingId) {
+            const loadingMessage = document.getElementById(loadingId);
+            if (loadingMessage) {
+                loadingMessage.remove();
+            }
+        }
+        
+        // AI 메시지 추가
+        async function addAIMessage(text) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ai-message';
+            
+            const now = new Date();
+            const timeString = formatTime(now);
+            
+            // 줄바꿈을 <br>로 변환하고 공백을 보존
+            const formattedText = text.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
+            
+            messageDiv.innerHTML = `
+                <div class="ai-avatar-small">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#AFDFD9"/>
+                    </svg>
+                </div>
+                <div class="message-bubble">
+                    <p>${formattedText}</p>
+                    <span class="message-time">${timeString}</span>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            scrollToBottom();
+        
+            // 추천 질문 가져오기
+            try {
+                const response = await fetch('https://agent.biocom.ai.kr/api/recommend-questions', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': `Basic ${credentials}`,
+                    },
+                    body: JSON.stringify({
+                        health_context: text
+                    })
+                });
+        
+                if (!response.ok) {
+                    throw new Error('추천 질문을 가져오는데 실패했습니다.');
+                }
+        
+                const data = await response.json();
+                if (data.answer && Array.isArray(data.answer)) {
+                    addRecommendedQuestions(data.answer);
+                }
+            } catch (error) {
+                console.error('추천 질문 에러:', error);
+            }
+        }
+        
+        // 추천 질문 추가
+        function addRecommendedQuestions(questions) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const recommendDiv = document.createElement('div');
+            recommendDiv.className = 'message ai-message recommended-questions';
+            
+            let questionsHTML = questions.map(question => `
+                <div class="recommendation-bubble" onclick="sendRecommendedQuestion('${question.replace(/'/g, "\\'")}')">
+                    ${question}
+                </div>
+            `).join('');
+            
+            recommendDiv.innerHTML = `
+                <div class="ai-avatar-small">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="12" fill="#AFDFD9"/>
+                    </svg>
+                </div>
+                <div class="message-bubble">
+                    <p class="recommend-title">추가적으로 궁금한 것이 있으신가요?</p>
+                    <div class="recommendations">
+                        ${questionsHTML}
+                    </div>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(recommendDiv);
+            scrollToBottom();
+        }
+        
+        // 추천 질문 클릭 시 전송
+        function sendRecommendedQuestion(question) {
+            document.getElementById('messageInput').value = question;
+            sendMessage();
+        }
+        
+        // 추천 질문 클릭
+        function askQuestion(question) {
+            document.getElementById('messageInput').value = question;
+            sendMessage();
+        }
+        
+        // 시간 포맷
+        function formatTime(date) {
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const ampm = hours >= 12 ? '오후' : '오전';
+            const displayHours = hours % 12 || 12;
+            const displayMinutes = minutes < 10 ? '0' + minutes : minutes;
+            return `${ampm} ${displayHours}:${displayMinutes}`;
+        }
+        
+        // 스크롤을 맨 아래로
+        function scrollToBottom() {
+            const chatContent = document.querySelector('.chat-content');
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+        
+        // 엔터키로 메시지 전송
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('messageInput');
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+        
+        const observer = new MutationObserver((mutations) => {
+            const target = document.getElementById('ch-plugin-entry');
+            if (target) {
+                target.classList.add('hide');
+                console.log('숨김 처리 완료');
+                observer.disconnect(); // 한 번만 실행되면 감시 중단
+            }
+        });
+        
+        // 모바일 키패드 감지 및 footer 숨김 처리
+        function handleKeyboardVisibility() {
+            const footer = document.querySelector('.content-footer');
+            const input = document.getElementById('messageInput');
+            const inputSection = document.querySelector('.input-section');
+            
+            if (!footer || !input) return;
+            
+            // 초기 높이 저장
+            let initialViewportHeight = window.innerHeight;
+            let isKeyboardVisible = false;
+            let lastViewportHeight = window.innerHeight;
+            
+            // 더 정확한 키패드 감지를 위한 함수
+            function checkKeyboardVisibility() {
+                const currentHeight = window.innerHeight;
+                const heightDifference = initialViewportHeight - currentHeight;
+                
+                // 키패드가 올라왔다고 판단하는 임계값 (화면 높이의 15% 이상)
+                if (heightDifference > initialViewportHeight * 0.15) {
+                    if (!isKeyboardVisible) {
+                        isKeyboardVisible = true;
+                        footer.style.display = 'none';
+                        if (inputSection) {
+                            inputSection.style.bottom = '10px';
+                        }
+                        console.log('키패드 감지됨 - footer 숨김');
+                    }
+                } else {
+                    if (isKeyboardVisible) {
+                        isKeyboardVisible = false;
+                        footer.style.display = 'grid';
+                        if (inputSection) {
+                            inputSection.style.bottom = '70px';
+                        }
+                        console.log('키패드 숨김 감지됨 - footer 표시');
+                    }
+                }
+                
+                lastViewportHeight = currentHeight;
+            }
+            
+            // 입력 필드 포커스 시
+            input.addEventListener('focus', () => {
+                setTimeout(() => {
+                    checkKeyboardVisibility();
+                }, 300); // 키패드 애니메이션 완료 대기
+            });
+            
+            // 입력 필드 블러 시
+            input.addEventListener('blur', () => {
+                setTimeout(() => {
+                    checkKeyboardVisibility();
+                }, 300);
+            });
+            
+            // 윈도우 리사이즈 감지 (더 정확한 키패드 감지)
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    checkKeyboardVisibility();
+                }, 200);
+            });
+            
+            // 페이지 가시성 변경 감지 (앱 전환 시)
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    setTimeout(() => {
+                        initialViewportHeight = window.innerHeight;
+                        checkKeyboardVisibility();
+                    }, 500);
+                }
+            });
+            
+            // 스크롤 이벤트로도 키패드 상태 확인
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    checkKeyboardVisibility();
+                }, 100);
+            });
+            
+            // 초기 상태 확인
+            setTimeout(() => {
+                initialViewportHeight = window.innerHeight;
+                checkKeyboardVisibility();
+            }, 1000);
+        }
+        
+        const load = async ()=>{
+            document.querySelector('div#s202501175ad3b318a8aab')?.classList.add('hide');
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        
+            const response = await fetch(`https://biocom.ai.kr/api/v1/users/me?email=${MEMBER_UID}`);
+            const userData = await response.json().then(res=>{
+                if(res.data){
+                    chartId = res.data.chartId;
+                    return res.data;
+                }else{
+                    return null;
+                }
+            });
+        
+            await fetch('https://agent.biocom.ai.kr/api/ingest-allergy-report', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${credentials}`,
+                },
+                body: JSON.stringify({
+                    chartId: chartId,
+                    userName: userData.nickname
+                })
+            });
+        
+        
+        
+            // Footer 버튼 이벤트 리스너 추가
+            document.querySelector('#btn-home')?.addEventListener('click', () => {
+                window.location.href = 'https://biocom.kr/arang-home';
+            });
+        
+            document.querySelector('#btn-content')?.addEventListener('click', () => {
+                window.location.href = 'https://biocom.kr/1151';
+            });
+        
+            document.querySelector('#btn-chat')?.addEventListener('click', () => {
+            });
+        
+            document.querySelector('#btn-report')?.addEventListener('click', () => {
+                window.location.href = 'https://biocom.kr/arang-igg';
+            });
+        
+            // 모바일 키패드 감지 초기화
+            handleKeyboardVisibility();
+        
+        }
+        window.addEventListener('load', load);
+        
+        </script>
+</body>
+</html>

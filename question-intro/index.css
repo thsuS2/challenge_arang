@@ -68,7 +68,10 @@ body {
     transform: translateX(-50%);
     width: 251px;
     height: 253px;
-    background: #eee;
+    background: url(https://cdn.imweb.me/thumbnail/20250616/81b8deaa61181.png);
+    background-size: 90%;
+    background-position: center -20%;
+    background-repeat: no-repeat;
     border-radius: 125.5px;
 }
 

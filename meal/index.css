@@ -217,6 +217,7 @@ body {
 .meal-input input {
     flex: 1;
     height: 45px;
+    width: 100%;
     border: 1px solid #ed6060;
     border-radius: 8px;
     padding: 0 13px;
@@ -241,20 +242,69 @@ body {
 
 .upload-area {
     width: 100%;
-    height: 100%;
-    background: #fafafb;
-    border: 1px dashed #ed6060;
-    border-radius: 8px;
+    height: 55px;
+    background: #f7f8f9;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.upload-area:hover {
+    border-color: #32a59c;
 }
 
 .upload-icon {
+    font-size: 24px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+}
+
+.upload-text {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.uploaded-image {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.uploaded-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-image {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    color: white;
     font-size: 16px;
-    color: #ed6060;
-    transform: rotate(45deg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.remove-image:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .error-message {
@@ -324,7 +374,7 @@ body {
     height: 100vh;
     z-index: 1000;
 }
-
+.toggle-switch.active{background: #32A59C;}
 .sensitive-food-select-area{
     position: absolute;
     bottom: 0;

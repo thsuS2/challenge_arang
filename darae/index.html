@@ -10,25 +10,19 @@
     <div class="wrap">
         <!-- 헤더 -->
         <div class="header">
-            <button class="back-btn" onclick="window.history.back()">
+            <button class="back-btn" onclick="window.open('https://biocom.kr/arang-home', '_self')">
                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none">
                     <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
                 </svg>
             </button>
-            <h1 class="header-title">영양제 기록하기</h1>
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 44px;"></div>
-                </div>
-                <span class="progress-text">1 / 6</span>
-            </div>
+            <div class="header-title">영양제 기록하기</div>
         </div>
 
         <!-- 컨텐츠 -->
         <div class="content">
             <!-- 복용 시간 -->
             <div class="form-section">
-                <h2 class="section-title">복용 시간</h2>
+                <div class="section-title">복용 시간</div>
                 <div class="textfield">
                     <input type="text" placeholder="복용 시간을 기록해주세요" readonly>
                     <svg class="dropdown-icon" width="13" height="12" viewBox="0 0 13 12" fill="none">
@@ -39,7 +33,7 @@
 
             <!-- 종류 -->
             <div class="form-section">
-                <h2 class="section-title">종류</h2>
+                <div class="section-title">종류</div>
                 <div class="textfield filled">
                     <input type="text" value="다래케어" readonly>
                 </div>

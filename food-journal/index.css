@@ -112,6 +112,12 @@ body {
     gap: 14px;
     padding: 15px 0;
     border-bottom: 1px solid #ececec;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.meal-item:hover {
+    background-color: #f8f9fa;
 }
 
 .meal-item:last-child {
@@ -177,7 +183,7 @@ body {
 }
 
 .tag.moderate {
-    background: #c6b9b9;
+    background: #f9ffb8;
     color: #421516;
 }
 
@@ -203,4 +209,14 @@ body {
 
 .edit-btn:hover {
     background: #ddd;
+}
+
+/* 빈 상태 스타일 */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #787a7c;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
 }

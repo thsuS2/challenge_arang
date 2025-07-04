@@ -21,7 +21,7 @@ body {
 /* 헤더 */
 .header {
     position: relative;
-    height: 109px;
+    height: 50px;
     background-color: #ffffff;
     border-bottom: 1px solid #e9eaec;
     display: flex;
@@ -55,6 +55,28 @@ body {
 .content {
     flex: 1;
     padding: 40px 30px 0;
+}
+
+.quiz-image {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.placeholder-image::after {
+    content: '퀴즈 이미지';
+    font-size: 14px;
+    color: #999;
 }
 
 /* 포인트 표시 */
@@ -100,21 +122,20 @@ body {
 }
 
 .answer-option {
-    position: relative;
     width: 100%;
     height: 56px;
-    background-color: #ffffff;
-    border: 1px solid #e9eaec;
-    border-radius: 100px;
+    background-color: #ffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 0 16px;
+    justify-content: center;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 20px;
+    text-align: center;
+    margin-bottom: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 16px;
-    font-weight: 500;
-    color: #212121;
+    transition: all 0.2s ease;
+    font-weight: 600;
 }
 
 .answer-option:hover {
@@ -122,37 +143,58 @@ body {
 }
 
 .answer-option.selected {
-    background-color: #32a59c;
-    border-color: #32a59c;
+    border-color: #25BF88;
     color: #ffffff;
+    background-color: #25BF88;
 }
 
-.answer-option.selected.correct {
-    background-color: #32a59c;
+.answer-option.correct {
+    border-color: #25BF88;
+    color: #25BF88;
+    background-color: #ffffff;
 }
 
-.answer-option.selected.incorrect {
-    background-color: #FF6B6B;
+.answer-option.incorrect {
     border-color: #FF6B6B;
+    color:#ffffff;
+    background-color: #FF6B6B;
 }
 
-.answer-option.disabled {
-    pointer-events: none;
-    opacity: 0.6;
+/* .answer-option.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+} */
+
+.answer-option.correct .check-icon,
+.answer-option.incorrect .x-icon {
+    display: block;
+}
+
+.answer-option span {
+    font-size: 16px;
+}
+
+.answer-option.correct span,
+.answer-option.incorrect span {
 }
 
 .option-icon {
     position: absolute;
-    right: 20px;
+    right: 16%;
     width: 20px;
     height: 20px;
+    background-color: #ffff;
+    border-radius: 100%;
+    color: #ffffff;
 }
 
 .check-icon {
     position: absolute;
-    right: 20px;
+    right: 16%;
     width: 20px;
     height: 20px;
+    background-color: #ffff;
+    border-radius: 100%;
 }
 
 .answer-option .check-icon,
@@ -164,52 +206,53 @@ body {
 .answer-option.selected .x-icon {
     display: block;
 }
+.answer-option.selected .option-icon {
+    color: #25BF88;
+}
 
 /* 하단 버튼 영역 */
 .bottom-buttons {
     display: flex;
-    gap: 15px;
-    padding: 20px 30px;
-    margin-top: auto;
+    gap: 12px;
+    padding: 0 20px;
+    margin-top: 24px;
+    margin-bottom: 25px;
+}
+
+.skip-btn, .next-btn {
+    flex: 1;
+    height: 48px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
 }
 
 .skip-btn {
-    flex: 1;
-    height: 50px;
-    background-color: #ffffff;
-    border: 1px solid #212121;
-    border-radius: 100px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #212121;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.skip-btn:hover {
-    background-color: #f5f5f5;
+    background-color: #ffff;
+    border: 1px solid #000;
+    width: 100px;
 }
 
 .next-btn {
-    flex: 2;
-    height: 50px;
-    background-color: #32a59c;
-    border: none;
-    border-radius: 100px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background-color: #25BF88;
+    color: white;
+    border: 1px solid #25BF88;
+    width: 150px;
 }
 
-.next-btn:active {
-    transform: scale(0.98);
-}
-
-.next-btn:disabled {
-    background-color: #d9d9d9;
+.skip-btn.disabled, .next-btn.disabled {
+    opacity: 0.5;
     cursor: not-allowed;
+}
+
+.check-icon, .x-icon {
+    width: 20px;
+    height: 20px;
 }
 
 /* 해설 모달 */

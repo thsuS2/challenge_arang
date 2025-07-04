@@ -10,18 +10,12 @@
     <div class="wrap">
         <!-- 헤더 -->
         <div class="header">
-            <button class="back-btn" onclick="window.history.back()">
+            <button class="back-btn" onclick="window.open('https://biocom.kr/arang-home', '_self')">
                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none">
                     <path d="M11.1837 3.5475L9.4875 1.925L0 11L9.4875 20.075L11.1837 18.4525L3.3925 11L11.1837 3.5475Z" fill="#212121"/>
                 </svg>
             </button>
-            <h1 class="header-title">공복 시간 기록하기</h1>
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 44px;"></div>
-                </div>
-                <span class="progress-text">1 / 6</span>
-            </div>
+            <div class="header-title">공복 시간 기록하기</div>
         </div>
 
         <!-- 컨텐츠 -->
@@ -33,7 +27,7 @@
 
             <!-- 공복 시작 시간 -->
             <div class="form-section">
-                <h2 class="section-title">공복 시작 시간</h2>
+                <div class="section-title">공복 시작 시간</div>
                 <div class="textfield">
                     <input type="text" placeholder="전날 마지막 식사가 끝난 시간을 입력해주세요" readonly>
                     <svg class="dropdown-icon" width="13" height="12" viewBox="0 0 13 12" fill="none">
@@ -44,7 +38,7 @@
 
             <!-- 공복 종료 시간 -->
             <div class="form-section">
-                <h2 class="section-title">공복 종료 시간</h2>
+                <div class="section-title">공복 종료 시간</div>
                 <div class="textfield">
                     <input type="text" placeholder="금일 첫 식사를 시작한 시간을 입력해주세요" readonly>
                     <svg class="dropdown-icon" width="13" height="12" viewBox="0 0 13 12" fill="none">

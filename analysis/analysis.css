@@ -73,8 +73,9 @@ body {
 .result-banner-text {
     font-size: 10px;
     color: #000000;
-    margin-top: -3px;
+    margin-top: -21px;
     letter-spacing: -0.2px;
+    z-index: 10;
 }
 
 .result-banner-text strong {
@@ -87,6 +88,11 @@ body {
     margin-top: 6px;
     position: relative;
 }
+.character-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .character-title {
     font-size: 25px;
@@ -94,17 +100,14 @@ body {
     color: #212121;
     letter-spacing: -1px;
     line-height: 1.4;
-    margin-bottom: 9px;
 }
 
 .character-badge {
-    position: absolute;
     width: 17px;
     height: 17px;
     background-color: #eee;
     border-radius: 100px;
-    right: 111px;
-    top: 9px;
+    margin-left: 7px;
 }
 
 .character-subtitle {
@@ -322,4 +325,32 @@ body {
 
 .start-challenge-button:active {
     background-color: #247a73;
+}
+
+/* 캐릭터 이미지 설정 */
+.character-image.peng {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/76ecf3d4e38ea.png);
+}
+
+.character-image.bear {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/1347aaf067831.png);
+}
+
+.character-image.fox {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/d73ddd9f79a38.png);
+}
+
+.character-image.hog {
+    background-image: url(https://cdn.imweb.me/thumbnail/20250604/522d8dfce6330.png);
+}
+
+/* 캐릭터 이미지 공통 스타일 */
+.character-image {
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    display: block;
 }

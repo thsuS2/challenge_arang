@@ -7,12 +7,12 @@ let sleepData = {
 
 // 뒤로가기
 function goBack() {
-    window.location.href = '../home/index.html';
+    window.location.href = 'https://biocom.kr/arang-home';
 }
 
 // 홈으로 이동
 function goHome() {
-    window.location.href = '../home/index.html';
+    window.location.href = 'https://biocom.kr/arang-home';
 }
 
 // 취침 시간 선택
@@ -113,7 +113,7 @@ function validateForm() {
 }
 
 // 수면 기록 제출
-function submitSleep() {
+async function submitSleep() {
     const submitBtn = document.querySelector('.submit-btn');
     
     if (submitBtn.classList.contains('disabled')) {
@@ -124,17 +124,54 @@ function submitSleep() {
     // 수면 시간 계산
     const sleepDuration = calculateSleepDuration(sleepData.bedtime, sleepData.wakeTime);
     
-    // 콘솔에 데이터 출력
-    console.log('=== 수면 기록 데이터 ===');
-    console.log('취침 시간:', sleepData.bedtime);
-    console.log('기상 시간:', sleepData.wakeTime);
-    console.log('총 수면 시간:', sleepDuration);
-    console.log('=====================');
+    // 현재 날짜와 시간
+    const now = new Date();
+    const currentDate = now.toISOString().split('T')[0] + 'T00:00:00.000Z';
     
-    alert(`수면이 기록되었습니다!\n취침: ${sleepData.bedtime}\n기상: ${sleepData.wakeTime}\n수면시간: ${sleepDuration}`);
+    // 취침 시간과 기상 시간을 ISO 형식으로 변환
+    const bedTimeISO = convertToISO(sleepData.bedtime, true);
+    const wakeTimeISO = convertToISO(sleepData.wakeTime, false);
     
-    // 기록 완료 화면으로 이동
-    // window.location.href = '../write-complete/index.html';
+    // API 요청 데이터
+    const requestData = {
+        type: "SLEEP",
+        date: currentDate,
+        data: {
+            bedTime: bedTimeISO,
+            wakeTime: wakeTimeISO
+        }
+    };
+    
+    try {
+        // API 호출
+        const response = await fetch(`https://biocom.ai.kr/api/v1/activity?email=${MEMBER_UID}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        });
+        
+        if (response.ok) {
+            console.log('=== 수면 기록 데이터 ===');
+            console.log('취침 시간:', sleepData.bedtime);
+            console.log('기상 시간:', sleepData.wakeTime);
+            console.log('총 수면 시간:', sleepDuration);
+            console.log('API 응답:', await response.json());
+            console.log('=====================');
+            
+            // alert(`수면이 기록되었습니다!\n취침: ${sleepData.bedtime}\n기상: ${sleepData.wakeTime}\n수면시간: ${sleepDuration}`);
+            
+            // 기록 완료 화면으로 이동
+            window.location.href = 'https://biocom.kr/arang-reward-modal?point=100&type=sleep';
+        } else {
+            console.error('API 호출 실패:', response.status, response.statusText);
+            alert('수면 기록 저장에 실패했습니다. 다시 시도해주세요.');
+        }
+    } catch (error) {
+        console.error('API 호출 중 오류 발생:', error);
+        alert('수면 기록 저장 중 오류가 발생했습니다. 다시 시도해주세요.');
+    }
 }
 
 // 수면 시간 계산
@@ -167,12 +204,56 @@ function calculateSleepDuration(bedtime, wakeTime) {
     return `${hours}시간 ${minutes}분`;
 }
 
-// 모달 외부 클릭시 닫기
-document.getElementById('timeModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeModal();
+// 시간을 ISO 형식으로 변환하는 함수
+function convertToISO(timeString, isBedtime) {
+    const [ampm, time] = timeString.split(' ');
+    const [hour, minute] = time.split(':').map(Number);
+    
+    let hour24 = hour;
+    if (ampm === 'PM' && hour !== 12) {
+        hour24 = hour + 12;
+    } else if (ampm === 'AM' && hour === 12) {
+        hour24 = 0;
+    }
+    
+    const now = new Date();
+    const targetDate = new Date(now);
+    targetDate.setHours(hour24, minute, 0, 0);
+    
+    // 취침 시간은 오늘, 기상 시간은 내일로 설정
+    if (!isBedtime) {
+        targetDate.setDate(targetDate.getDate() + 1);
+    }
+    
+    return targetDate.toISOString();
+}
+
+const observer = new MutationObserver((mutations) => {
+    const target = document.getElementById('ch-plugin-entry');
+    if (target) {
+        target.classList.add('hide');
+        console.log('숨김 처리 완료');
+        observer.disconnect(); // 한 번만 실행되면 감시 중단
     }
 });
 
-// 초기 상태 설정
-validateForm();
+const load = async ()=>{
+    document.querySelector('div#s202501175ad3b318a8aab')?.classList.add('hide');
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    
+    // 모달 외부 클릭시 닫기
+    document.getElementById('timeModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    // 초기 상태 설정
+    validateForm();
+
+}
+window.addEventListener('load', load);

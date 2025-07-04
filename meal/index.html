@@ -21,7 +21,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
-                <span class="progress-text">0 / 4</span>
+                <span class="progress-text">0 / 3</span>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
                     <div class="meal-emoji">🍎</div>
                     <span>간식</span>
                 </div>
-                <div class="meal-option" data-meal="late-night">
+                <div class="meal-option" data-meal="late_night">
                     <div class="meal-emoji">🍗</div>
                     <span>야식</span>
                 </div>
@@ -67,7 +67,12 @@
                 <input type="text" placeholder="필수 입력 값입니다" class="error">
                 <div class="photo-upload">
                     <div class="upload-area">
-                        <div class="upload-icon">✕</div>
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        <div class="upload-icon">+</div>
+                    </div>
+                    <div class="uploaded-image hide">
+                        <img id="previewImage" src="" alt="업로드된 이미지">
+                        <button type="button" class="remove-image">×</button>
                     </div>
                 </div>
             </div>

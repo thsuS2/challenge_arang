@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrap {
+    position: relative;
+    width: 390px;
+    height: 100vh;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* 메인 타이틀 */
+.main-title {
+    position: absolute;
+    top: 106px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+
+.main-title p {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #212121;
+    line-height: 1.4;
+    letter-spacing: -1px;
+}
+
+/* 이미지 영역 */
+.image-section {
+    position: absolute;
+    top: 245px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 336px;
+    height: 342px;
+}
+
+.circle-background {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 271px;
+    height: 272px;
+    background: #eee;
+    border-radius: 50%;
+}
+
+.model-image {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 251px;
+    height: 253px;
+    background: url(https://cdn.imweb.me/thumbnail/20250616/81b8deaa61181.png);
+    background-size: 90%;
+    background-position: center -20%;
+    background-repeat: no-repeat;
+    border-radius: 125.5px;
+}
+
+/* 설문 진행 버튼 */
+.survey-btn {
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 318px;
+    height: 40px;
+    background: #32a59c;
+    border: none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.survey-btn:hover {
+    background: #2a8b82;
+}

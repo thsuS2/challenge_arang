@@ -22,17 +22,7 @@ faqItems.forEach(item => {
     });
 });
 
-// 채팅 버튼 클릭 이벤트
-chatButton.addEventListener('click', () => {
-    // 채팅 화면으로 이동 또는 채팅 모달 열기
-    console.log('채팅 버튼 클릭');
-    
-    // 실제로는 채팅 페이지로 이동하거나 모달을 열어야 함
-    // window.open('/chat', '_self');
-    
-    // 임시로 알림 표시
-    alert('채팅 기능은 준비 중입니다.');
+document.querySelector('div#s202501175ad3b318a8aab')?.classList.add('hide');
+document.querySelector('.back-btn').addEventListener('click', ()=>{
+    window.location.href = 'https://biocom.kr/arang-mypage';
 });
-
-// 초기 상태: 첫 번째 FAQ 열기
-// (이미 HTML에서 첫 번째 아이템에 expanded 클래스가 추가되어 있음)

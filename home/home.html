@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class='comming-soon' ></div>
+             <!-- 헤더 -->
+        
+             <div class="content-header">
+                 <!--space between-->
+                 <div class="date">
+                     <div class="day"><span>0</span>일차</div>
+                     <div class="today"></div>
+                 </div>
+                 <div><a href="https://biocom.kr/arang-mypage">
+                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <circle cx="14" cy="14" r="13" stroke="#212121" stroke-width="2"/>
+                         <circle cx="13.9994" cy="13.9964" r="5.36364" stroke="#212121" stroke-width="2"/>
+                         <mask id="path-3-inside-1_1899_3048" fill="white">
+                         <path d="M14.0928 17.8203C15.597 17.8205 17.0869 18.0839 18.4766 18.5957C19.8662 19.1075 21.1288 19.8581 22.1924 20.8037C23.0807 21.5936 23.8128 22.5084 24.3662 23.5078C21.809 26.2693 18.1532 27.999 14.0928 27.999C10.0313 27.999 6.37466 26.2686 3.81738 23.5059C4.37106 22.5062 5.10434 21.5916 5.99316 20.8018C7.05692 19.8564 8.32017 19.1063 9.70996 18.5947C11.0995 18.0834 12.5888 17.8202 14.0928 17.8203Z"/>
+                         </mask>
+                         <path d="M14.0928 17.8203C15.597 17.8205 17.0869 18.0839 18.4766 18.5957C19.8662 19.1075 21.1288 19.8581 22.1924 20.8037C23.0807 21.5936 23.8128 22.5084 24.3662 23.5078C21.809 26.2693 18.1532 27.999 14.0928 27.999C10.0313 27.999 6.37466 26.2686 3.81738 23.5059C4.37106 22.5062 5.10434 21.5916 5.99316 20.8018C7.05692 19.8564 8.32017 19.1063 9.70996 18.5947C11.0995 18.0834 12.5888 17.8202 14.0928 17.8203Z" fill="white"/>
+                         <path d="M14.0928 17.8203L14.093 15.8203L14.0929 15.8203L14.0928 17.8203ZM18.4766 18.5957L19.1678 16.719L19.1678 16.719L18.4766 18.5957ZM22.1924 20.8037L23.5213 19.309L23.5213 19.309L22.1924 20.8037ZM24.3662 23.5078L25.8337 24.8667L26.8169 23.805L26.1159 22.539L24.3662 23.5078ZM14.0928 27.999L14.0927 29.999H14.0928V27.999ZM3.81738 23.5059L2.06783 22.5368L1.36674 23.8026L2.34965 24.8644L3.81738 23.5059ZM5.99316 20.8018L4.66461 19.3068L4.66461 19.3068L5.99316 20.8018ZM9.70996 18.5947L9.01922 16.7178L9.01915 16.7178L9.70996 18.5947ZM14.0928 17.8203L14.0925 19.8203C15.3649 19.8205 16.6206 20.0435 17.7853 20.4725L18.4766 18.5957L19.1678 16.719C17.5532 16.1243 15.829 15.8205 14.093 15.8203L14.0928 17.8203ZM18.4766 18.5957L17.7853 20.4725C18.9497 20.9013 19.994 21.5254 20.8635 22.2984L22.1924 20.8037L23.5213 19.309C22.2636 18.1909 20.7827 17.3138 19.1678 16.719L18.4766 18.5957ZM22.1924 20.8037L20.8635 22.2984C21.5863 22.941 22.1749 23.679 22.6165 24.4766L24.3662 23.5078L26.1159 22.539C25.4508 21.3378 24.5752 20.2461 23.5213 19.309L22.1924 20.8037ZM24.3662 23.5078L22.8988 22.1489C20.7038 24.5192 17.5727 25.999 14.0928 25.999V27.999V29.999C18.7338 29.999 22.9142 28.0194 25.8337 24.8667L24.3662 23.5078ZM14.0928 27.999L14.0928 25.999C10.6119 25.999 7.48005 24.5186 5.28512 22.1473L3.81738 23.5059L2.34965 24.8644C5.26927 28.0186 9.45066 29.999 14.0927 29.999L14.0928 27.999ZM3.81738 23.5059L5.56694 24.4749C6.00833 23.678 6.59775 22.9401 7.32172 22.2967L5.99316 20.8018L4.66461 19.3068C3.61094 20.2432 2.73379 21.3345 2.06783 22.5368L3.81738 23.5059ZM5.99316 20.8018L7.32172 22.2967C8.19111 21.5241 9.23593 20.9004 10.4008 20.4716L9.70996 18.5947L9.01915 16.7178C7.40442 17.3121 5.92274 18.1887 4.66461 19.3068L5.99316 20.8018ZM9.70996 18.5947L10.4007 20.4717C11.5655 20.043 12.8207 19.8202 14.0926 19.8203L14.0928 17.8203L14.0929 15.8203C12.357 15.8202 10.6335 16.1237 9.01922 16.7178L9.70996 18.5947Z" fill="#212121" mask="url(#path-3-inside-1_1899_3048)"/>
+                     </svg>
+                 </a></div>
+             </div>
+             <!-- 콘텐츠 바디 -->
+             <div class="content-body">
+                 <div class="body-user-area">
+                     <div class="userinfo">
+                         <div class="user-type">
+                             <div class="type-title">
+                                 <span></span>
+                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M0.219999 12.4216L1.4 13.6016L8 7.00156L1.4 0.401563L0.22 1.58156L5.64 7.00156L0.219999 12.4216Z" fill="#212121"/>
+                                 </svg>
+                             </div>
+                             <div class="type-detail">
+                                 
+                             </div>
+                         </div>
+                         <div>
+                           <div class="user-point">
+                             <div>
+                             <span>P</span>
+                             <span class="arang-point"></span> P 
+                             </div>
+                             <div>
+                             <span class="text">포인트 내역보기</span>
+                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <g clip-path="url(#clip0_1899_3127)">
+                                 <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>					
+                                 </g>
+                                 <defs>
+                                 <clipPath id="clip0_1899_3127">
+                                 <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
+                                 </clipPath>
+                                 </defs>
+                             </svg></div>
+                           </div>
+                           <div class="goToMall">
+                           <div>
+                            <div class="icon-circle">
+                             <svg width="17" height="9" viewBox="0 0 17 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path d="M15.8244 4.31108C15.6976 4.17685 12.7512 1 10.9073 1C9.99512 1 9.14147 1.36293 8.50244 2.00426C7.86342 1.36293 7 1 6.09268 1C4.24878 1 1.30244 4.17685 1.17561 4.31108L1 4.5L1.17561 4.68892C1.29756 4.82315 4.24878 8 6.09268 8C7.00488 8 7.85854 7.63707 8.49756 6.99574C9.13659 7.63707 10 8 10.9073 8C12.7512 8 15.6976 4.82315 15.8244 4.68892L16 4.5L15.8244 4.31108ZM10.9122 7.44318C10.1415 7.44318 9.40488 7.12997 8.86342 6.57315L10.4585 4.32102V5.81747C10.4585 5.97159 10.5805 6.09588 10.7317 6.09588C10.8829 6.09588 11.0049 5.97159 11.0049 5.81747V3.72443C11.1366 3.62997 11.2878 3.55043 11.4585 3.51563C11.5366 3.50071 11.6195 3.49077 11.7024 3.49574V5.2358C11.7024 5.38991 11.8244 5.5142 11.9756 5.5142C12.1268 5.5142 12.2488 5.38991 12.2488 5.2358V3.66477C12.2976 3.68963 12.3415 3.71946 12.3902 3.75426C12.6 3.90341 12.7951 4.04759 12.9659 4.19176C13.0829 4.29119 13.2537 4.27131 13.3512 4.15696C13.4488 4.03764 13.4293 3.86364 13.3171 3.7642C13.1366 3.61009 12.9268 3.451 12.7024 3.29688C12.2585 2.98864 11.8049 2.87926 11.3561 2.97372C10.6049 3.13281 10.1463 3.81889 10.0878 3.91335L8.41464 6.27983C8.38049 6.32955 8.34146 6.37429 8.30244 6.41903C7.75122 7.07528 6.96098 7.44318 6.1122 7.44318C4.86342 7.44318 2.70732 5.46946 1.77073 4.49503C2.70732 3.52557 4.86342 1.54688 6.1122 1.54688C6.88781 1.54688 7.61951 1.86009 8.16098 2.4169L6.56586 4.66903V3.17259C6.56586 3.01847 6.4439 2.89418 6.29268 2.89418C6.14146 2.89418 6.01951 3.01847 6.01951 3.17259V5.26563C5.88781 5.36009 5.73659 5.43963 5.56585 5.47443C5.48781 5.48935 5.40488 5.49929 5.32683 5.49432V3.75426C5.32683 3.60014 5.20488 3.47585 5.05366 3.47585C4.90244 3.47585 4.78049 3.60014 4.78049 3.75426V5.32528C4.73171 5.30043 4.68781 5.2706 4.63903 5.2358C4.42927 5.08665 4.23415 4.94247 4.06342 4.7983C3.94634 4.69886 3.77561 4.71875 3.67805 4.8331C3.58049 4.95242 3.6 5.12642 3.7122 5.22585C3.89756 5.37997 4.10244 5.53906 4.32683 5.69318C4.77073 6.00142 5.22439 6.1108 5.67317 6.01633C6.42439 5.85724 6.88293 5.17116 6.94146 5.0767L8.61951 2.71023C9.17073 1.96946 10.0098 1.5419 10.922 1.5419C12.1707 1.5419 14.3268 3.51562 15.2634 4.49006C14.3268 5.45952 12.1707 7.43821 10.922 7.43821L10.9122 7.44318Z" fill="white" stroke="white" stroke-width="0.4"/>
+                              </svg></div> 바이오컴
+                              </div>
+                             <div>
+                             <span class="text">제품 보기</span>
+                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <g clip-path="url(#clip0_1899_3127)">
+                                 <path d="M5.1375 8.3875L5.875 9.125L10 5L5.875 0.875001L5.1375 1.6125L8.525 5L5.1375 8.3875Z" fill="#212121" fill-opacity="0.45"/>
+                                 </g>
+                                 <defs>
+                                 <clipPath id="clip0_1899_3127">
+                                 <rect width="10" height="10" fill="white" transform="translate(10 10) rotate(-180)"/>
+                                 </clipPath>
+                                 </defs>
+                             </svg>
+                              </div>
+                           </div>
+                         </div>
+                         
+                         <div class="type-img "></div>
+                     </div>
+     
+                     <div class="banner">
+                         <div>아랑이 추천하는</div>
+                         <div class="arang-content">보조제로 피부가 좋아질 수 없는 이유</div>
+                     </div>
+                 </div>
+                 <div class="body-action-area">
+                     <div class="action-progress">
+                         <div>
+                             당신의 이너뷰티 변화
+                             <svg width="16" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M8.22 13.4216L9.4 14.6016L16 8.00156L9.4 1.40156L8.22 2.58156L13.64 8.00156L8.22 13.4216Z" fill="#212121"/>
+                             </svg>
+                         </div>
+                         <div class="percent"><span>0</span>%</div>
+                         <div class="arang-progress-bar">
+                             <div class="progress-helper">
+                                 <div class="helper helper1">몸 안쪽부터 클렌징하는 중입니다.</div>
+                                 <div class="helper helper2">내면의 에너지가 피부에 생기를 불어넣고 있어요.</div>
+                                 <div class="helper helper3">이너 뷰티로 피부가 완벽한 균형을 찾아가고 있어요.</div>
+                                 <div class="progress-gift">
+                                     <div class="gift1">
+     
+                                       <span>🎁</span>
+                                       <span>✔</span>
+                                     </div>
+                                     <div class="gift2">
+     
+                                       <span>🎁</span>
+                                       <span>✔</span>
+                                     </div>
+                                     <div class="gift3">
+      
+                                       <span>🎁</span>
+                                       <span>✔</span>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <!-- 이녀석이 진짜에요↓↓↓↓ -->
+                                 <div class="progress"></div>
+                                 <div class="percent1"><span></span></div>
+                                 <div class="percent2"><span></span></div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="mission-list">
+                         <div class="mission-area self-text hide">
+                             <div class="mission-ico">🔥</div>
+                             <div>
+                                 <div class="mission-sub">자기선언문 작성하고</div>
+                                 <div class="mission-title"><span>1000P</span> 받기</div>
+                             </div>
+                             <div class="mission-btn">받기</div>
+                         </div>
+                         <div class="mission-area self-praise hide">
+                             <div class="mission-ico">🌸</div>
+                             <div>
+                                 <div class="mission-sub">자기칭찬 작성하고</div>
+                                 <div class="mission-title"><span>1000P</span> 받기</div>
+                             </div>
+                             <div class="mission-btn">받기</div>
+                         </div>
+                         
+                         <div class="mission-area quiz">
+                             <div class="mission-ico">💎</div>
+                             <div>
+                                 <div class="mission-sub">오늘의 콘텐츠 확인하고</div>
+                                 <div class="mission-title"><span>400P</span> 받기</div>
+                             </div>
+                             <div class="mission-btn">받기</div>
+                         </div>
+                         <div class="mission-area routin">
+                             <div class="mission-ico">🧼</div>
+                             <div>
+                                 <div class="mission-sub">아랑님 루틴 따라하고</div>
+                                 <div class="mission-title"><span>100P</span> 받기</div>
+                             </div>
+                             <div class="mission-btn">받기</div>
+                         </div>
+                         <div class="mission-area meal">
+                             <div class="mission-ico">🍴</div>
+                             <div>
+                                 <div class="mission-sub">식단 기록하고</div>
+                                 <div class="mission-title">최대 <span>300P</span> 받기</div>
+                             </div>
+                             <div class="mission-progress">
+                                 <div class="donut">
+                                     <span>1/3</span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="mission-area darae">
+                             <div class="mission-ico">💊</div>
+                             <div>
+                                 <div class="mission-sub">다래케어 1일 2회 챙겨먹고</div>
+                                 <div class="mission-title">최대 <span>200P</span> 받기</div>
+                             </div>
+                             <div class="mission-progress">
+                                 <div class="donut">
+                                     <span>1/2</span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="mission-area sleep">
+                             <div class="mission-ico">🌛</div>
+                             <div>
+                                 <div class="mission-sub">수면 기록하고</div>
+                                 <div class="mission-title"><span>100P</span> 받기</div>
+                             </div>
+                             <div class="mission-btn">받기</div>
+                         </div>
+                         <div class="mission-area starve">
+                             <div class="mission-ico">⌛</div>
+                             <div>
+                                 <div class="mission-sub">공복 시간 기록하고</div>
+                                 <div class="mission-title"><span>100P</span> 받기</div>
+                             </div>
+                             <div class="mission-btn">받기</div>
+                         </div>
+                         <div class="mission-area dayily">
+                             <div class="mission-ico">🌟</div>
+                             <div>
+                                 <div class="mission-sub">1일 1미션하고</div>
+                                 <div class="mission-title"><span>100P</span> 받기</div>
+                             </div>
+                             <div class="mission-btn">받기</div>
+                         </div>
+                         
+                     </div>
+                 </div>
+             </div>
+             <!-- 여기서부턴 공통 하단 메뉴 버튼들 -->
+             <!--display fixed, 하단 고정 메뉴들...!-->
+             <div class="content-footer">
+                 <div class="footer-btn on" data-link="" id="btn-home">
+                     <span class="off">
+                         <svg width="30" height="42" viewBox="0 0 30 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M0.5 15L15 0L29.444 14.9421L29.5 15" fill="currentColor"/>
+                             <path d="M5 11V26H25V11" fill="currentColor"/>
+                             <path d="M14.25 26V17C14.25 16.5858 14.5858 16.25 15 16.25C15.4142 16.25 15.75 16.5858 15.75 17V26C15.75 26.4142 15.4142 26.75 15 26.75C14.5858 26.75 14.25 26.4142 14.25 26Z" fill="white"/>
+                             <path d="M17.9416 39.6082V41.8762H12.5056V39.6082H17.9416ZM11.6416 39.0682V38.4022H14.8096V37.8712C13.4236 37.8082 12.6406 37.4392 12.6496 36.7642C12.6406 36.0262 13.5766 35.6482 15.2236 35.6482C16.8886 35.6482 17.8156 36.0262 17.8156 36.7642C17.8156 37.4392 17.0506 37.8082 15.6556 37.8712V38.4022H18.8236V39.0682H11.6416ZM12.0016 35.3602V34.7302H14.8096V33.9922H15.6556V34.7302H18.4276V35.3602H12.0016ZM13.3336 41.2462H17.1316V40.2382H13.3336V41.2462ZM13.5316 36.7642C13.5316 37.1152 14.1346 37.3042 15.2236 37.3042C16.3396 37.3042 16.9246 37.1152 16.9336 36.7642C16.9246 36.4042 16.3396 36.2242 15.2236 36.2242C14.1346 36.2242 13.5316 36.4042 13.5316 36.7642Z" fill="currentColor"/>
+                         </svg>
+                     </span>
+                 </div>
+                 <div class="footer-btn" data-link="" id="btn-content">
+                     <span class="off">
+              <svg width="36" height="51" viewBox="0 0 36 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path d="M12.4995 41.8096V42.5039C12.4995 43.251 12.4995 44.042 12.2798 45.1143L11.4536 45.0439C11.5415 44.6177 11.5986 44.2397 11.6294 43.8838L6.94482 44.1035L6.83057 43.4004L11.6646 43.2686C11.6733 43.0005 11.6733 42.75 11.6733 42.5039V42.4863H7.03271V41.8096H12.4995ZM13.3608 45.5977V46.2656H6.19775V45.5977H9.03662V44.4902H9.88037V45.5977H13.3608ZM12.6665 48.5332V49.21H7.08545V46.8721H7.92041V48.5332H12.6665ZM20.6821 41.4668V47.3555H19.8911V41.4668H20.6821ZM19.1353 41.6162V47.1621H18.3442V44.3408H17.3687V43.6641H18.3442V41.6162H19.1353ZM20.9106 48.4893V49.166H15.4966V46.7051H16.3403V48.4893H20.9106ZM17.3159 42.0908V42.7676H15.1187V43.752H17.0083V44.4023H15.1187V45.4307C16.1558 45.4263 16.8457 45.3999 17.6499 45.2373L17.729 45.9053C16.8237 46.0811 16.0767 46.1162 14.8286 46.1162H14.3188V42.0908H17.3159ZM28.9526 47.6631V48.3486H21.7456V47.6631H28.9526ZM28.2847 42.6709V43.3477H25.7622C25.7974 44.5298 26.9531 45.5054 28.5659 45.7646L28.2319 46.4326C26.9268 46.1997 25.8457 45.5317 25.3403 44.5693C24.8262 45.5317 23.7451 46.1997 22.4487 46.4326L22.1235 45.7646C23.7188 45.5054 24.8745 44.5298 24.9185 43.3477H22.396V42.6709H24.9272V41.625H25.7534V42.6709H28.2847Z" fill="currentColor"/>
+     <path d="M2 25.3672L17.6302 15.0411L33.2604 25.3672L17.6302 36.1194L2 25.3672Z" fill="currentColor"/>
+     <path d="M1.72448 20.0822L17.3547 9.75667L17.6302 9.57506L17.9058 9.75667L33.536 20.0822L34.1547 20.491L33.5436 20.9116L17.9134 31.6639L17.6302 31.8586L17.3471 31.6639L1.71688 20.9116L1.10507 20.4917L1.72448 20.0822Z" fill="currentColor" stroke="white"/>
+     <path d="M1.72448 15.215L17.3547 4.88949L17.6302 4.70787L17.9058 4.88949L33.536 15.215L34.1547 15.6238L33.5436 16.0444L17.9134 26.7967L17.6302 26.9914L17.3471 26.7967L1.71688 16.0444L1.10507 15.6245L1.72448 15.215Z" fill="currentColor" stroke="white"/>
+     </svg>
+                     </span>
+                 </div>
+                 <div class="footer-btn" data-link="" id="btn-chat">
+                     <span class="off">
+                         <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M31.7256 0.953513H9.72559C9.19515 0.953513 7.72565 0.953502 7.72565 0.953502C7.72565 0.953502 7.72559 2.42306 7.72559 2.95348V19.9532C7.72559 20.4837 7.72559 21.9532 7.72559 21.9532C7.72559 21.9532 9.19515 21.9532 9.72559 21.9532H13.7256V26.9531L19.9656 21.9532H31.7256C32.256 21.9532 33.7256 21.9532 33.7256 21.9532C33.7256 21.9532 33.7256 20.4837 33.7256 19.9532V2.95348C33.7256 2.42306 33.7256 0.953125 33.7256 0.953125C33.7256 0.953125 32.256 0.953513 31.7256 0.953513Z" fill="currentColor"/>
+                             <path d="M16.8076 8.67494C16.8077 7.90036 17.0375 7.14323 17.4678 6.49916C17.8982 5.85499 18.5098 5.35231 19.2256 5.0558C19.9414 4.75931 20.7294 4.68201 21.4893 4.83315C22.2492 4.9843 22.9473 5.35755 23.4951 5.90541C24.043 6.45327 24.4162 7.15139 24.5674 7.91127C24.7185 8.67113 24.6412 9.45918 24.3447 10.1749C24.0482 10.8907 23.5455 11.5023 22.9014 11.9328C22.4676 12.2226 21.9818 12.4178 21.4746 12.5167V12.8986C21.4746 13.3128 21.1388 13.6486 20.7246 13.6486C20.3106 13.6483 19.9746 13.3126 19.9746 12.8986V11.8429C19.9746 11.4288 20.3106 11.0931 20.7246 11.0929C21.2027 11.0929 21.6708 10.9513 22.0684 10.6857C22.4658 10.4201 22.775 10.0423 22.958 9.60073C23.1409 9.15912 23.1889 8.67305 23.0957 8.20424C23.0024 7.73533 22.7726 7.30404 22.4346 6.96596C22.0965 6.62788 21.6652 6.3981 21.1963 6.30483C20.7275 6.21163 20.2414 6.25863 19.7998 6.44155C19.3581 6.62451 18.9805 6.93464 18.7148 7.33217C18.4493 7.72959 18.3077 8.19698 18.3076 8.67494C18.3076 9.08916 17.9718 9.42494 17.5576 9.42494C17.1434 9.42494 16.8076 9.08916 16.8076 8.67494Z" fill="white"/>
+                             <path d="M41.1009 34.0938V40.4657H40.1289V34.0938H41.1009Z" fill="currentColor"/>
+                             <path d="M34.6393 40.4657H33.6133L35.8993 34.0938H37.0153L39.3193 40.4657H38.2753L37.6993 38.7917H35.2153L34.6393 40.4657ZM35.5033 37.9817H37.4203L36.4933 35.2637H36.4393L35.5033 37.9817Z" fill="currentColor"/>
+                             <path d="M27.8858 33.7758C27.8858 35.8278 26.7788 37.2767 24.2858 38.0417L23.9438 37.3577C25.1768 37.0067 25.9958 36.4848 26.4728 35.8368L24.0518 36.0078L23.9258 35.3417L26.8148 35.2248C26.9138 34.9818 26.9768 34.7298 27.0038 34.4598H24.3218V33.7758H27.8858ZM25.1858 41.1198V38.2758H30.3338V41.1198H25.1858ZM25.9958 40.4358H29.5058V38.9418H25.9958V40.4358ZM27.8678 36.0798V35.3958H29.5058V33.3438H30.3338V37.8618H29.5058V36.0798H27.8678Z" fill="currentColor"/>
+                             <path d="M19.5674 33.8125C21.2594 33.8215 22.4834 34.6585 22.4834 35.9185C22.4834 37.0885 21.4574 37.8715 19.9814 37.9885V39.5365H23.2034V40.2385H15.9854V39.5365H19.1534V37.9885C17.7044 37.8715 16.6694 37.0885 16.6694 35.9185C16.6694 34.6585 17.9024 33.8215 19.5674 33.8125ZM17.4794 35.9185C17.4794 36.7915 18.3614 37.3405 19.5674 37.3405C20.7914 37.3405 21.6734 36.7915 21.6734 35.9185C21.6734 35.0545 20.7914 34.4965 19.5674 34.4965C18.3614 34.4965 17.4794 35.0545 17.4794 35.9185Z" fill="currentColor"/>
+                             <path d="M14.7406 33.3438V41.2278H13.8946V33.3438H14.7406ZM8.47656 36.6918C8.47656 35.0087 9.33156 33.9378 10.5106 33.9378C11.6896 33.9378 12.5536 35.0087 12.5446 36.6918C12.5536 38.3928 11.6896 39.4638 10.5106 39.4638C9.33156 39.4638 8.47656 38.3928 8.47656 36.6918ZM9.28656 36.6918C9.28656 37.9428 9.79056 38.7168 10.5106 38.7078C11.2396 38.7168 11.7436 37.9428 11.7346 36.6918C11.7436 35.4588 11.2396 34.6848 10.5106 34.6758C9.79056 34.6848 9.28656 35.4588 9.28656 36.6918Z" fill="currentColor"/>
+                             <path d="M6.56638 33.3438V36.3858H7.82638V37.1058H6.56638V41.2098H5.73838V33.3438H6.56638ZM0.734375 39.3558V33.9918H1.56238V36.0258H3.63238V33.9918H4.46038V39.3558H0.734375ZM1.56238 38.6538H3.63238V36.6738H1.56238V38.6538Z" fill="currentColor"/>
+                             <path d="M21.9534 17.5036C21.9534 18.1571 21.4237 18.6868 20.7702 18.6868C20.1167 18.6868 19.5869 18.1571 19.5869 17.5036C19.5869 16.8501 20.1167 16.3203 20.7702 16.3203C21.4237 16.3203 21.9534 16.8501 21.9534 17.5036Z" fill="white"/>
+                         </svg>
+                     </span>
+                 </div>
+                 <div class="footer-btn" data-link="" id="btn-report">
+                     <span class="off">
+                         <svg width="25" height="44" viewBox="0 0 25 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M19.0752 38.0095C19.0752 39.3235 19.9392 40.6825 21.1632 41.1955L20.6952 41.8615C19.7682 41.4475 19.0392 40.5835 18.6702 39.5395C18.3012 40.6555 17.5632 41.6185 16.6452 42.0595L16.1592 41.3935C17.3472 40.8445 18.2292 39.3595 18.2292 38.0095V37.1635H16.4292V36.4795H20.8752V37.1635H19.0752V38.0095ZM21.8652 43.5535V35.6875H22.7112V43.5535H21.8652Z" fill="currentColor"/>
+                             <path d="M12.7911 36.5335V37.0195C12.7821 37.6765 12.7821 38.6935 12.5571 40.0975L11.7291 40.0435C11.9361 38.7745 11.9541 37.8475 11.9631 37.1995H8.75915V36.5335H12.7911ZM8.32715 41.1775C8.81315 41.1775 9.36215 41.1775 9.92915 41.1595V38.7835H10.7571V41.1415C11.5941 41.1055 12.4491 41.0515 13.2411 40.9615L13.2951 41.5735C11.6481 41.8435 9.82115 41.8795 8.41715 41.8615L8.32715 41.1775ZM13.6911 43.5535V35.6875H14.5371V38.9455H15.7431V39.6475H14.5371V43.5535H13.6911Z" fill="currentColor"/>
+                             <path d="M7.19009 35.6875V39.7015H6.36209V38.9455H4.34609V38.2975H6.36209V37.4335H4.45409C3.96809 38.6575 2.78009 39.4675 1.03409 39.8635L0.746094 39.1795C2.62709 38.7655 3.65309 37.8925 3.78809 36.7315H1.16009V36.0475H4.70609C4.70609 36.3085 4.68809 36.5515 4.64309 36.7855H6.36209V35.6875H7.19009ZM2.04209 40.6915V40.0255H7.19009V42.0235H2.88809V42.8155H7.42409V43.4815H2.06009V41.3935H6.34409V40.6915H2.04209Z" fill="currentColor"/>
+                             <path d="M2 28.2266L2 3.22656L21 3.22656L21 28.2266L2 28.2266Z" fill="currentColor"/>
+                             <path d="M17 21.9766V23.4766H5.5V21.9766H17ZM17 17.4766V18.9766H5.5V17.4766H17ZM17 12.4766V13.9766H5.5V12.4766H17ZM16.75 2.22656V7.47656H22.5V8.97656H15.25V2.22656H16.75Z" fill="white"/>
+                             <path d="M18.8281 0.226562L24.485 5.88342L21.6566 8.71184L15.9997 3.05499L18.8281 0.226562Z" fill="white"/>
+                         </svg>
+                     </span>
+                 </div>
+             </div>
+         </div>
+<script>
+                const observer = new MutationObserver((mutations) => {
+        const target = document.getElementById('ch-plugin-entry');
+        if (target) {
+            target.classList.add('hide');
+            console.log('숨김 처리 완료');
+            observer.disconnect(); // 한 번만 실행되면 감시 중단
+        }
+    });
+const content_banner_mapping = (txt)=>{
+    const _default_txt = '10살 어려지는 식단 비법';
+    if(!txt) return _default_txt;
+    console.log('content_banner_mapping' ,txt)
+    const _text = {
+        "1":"10살 어려지는 식단 비법",
+        "2":"트러블 진정 솔루션",
+        "3":"염증에서 벗어나는 방법",
+        "4":"변비 해소와 피부 개선법",
+        "5":"탄력·노화·홍조의 공통 원인",
+        "6":"샐러드가 피부를 망치는 이유",
+        "7":"클렌징보다 중요한 식사 습관",
+        "8":"진짜 장·피부 개선템",
+    }
+    return _text[txt] || _default_txt;
+}
+
+    /*** 로직 : 
+    ** 1. 페이지에서 사용자의 이메일을 수집하기
+    ** 2. 그걸 그대로~ api에 실어보냅니당
+    ** 3. 받아온 데이터로 화면에 뿌립니당
+    ** 4. 개발 화이팅! ***/
+    // 오늘 날짜를 "5월 7일 (수)" 형식으로 출력
+    function formatDateWithDay(date) {
+        const days = ['일', '월', '화', '수', '목', '금', '토'];
+        const month = date.getMonth() + 1; // 0-indexed
+        const day = date.getDate();
+        const dayOfWeek = days[date.getDay()];
+        return `${month}월 ${day}일 (${dayOfWeek})`;
+    }
+
+    // 시작일로부터 몇 일째인지 계산 (시작일 포함하면 +1)
+    function getDayCountFromStart(startDateStr, targetDate) {
+        const startDate = new Date(startDateStr.replace(/-/g, '/'));
+        // 시간차 계산 (밀리초)
+        const diffInMs = targetDate - startDate;
+        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+        return diffInDays + 1; // 시작일 포함하려면 +1
+    }
+
+    // API 호출 함수들
+    async function fetchMissionData(email, date) {
+        try {
+        console.log('미션 데이터 조회 시작:', email, date);
+        const response = await fetch(`https://biocom.ai.kr/api/v1/mission/progress?email=${MEMBER_UID}&date=${date}`);
+        console.log('미션 API 응답 상태:', response.status);
+        const data = await response.json();
+        console.log('미션 API 응답 데이터:', data);
+        return data.success ? data.data : null;
+        } catch (error) {
+        console.error('미션 데이터 조회 실패:', error);
+        return null;
+        }
+    }
+
+    async function fetchUserInfo(email) {
+        try {
+        console.log('사용자 정보 조회 시작:', email);
+        const response = await fetch(`https://biocom.ai.kr/api/v1/users/me?email=${MEMBER_UID}`);
+        console.log('사용자 정보 API 응답 상태:', response.status);
+        const data = await response.json();
+        console.log('사용자 정보 API 응답 데이터:', data);
+        return data;
+        } catch (error) {
+        console.error('사용자 정보 조회 실패:', error);
+        return null;
+        }
+    }
+
+    async function fetchSurveyResults(email) {
+        try {
+        console.log('설문 결과 조회 시작:', email);
+        const response = await fetch(`https://biocom.ai.kr/api/v1/survey/results/me?email=${MEMBER_UID}&type=before`);
+        console.log('설문 결과 API 응답 상태:', response.status);
+        const data = await response.json();
+        console.log('설문 결과 API 응답 데이터:', data);
+        return data.success ? data.data : null;
+        } catch (error) {
+        console.error('설문 결과 조회 실패:', error);
+        return null;
+        }
+    }
+
+    const typeMapping = {
+        '배 빵빵 펭귄' : {'id': 'peng', 'text' : '장이 편안한 날이 없어<br>소화와 흡수에 어려움을 겪는 상태일 수 있죠.'},
+        '화끈한 불여우' : {'id': 'fox', 'text' : '몸 안의 작은 불씨가<br>쉽게 번져나가는 상태일 수 있죠.'},
+        '예민한 고슴도치' : {'id': 'hog', 'text' : "작은 자극에도 면역 시스템이<br>'가시'를 곤두세우는 상태일 수 있죠."},
+        '동면 중인 북금곰' : {'id': 'bear', 'text' : '에너지 효율이 떨어져<br>몸에 차곡차곡 쌓아두는 상태일 수 있죠.'}
+    }
+
+    const setUserAction = (missionData, challengeDay) => {
+        console.log('setUserAction 호출됨, missionData:', missionData, 'challengeDay:', challengeDay);
+        
+        const quiz = document.querySelector('.quiz');
+        const routin = document.querySelector('.routin');
+        const starve = document.querySelector('.starve');
+        const sleep = document.querySelector('.sleep');
+        const dayily = document.querySelector('.dayily');
+        const meal = document.querySelector('.meal');
+        const darae = document.querySelector('.darae');
+        const selfText = document.querySelector('.self-text'); // DECLARATION
+        const selfPraise = document.querySelector('.self-praise'); // SELF_PRAISE
+
+
+        // 미션 데이터를 기반으로 UI 업데이트
+        const missionMap = {};
+        
+        // missions 배열이 존재하는지 확인
+        if (missionData && missionData.missions && Array.isArray(missionData.missions)) {
+            missionData.missions.forEach(mission => {
+                missionMap[mission.mission.code] = mission;
+            });
+            console.log('missionMap 생성됨:', missionMap);
+        } else {
+            console.error('missions 배열이 없거나 올바르지 않음:', missionData);
+            return;
+        }
+
+                
+        // challengeDay 조건에 따른 요소 숨김 처리
+        if (challengeDay <= 7 ) {
+            selfText.classList.remove('hide');
+        }
+        
+        if (challengeDay >= 10 && challengeDay <= 17) {
+            selfPraise.classList.remove('hide');
+        }
+
+        // 각 미션별 완료 상태 확인
+        if (missionMap['QUIZ']?.completed && missionMap['DAILY_CONTENT']?.completed) {
+            quiz.classList.add('mission-done');
+            quiz.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap["ROUTINE"]?.completed) {
+            routin.classList.add('mission-done');
+            routin.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['FASTING']?.completed) {
+            starve.classList.add('mission-done');
+            starve.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['SLEEP']?.completed) {
+            sleep.classList.add('mission-done');
+            sleep.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['DAILY_MISSION']?.completed) {
+            dayily.classList.add('mission-done');
+            dayily.querySelector('.mission-btn').textContent = '완료';
+        }
+        if (missionMap['DECLARATION']?.completed) {
+            selfText.classList.add('mission-done');
+            selfText.querySelector('.mission-btn').textContent = '완료';
+
+            /* const today = new Date();
+            const missionDt = new Date(missionMap['DECLARATION']?.completedAt);
+            console.log(missionDt.getTime() < today.getTime(), missionDt.getTime() , today.getTime())
+            if (missionDt.getTime() < today.getTime()) {
+                selfText.classList.add('hide')
+                console.log('ddd')
+            }*/
+            // 오늘 날짜에서 시간 제거
+            const today = new Date();
+            const todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+            // mission 날짜 파싱 (Safari 대응)
+            let missionRaw = missionMap['DECLARATION']?.completedAt;
+            let missionDt = null;
+
+            if (missionRaw) {
+                // Safari 호환: '-' → '/', 시간 제거
+                const dateStr = (missionRaw.split('T')[0] || missionRaw.split(' ')[0] || '').replace(/-/g, '/');
+                const parsed = new Date(dateStr);
+
+                if (!isNaN(parsed)) {
+                    missionDt = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
+                }
+            }
+
+            if (missionDt && missionDt.getTime() < todayDateOnly.getTime()) {
+                selfText.classList.add('hide');
+                console.log('조건 만족 - mission 날짜는 오늘 이전입니다.');
+            }
+        }
+        if (missionMap['SELF_PRAISE']?.completed) {
+            selfPraise.classList.add('mission-done');
+            selfPraise.querySelector('.mission-btn').textContent = '완료';
+
+            /* const today = new Date();
+            const missionDt = new Date(missionMap['SELF_PRAISE']?.completedAt);
+            if (missionDt.getTime() < today.getTime()) {
+                selfPraise.classList.add('hide')
+            }*/
+            // 오늘 날짜에서 시간 제거
+            const today = new Date();
+            const todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+            // mission 날짜 파싱 (Safari 대응)
+            let missionRaw = missionMap['SELF_PRAISE']?.completedAt;
+            let missionDt = null;
+
+            if (missionRaw) {
+                // Safari 호환: '-' → '/', 시간 제거
+                const dateStr = (missionRaw.split('T')[0] || missionRaw.split(' ')[0] || '').replace(/-/g, '/');
+                const parsed = new Date(dateStr);
+
+                if (!isNaN(parsed)) {
+                    missionDt = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
+                }
+            }
+
+            if (missionDt && missionDt.getTime() < todayDateOnly.getTime()) {
+                selfText.classList.add('hide');
+                console.log('조건 만족 - mission 날짜는 오늘 이전입니다.');
+            }
+        }
+        
+        // 식단 기록 (DIET) - currentCount/maxCount 사용
+        const dietMission = missionMap['DIET'];
+        if (dietMission) {
+            const mealCnt = dietMission.currentCount || 0;
+            const maxCnt = 3; // 최대 5회까지 기록 가능
+            
+            if (mealCnt >= maxCnt) {
+                meal.classList.add('mission-done');
+                meal.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% 100%,  #d3d3d3 0%)`);
+                meal.querySelector('.donut span').textContent = mealCnt + '/' + maxCnt;
+            } else {
+                // 3회 이상이면 도넛 차트 100%, 3회 미만이면 실제 비율
+                const donutPercentage = mealCnt >= 3 ? 100 : (mealCnt / 3) * 100;
+                meal.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% ${donutPercentage}%,  #d3d3d3 0%)`);
+                meal.querySelector('.donut span').textContent = mealCnt + '/' + maxCnt;
+            }
+        }
+
+        // 영양제 기록 (SUPPLEMENT) - currentCount/maxCount 사용
+        const supplementMission = missionMap['SUPPLEMENT'];
+        if (supplementMission) {
+            const implementCnt = supplementMission.currentCount || 0;
+            const maxCnt = supplementMission.maxCount || 2;
+            
+            if (implementCnt >= maxCnt) {
+                darae.classList.add('mission-done');
+            } 
+                darae.querySelector('.donut').setAttribute('style', `background : conic-gradient( #32A59C 0% ${(implementCnt / maxCnt) * 100}%,  #d3d3d3 0%)`);
+                darae.querySelector('.donut span').textContent = implementCnt + '/' + maxCnt;
+            
+        }
+
+        quiz.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-daily-content';
+        })
+        routin.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-routine';
+        })
+        starve.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-starve';
+        })
+        sleep.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-sleep';
+        })
+        dayily.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-mission';
+        })
+        meal.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-meal';
+        })
+        darae.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-darae';
+        })
+        selfText.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-self-text';
+        })
+        selfPraise.addEventListener('click', (e)=>{
+            if(e.target.closest('.mission-done')) return;
+            window.location.href = 'https://biocom.kr/arang-self-prai';
+        })
+    }
+
+                        // 자정 체크 함수
+    function shouldRefreshData() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        
+        // 자정(00:00~00:05) 체크
+        if (currentHour === 0 && currentMinute <= 5) {
+            console.log('자정 시간대 - 데이터 새로고침 필요');
+            return true;
+        }
+        
+        return false;
+    }
+
+    const load = async () =>{
+        const hideElement = document.querySelector('div#s202501175ad3b318a8aab');
+        if (hideElement) {
+            hideElement.classList.add('hide');
+        }
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+                            // 사용자 이메일 확인
+        const userid = MEMBER_UID || '';
+        if(!userid) {
+            window.open('https://biocom.kr/', '_self');
+            return;
+        }
+
+        // 페이지 로드 시에는 자정 체크하지 않음 (백엔드에서 이미 최신 데이터를 가져옴)
+
+        try {
+            // 오늘 날짜 형식 (YYYY-MM-DD)
+            const today = new Date().toISOString().split('T')[0];
+            console.log('사용자 ID:', userid);
+            console.log('오늘 날짜:', today);
+            
+            // API 호출
+            const [missionData, userInfo, surveyResults] = await Promise.all([
+                fetchMissionData(userid, today),
+                fetchUserInfo(userid),
+                fetchSurveyResults(userid)
+            ]);
+
+            console.log('API 호출 결과:', {
+                missionData: !!missionData,
+                userInfo: !!userInfo,
+                surveyResults: !!surveyResults
+            });
+
+            // 실제 데이터 구조 확인
+            console.log('missionData 구조:', missionData);
+            console.log('userInfo 구조:', userInfo);
+            console.log('surveyResults 구조:', surveyResults);
+
+            // 각 API 응답 검증
+            if (!missionData) {
+                console.error('미션 데이터 조회 실패');
+            }
+            if (!userInfo) {
+                console.error('사용자 정보 조회 실패');
+            }
+            // 설문 결과는 배열이거나 객체일 수 있으므로 더 유연하게 검증
+            if (!surveyResults) {
+                console.error('설문 결과 조회 실패 - 데이터 없음');
+            } else if (Array.isArray(surveyResults) && surveyResults.length === 0) {
+                console.error('설문 결과 조회 실패 - 빈 배열');
+            }
+
+            // 최소한의 데이터가 있는지 확인
+            if (!userInfo && !surveyResults) {
+                console.error('필수 데이터가 없어 화면을 업데이트할 수 없습니다.');
+                return;
+            }
+
+            // 데이터 처리 (null 체크 추가)
+            const userType = surveyResults?.animal || (surveyResults && surveyResults.length > 0 ? surveyResults[0].animal : '배 빵빵 펭귄'); // 기본값 설정
+            const userPoint =  userInfo?.data?.points || 0;
+            const userPercent = missionData?.summary?.overallCompletionRate || 0;
+            const challengeDay = userInfo?.data?.challengeDay || 1;
+
+            console.log('처리된 데이터:', {
+                userType,
+                userPoint,
+                userPercent,
+                challengeDay
+            });
+            ////////////////////////////////////////////
+            document.querySelector('.arang-content').textContent = content_banner_mapping(challengeDay);
+            document.querySelector('.banner').addEventListener('click', ()=>{
+                window.location.href = `https://biocom.kr/arang-content-detail?date=${challengeDay}`;
+            })
+            // 챌린지 시작 전 일 때!!
+            function comming_soon_page(){
+                document.querySelector('.content-footer').classList.add('hide')
+                const commingEl =  document.createElement('div');
+                commingEl.setAttribute('style','height:95vh; background-color:#CDF0EB; display:flex; flex-direction: column; align-items: center; padding-top: 200px; gap: 15px;')
+                const commingClass = typeMapping[userType].id;
+                commingEl.innerHTML = `<div style='background-color:#32A59C; width:161px;height:161px; border-radius: 100% '>
+            <a href='https://biocom.kr/arang-type-bf'><div class='${commingClass}' style='width:170px;height:170px; background-position: center; background-size: contain; cursor:pointer;'></div></a>
+                </div>
+            <div style='color:#32A59C; font-size:25px; font-weight:700'>COMMING SOON</div>
+            <div style='color:#21212173; font-size:13px; font-weight:500; text-align: center;'>이너뷰티 챌린지 <span style='color:#000; font-weight:bold;'>준비중</span> 입니다
+            <br>6월 30일에 다시 만나요!</div>`
+                document.querySelector('.comming-soon').classList.remove('hide');
+                document.querySelector('.comming-soon').appendChild(commingEl);
+                document.querySelector('.content-header').classList.add('hide')
+                document.querySelector('.content-body').classList.add('hide')
+            }
+    
+                // 챌린지 종료 후
+            function comming_end_page(){
+                const commingEl =  document.createElement('div');
+                commingEl.setAttribute('style','height:45vh; padding-top: 50px;')
+                commingEl.innerHTML = `
+            <div style='color:#21212173; font-size:14px; font-weight:500; text-align: center;'>이너 뷰티 챌린지가 끝났습니다.</div>
+            <div style='color:#191919; font-size:18px; font-weight:600; text-align: center;'>설문을 진행하고 결과를 확인하세요!</div>
+    <a href='https://biocom.kr/arang-af-qeustion-intro'><div style='width:300px; height:45px; color:#fff; font-size:14px; background-color:#32A59C; border-radius: 20px;margin: 10px auto; display: flex; align-items: center; justify-content: center;'>설문 하러가기</div></a>
+`
+                document.querySelector('.comming-soon').classList.remove('hide');
+                document.querySelector('.body-action-area').appendChild(commingEl);
+                document.querySelector('.action-progress').classList.add('hide');
+                document.querySelector('.mission-list').classList.add('hide');
+                document.querySelector('.day').classList.add('hide');
+            }
+    
+            if(challengeDay < 1){
+                // 오픈 시 주석 해제
+                document.querySelector('.comming-soon').classList.add('hide')
+            }else if(challengeDay > 21){
+                comming_end_page();
+            }
+
+            // userType 디버깅
+            console.log('userType 값:', userType);
+            console.log('typeMapping에 존재하는지:', userType in typeMapping);
+            console.log('typeMapping 키들:', Object.keys(typeMapping));
+
+            // UI 업데이트
+            document.querySelector('.type-title span').textContent = userType;
+            document.querySelector('.type-detail').innerHTML = typeMapping[userType]?.text || '';
+            
+            // 클래스 추가 시 빈 문자열 방지
+            const typeClass = typeMapping[userType]?.id;
+            if (typeClass) {
+                document.querySelector('.type-img').classList.add(typeClass);
+            }
+            
+            document.querySelector('.arang-point').textContent = userPoint;
+            document.querySelector('.percent span').textContent = userPercent;
+            document.querySelector('.progress').setAttribute('style',`width: ${userPercent}%`);
+            
+            const setPercentage = userPercent >= 90 ? 'level-3' : userPercent >= 60 ? 'level-2' : userPercent >= 30 ? 'level-1' : '';
+            if (userPercent > 90){
+                    document.querySelector('.helper-3').textContent = '몸 속부터 피부까지, 완벽한 아름다움이에요.';
+            }
+            if (setPercentage) {
+                document.querySelector('.arang-progress-bar').classList.add(setPercentage);
+            }
+            
+            // 미션 데이터가 있는 경우에만 setUserAction 호출
+            if (missionData) {
+                setUserAction(missionData, challengeDay);
+            }
+            
+            document.querySelector('.today').textContent = formatDateWithDay(new Date());
+            document.querySelector('.day span').textContent = challengeDay;
+            
+            // 현재 표시된 challengeDay를 localStorage에 저장 (자정 체크용)
+            safeSetLocalStorage('currentChallengeDay', challengeDay.toString());
+
+        } catch (error) {
+            console.error('데이터 로드 실패:', error);
+        }
+
+        document.querySelector('.user-point').addEventListener('click', ()=>{
+            window.location.href = 'https://biocom.kr/arang-all-missions';
+        })
+        document.querySelector('.goToMall').addEventListener('click', ()=>{
+            window.open('https://biocom.kr/supplements')
+        })
+        
+        document.querySelector('.user-type').addEventListener('click', ()=>{
+            window.location.href = 'https://biocom.kr/arang-type-detail';
+        })
+        document.querySelector('.action-progress').addEventListener('click', ()=>{
+            window.location.href = 'https://biocom.kr/arang-all-missions';
+        })
+        
+        
+        // Footer 버튼 이벤트 리스너 추가 (Safari 호환)
+        const btnHome = document.getElementById('btn-home');
+        if (btnHome) {
+            btnHome.addEventListener('click', () => {
+            });
+        }
+        
+        const btnContent = document.getElementById('btn-content');
+        if (btnContent) {
+            btnContent.addEventListener('click', () => {
+                window.location.href = 'https://biocom.kr/1151';
+            });
+        }
+        
+        const btnChat = document.getElementById('btn-chat');
+        if (btnChat) {
+            btnChat.addEventListener('click', () => {
+                window.location.href = 'https://biocom.kr/arang-chat';
+            });
+        }
+
+        const btnReport = document.getElementById('btn-report');
+        if (btnReport) {
+            btnReport.addEventListener('click', () => {
+                window.location.href = 'https://biocom.kr/arang-igg';
+            });
+        }
+
+setTimeout(()=>{
+    const chPluginEntry = document.getElementById('ch-plugin-entry');
+    if (chPluginEntry) {
+        chPluginEntry.classList.add('hide');
+    }
+}, 1500)
+    }
+
+    
+    window.addEventListener('load', load)
+    
+    // Safari 호환 localStorage 함수
+    function safeSetLocalStorage(key, value) {
+        try {
+            localStorage.setItem(key, value);
+            return true;
+        } catch (error) {
+            console.warn('localStorage 접근 실패:', error);
+            return false;
+        }
+    }
+    
+    function safeGetLocalStorage(key) {
+        try {
+            return localStorage.getItem(key);
+        } catch (error) {
+            console.warn('localStorage 접근 실패:', error);
+            return null;
+        }
+    }
+    
+    // 자정 감지 타이머 설정 (Safari 호환)
+    function setupMidnightTimer() {
+        const now = new Date();
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0); // 자정으로 설정
+        
+        const timeUntilMidnight = tomorrow.getTime() - now.getTime();
+        
+        console.log(`자정까지 ${Math.floor(timeUntilMidnight / 1000 / 60)}분 남음`);
+        
+        // Safari에서 setTimeout 정밀도 문제를 대비한 백업 타이머
+        const mainTimer = setTimeout(() => {
+            console.log('자정 감지 - 페이지 새로고침');
+            window.location.reload();
+        }, timeUntilMidnight);
+        
+        // 1분마다 체크하는 백업 타이머 (Safari 대응)
+        const backupTimer = setInterval(() => {
+            const currentTime = new Date();
+            if (currentTime.getHours() === 0 && currentTime.getMinutes() === 0) {
+                console.log('백업 타이머로 자정 감지 - 페이지 새로고침');
+                clearInterval(backupTimer);
+                clearTimeout(mainTimer);
+                window.location.reload();
+            }
+        }, 3600000); // 1시간마다 체크
+        
+        // 페이지 언로드 시 타이머 정리
+        window.addEventListener('beforeunload', () => {
+            clearTimeout(mainTimer);
+            clearInterval(backupTimer);
+        });
+    }
+    
+    // 페이지 로드 완료 후 자정 타이머 설정 (Safari 호환)
+    window.addEventListener('load', () => {
+        // Safari에서 DOM이 완전히 로드된 후 타이머 설정
+        if (document.readyState === 'complete') {
+            setTimeout(setupMidnightTimer, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(setupMidnightTimer, 1000);
+            });
+        }
+    });
+    
+    // 페이지 포커스 시 자정 체크 (백업용)
+    window.addEventListener('focus', () => {
+        if (shouldRefreshData()) {
+            console.log('페이지 포커스 시 자정 감지 - 데이터 새로고침 실행');
+            window.location.reload();
+        }
+    });
+</script>
+</body>
+</html>

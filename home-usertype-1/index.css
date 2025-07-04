@@ -126,9 +126,10 @@ body {
     position: relative;
     width: 140px;
     height: 140px;
-    background-color: #f5f5f5;
     border-radius: 50%;
     z-index: 1;
+    width: 200px;
+    height: 200px;
 }
 
 /* 타입별 특징 */
@@ -240,3 +241,8 @@ body {
         width: 100%;
     }
 }
+
+.peng{background-image: url(https://cdn.imweb.me/thumbnail/20250604/76ecf3d4e38ea.png); background-size: cover; background-position: center;}
+.bear{background-image: url(https://cdn.imweb.me/thumbnail/20250604/1347aaf067831.png); background-size: cover; background-position: center;}
+.fox{background-image: url(https://cdn.imweb.me/thumbnail/20250604/d73ddd9f79a38.png); background-size: cover; background-position: center;}
+.hog{background-image: url(https://cdn.imweb.me/thumbnail/20250604/522d8dfce6330.png); background-size: cover; background-position: center;}

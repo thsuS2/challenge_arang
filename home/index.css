@@ -7,7 +7,7 @@ body, .wrap{background-color: #cdf0eb; padding: 0; margin: 0; }
     .wrap{width: 768px; margin: 0 auto;}
 }
 /* 헤더 */
-.content-header{ position: fixed; top: 0; background-color: #fff; display: grid; grid-template-columns: repeat(2, 1fr); align-items: center; justify-content: space-between; height: 50px; width:100%; }
+.content-header{ position: fixed; top: 0; background-color: #fff; display: grid; grid-template-columns: repeat(2, 1fr); align-items: center; justify-content: space-between; height: 50px; width:100%; z-index: 99999;}
 .content-header .date {display: grid; grid-template-columns: repeat(2, auto);  align-items: end;  width: fit-content; margin-left: 25px; color: #212121;}
 .content-header .date .day{font-size: 17px; font-weight: bold;}
 .content-header .date .today{font-size: 12px; padding-left: 5px;}
@@ -24,7 +24,7 @@ body, .wrap{background-color: #cdf0eb; padding: 0; margin: 0; }
 /* 사용자 포인트 */
 .body-user-area .userinfo .user-point{margin-left: 15px; width: 210px; height: 35px; background-color: #FFFFFF9a; border-radius: 20px; padding: 0 10px; display:flex; align-items: center; gap: 5px; cursor: pointer;}
 .body-user-area  .userinfo .user-point span:nth-child(1){font-size: 12px; color: #fff; background-color: #ED8F34; border-radius: 100%; width: 16px; height: 16px; display: flex; justify-content: center; align-items: center;}
-.body-user-area .userinfo .user-point span:nth-child(3){font-size: 12px; color: #21212173; padding-left: 20px;}
+.body-user-area .userinfo .user-point span:nth-child(3){font-size: 12px; color: #21212173;}
 .body-user-area .userinfo .type-img{height: -webkit-fill-available; grid-column: 2/3; grid-row: 1/3; background-position: center; background-size: contain; background-repeat: no-repeat;}
 /* 배너 */
 .body-user-area .banner{background-color: #fff; font-size: 16px; padding: 25px 22px; margin: 10px; border-radius: 12px; background-size: contain; background-repeat: no-repeat; background-position: 100%; font-weight: 600; cursor: pointer;}
@@ -103,7 +103,7 @@ body, .wrap{background-color: #cdf0eb; padding: 0; margin: 0; }
 background: conic-gradient( #32A59C 0% 50%, /* 진행 상태 (75%) */ #d3d3d3 0% /* 나머지 회색 */ );}
 .content-body .body-action-area .mission-list .mission-area .mission-progress .donut::before { content: ""; position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; background: white; border-radius: 50%;}
 .content-body .body-action-area .mission-list .mission-area .mission-progress .donut span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: 500; font-size: 13px; color: #8B8B8B}
-
+.content-body .body-action-area .mission-list .mission-area.mission-done .mission-btn{background-color: #d3d3d3;}
 
 /* 푸터 - 하단 공통 메뉴바 */
 .content-footer{position: fixed; bottom: 0; background-color: #fff; display: grid; grid-template-columns: repeat(4, 1fr); width:100%; align-items: center; justify-items: center; padding-right: 15px;}

@@ -31,7 +31,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    margin-top: 150px;
+    margin-top: 120px;
 }
 
 /* 메인 타이틀 */
@@ -51,40 +51,17 @@ body {
 
 /* 이미지 영역 */
 .image-section {
-    width: 286px;
-    height: 198px;
+    width: 100%;
+    height: 300px;
     margin-bottom: 80px;
 }
 
 .before-after-image {
     width: 100%;
     height: 100%;
-    background: #eee;
     border-radius: 15px;
     position: relative;
     display: flex;
-}
-
-.before-after-image::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 142px;
-    height: 100%;
-    background: #eee;
-    border-radius: 15px 0 0 15px;
-}
-
-.before-after-image::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 142px;
-    height: 100%;
-    background: #eee;
-    border-radius: 0 15px 15px 0;
 }
 
 /* 페이지 인디케이터 */
@@ -132,3 +109,6 @@ body {
 .next-button button:hover {
     background: #2a8b82;
 }
+.a1 .before-after-image{background-image: url(https://cdn.imweb.me/thumbnail/20250604/1347aaf067831.png)}
+.a2 .before-after-image{background-image: url(https://cdn.imweb.me/thumbnail/20250604/d73ddd9f79a38.png)}
+.a3 .before-after-image{background-image: url(https://cdn.imweb.me/thumbnail/20250604/522d8dfce6330.png)}

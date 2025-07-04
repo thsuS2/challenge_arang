@@ -12,6 +12,10 @@ const modalConfirm = document.querySelector('.modal-confirm');
 const hourPicker = document.querySelector('.hour-picker');
 const minutePicker = document.querySelector('.minute-picker');
 
+// API 관련 전역 변수
+const API_BASE_URL = 'https://biocom.ai.kr/api/v1';
+let uploadedFileId = null; // 업로드된 이미지의 fileId
+
 // 시간 선택 관련 변수
 let selectedHour = '00';
 let selectedMinute = '00';
@@ -146,80 +150,244 @@ function checkFormComplete() {
     submitBtn.style.backgroundColor = allFilled ? '#32a59c' : '#d9d9d9';
 }
 
-// 이벤트 리스너
-timeField.addEventListener('click', openTimePicker);
-
-uploadBox.addEventListener('click', () => {
-    fileInput.click();
-});
-
-fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
-        uploadedFile = file;
-        displayImage(file);
-        uploadBox.style.borderColor = '#32a59c';
-        uploadBox.style.borderStyle = 'solid';
-        checkFormComplete();
+const observer = new MutationObserver((mutations) => {
+    const target = document.getElementById('ch-plugin-entry');
+    if (target) {
+        target.classList.add('hide');
+        console.log('숨김 처리 완료');
+        observer.disconnect(); // 한 번만 실행되면 감시 중단
     }
 });
 
-// 드래그 앤 드롭
-uploadBox.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    uploadBox.style.backgroundColor = '#f0f0f0';
-});
 
-uploadBox.addEventListener('dragleave', () => {
-    uploadBox.style.backgroundColor = '#fafafb';
-});
+const load = async ()=>{
+    document.querySelector('div#s202501175ad3b318a8aab')?.classList.add('hide');
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 
-uploadBox.addEventListener('drop', (e) => {
-    e.preventDefault();
-    uploadBox.style.backgroundColor = '#fafafb';
+    // 이벤트 리스너
+    timeField.addEventListener('click', openTimePicker);
     
-    const files = e.dataTransfer.files;
-    if (files.length > 0 && files[0].type.startsWith('image/')) {
-        uploadedFile = files[0];
-        fileInput.files = files;
-        displayImage(files[0]);
-        uploadBox.style.borderColor = '#32a59c';
-        uploadBox.style.borderStyle = 'solid';
-        checkFormComplete();
-    }
-});
-
-modalClose.addEventListener('click', closeTimePicker);
-modalConfirm.addEventListener('click', confirmTime);
-
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeTimePicker();
-    }
-});
-
-hourPicker.addEventListener('scroll', () => {
-    handlePickerScroll(hourPicker, 'hour');
-});
-
-minutePicker.addEventListener('scroll', () => {
-    handlePickerScroll(minutePicker, 'minute');
-});
-
-submitBtn.addEventListener('click', () => {
-    if (!submitBtn.disabled) {
-        const time = timeField.querySelector('input').value;
-        console.log('영양제 복용 시간:', time);
-        console.log('영양제 사진:', uploadedFile.name);
+    uploadBox.addEventListener('click', () => {
+        fileInput.click();
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            uploadedFile = file;
+            displayImage(file);
+            uploadBox.style.borderColor = '#32a59c';
+            uploadBox.style.borderStyle = 'solid';
+            checkFormComplete();
+        }
+    });
+    
+    // 드래그 앤 드롭
+    uploadBox.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadBox.style.backgroundColor = '#f0f0f0';
+    });
+    
+    uploadBox.addEventListener('dragleave', () => {
+        uploadBox.style.backgroundColor = '#fafafb';
+    });
+    
+    uploadBox.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadBox.style.backgroundColor = '#fafafb';
         
-        // 기록 완료 모달 표시 (별도 구현 필요)
-        alert('영양제 복용이 기록되었습니다.');
-        
-        // 홈으로 이동
-        window.open('/home', '_self');
-    }
-});
+        const files = e.dataTransfer.files;
+        if (files.length > 0 && files[0].type.startsWith('image/')) {
+            uploadedFile = files[0];
+            fileInput.files = files;
+            displayImage(files[0]);
+            uploadBox.style.borderColor = '#32a59c';
+            uploadBox.style.borderStyle = 'solid';
+            checkFormComplete();
+        }
+    });
+    
+    modalClose.addEventListener('click', closeTimePicker);
+    modalConfirm.addEventListener('click', confirmTime);
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeTimePicker();
+        }
+    });
+    
+    hourPicker.addEventListener('scroll', () => {
+        handlePickerScroll(hourPicker, 'hour');
+    });
+    
+    minutePicker.addEventListener('scroll', () => {
+        handlePickerScroll(minutePicker, 'minute');
+    });
+    
+    submitBtn.addEventListener('click', async () => {
+        if (!submitBtn.disabled) {
+            const time = timeField.querySelector('input').value;
+            console.log('영양제 복용 시간:', time);
+            console.log('영양제 사진:', uploadedFile?.name);
+            
+            // 버튼 비활성화
+            submitBtn.disabled = true;
+            submitBtn.textContent = '저장 중...';
+            
+            try {
+                // 1. 이미지가 있는 경우 먼저 업로드
+                if (uploadedFile) {
+                    console.log('이미지 리사이징 시작...');
+                    const resizedFile = await compressImage(uploadedFile);
+                    console.log('이미지 리사이징 완료');
+                    
+                    console.log('이미지 업로드 시작...');
+                    uploadedFileId = await uploadImage(resizedFile);
+                    console.log('이미지 업로드 성공, fileId:', uploadedFileId);
+                }
+                
+                // 2. 영양제 기록 저장
+                console.log('영양제 기록 저장 시작...');
+                const result = await saveSupplementRecord(time);
+                console.log('영양제 기록 저장 성공:', result);
+                
+                // 3. 포인트에 따른 리다이렉트
+                if (result.data.points > 0) {
+                    window.location.href = `https://biocom.kr/arang-reward-modal?type=supplement&point=${result.data.points}`;
+                } else {
+                    window.location.href = 'https://biocom.kr/arang-reward-modal?type=supplement';
+                }
+                
+            } catch (error) {
+                console.error('영양제 기록 저장 중 오류:', error);
+                alert('영양제 기록 저장에 실패했습니다. 다시 시도해주세요.');
+                
+                // 버튼 상태 복원
+                submitBtn.disabled = false;
+                submitBtn.textContent = '확인';
+            }
+        }
+    });
+    
+    // 초기화
+    createTimeOptions();
+    checkFormComplete();
+}
+window.addEventListener('load', load);
 
-// 초기화
-createTimeOptions();
-checkFormComplete();
+// 이미지 압축 함수
+function compressImage(file, maxSizeMB = 1) {
+    return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        
+        img.onload = () => {
+            // 원본 비율 유지하면서 크기 조정
+            let { width, height } = img;
+            const maxSize = 1024; // 최대 크기
+            
+            if (width > height) {
+                if (width > maxSize) {
+                    height = (height * maxSize) / width;
+                    width = maxSize;
+                }
+            } else {
+                if (height > maxSize) {
+                    width = (width * maxSize) / height;
+                    height = maxSize;
+                }
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            
+            // 이미지 그리기
+            ctx.drawImage(img, 0, 0, width, height);
+            
+            // 품질 조정하여 1MB 미만으로 압축
+            canvas.toBlob((blob) => {
+                const resizedFile = new File([blob], file.name, {
+                    type: file.type,
+                    lastModified: Date.now()
+                });
+                resolve(resizedFile);
+            }, 'image/jpeg', 0.8); // 품질 0.8로 설정
+        };
+        
+        img.src = URL.createObjectURL(file);
+    });
+}
+
+// 이미지 업로드 API 호출
+async function uploadImage(file) {
+    try {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('relatedType', 'SUPPLEMENT');
+        
+        console.log('이미지 업로드 요청 URL:', `${API_BASE_URL}/upload/image?email=${MEMBER_UID}&relatedType=SUPPLEMENT`);
+        console.log('업로드할 파일:', file);
+        
+        const response = await fetch(`${API_BASE_URL}/upload/image?email=${MEMBER_UID}&relatedType=SUPPLEMENT`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('이미지 업로드 API 응답 에러:', response.status, errorText);
+            throw new Error(`이미지 업로드에 실패했습니다. (${response.status})`);
+        }
+        
+        const result = await response.json();
+        console.log('이미지 업로드 API 응답:', result);
+        return result.data.id;
+    } catch (error) {
+        console.error('이미지 업로드 오류:', error);
+        throw error;
+    }
+}
+
+// 영양제 기록 저장 API 호출
+async function saveSupplementRecord(time) {
+    try {
+        const today = new Date().toISOString().split('T')[0] + 'T00:00:00.000Z';
+        
+        const requestData = {
+            type: "SUPPLEMENT",
+            date: today,
+            data: {
+                time: time,
+                type: "비타민C"
+            },
+            fileId: uploadedFileId || null
+        };
+        
+        console.log('영양제 기록 API 요청 데이터:', requestData);
+        
+        const response = await fetch(`${API_BASE_URL}/activity?email=${MEMBER_UID}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('API 응답 에러:', response.status, errorText);
+            throw new Error(`영양제 기록 저장에 실패했습니다. (${response.status})`);
+        }
+        
+        const result = await response.json();
+        console.log('영양제 기록 API 응답:', result);
+        return result;
+    } catch (error) {
+        console.error('영양제 기록 저장 오류:', error);
+        throw error;
+    }
+}
